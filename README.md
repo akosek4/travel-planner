@@ -24,3 +24,10 @@ traveling and am fortunate enough to get to enjoy vacationing often. And as prev
 it is really easy to lose track of important information unless it is kept in a single location
 that is easily assessable. Therefore, I want to use this project as a way to make traveling 
 more convenient and prevent logistical problems from occurring.
+
+## User Story
+- As a user, I want to be able to see an overview of all my trips.
+- As a user, I want to be able to add a trip to my overview.
+- As a user, I want to be able to access detailed information on individual trips.
+- As a user, I want to be able to change the dates of one of my trips.
+- As a user, I want to be able to remove a trip.
