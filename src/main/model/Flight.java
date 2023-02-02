@@ -7,12 +7,12 @@ public class Flight {
     private int price;
     private String date;
     private int time;
-    private int identification;
+    private String identification;
     private String destination;
     private String departure;
 
     // EFFECTS: creates a flight with a price, date, time, ID, destination, and departure location
-    public Flight(int price, String date, int time, int identification,
+    public Flight(int price, String date, int time, String identification,
                   String destination, String departure) {
         this.price = price;
         this.date = date;
@@ -26,12 +26,12 @@ public class Flight {
         return price;
     }
 
-    public int getFLightID() {
+    public String getFlightID() {
         return identification;
     }
 
     public int getFlightTime() {
-        return identification;
+        return time;
     }
 
     public String getFlightDate() {

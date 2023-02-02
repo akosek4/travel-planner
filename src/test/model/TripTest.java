@@ -11,16 +11,16 @@ class TripTest {
 
     @BeforeEach
     public void setup() {
-        trip1 = new Trip("trip1", "december 1");
-        trip2  = new Trip("trip 2", "may 10");
+        trip1 = new Trip("trip1", "December 1");
+        trip2  = new Trip("trip 2", "May 10");
     }
 
     @Test
     public void testConstructor() {
         assertEquals("trip1", trip1.getTripName());
         assertEquals("trip2", trip2.getTripName());
-        assertEquals("december 1", trip1.getTripDate());
-        assertEquals("may 10", trip2.getTripDate());
+        assertEquals("December 1", trip1.getTripDate());
+        assertEquals("May 10", trip2.getTripDate());
         assertEquals(0, trip1.getTripPrice());
         assertEquals(0, trip2.getTripPrice());
     }
