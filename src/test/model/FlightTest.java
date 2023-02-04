@@ -34,5 +34,54 @@ public class FlightTest {
 
     }
 
+    @Test
+    public void changePriceTest() {
+        f1.changePrice(290);
+        f2.changePrice(0);
+        assertEquals(290, f1.getFlightPrice());
+        assertEquals(0, f2.getFlightPrice());
+    }
+
+    @Test
+    public void changeDateTest() {
+        f1.changeDate("December 3");
+        f2.changeDate("May 31");
+        assertEquals("December 3", f1.getFlightDate());
+        assertEquals("May 31", f2.getFlightDate());
+    }
+
+    @Test
+    public void changeTimeTest() {
+        f1.changeTime(1000);
+        f2.changeTime(300);
+        assertEquals(1000, f1.getFlightTime());
+        assertEquals(300, f2.getFlightTime());
+    }
+
+    @Test
+    public void changeIDTest() {
+        f1.changeID("AC555");
+        f2.changeID("UN123");
+        assertEquals("AC555", f1.getFlightID());
+        assertEquals("UN123", f2.getFlightID());
+    }
+
+    @Test
+    public void changeDepartureTest() {
+        f1.changeDeparture("YYC");
+        f2.changeDeparture("SJC");
+        assertEquals("YYC", f1.getFlightDeparture());
+        assertEquals("SJC", f2.getFlightDeparture());
+        }
+
+    @Test
+    public void changeDestinationTest() {
+        f1.changeDestination("SJC");
+        f2.changeDestination("YYC");
+        assertEquals("SJC", f1.getFLightDestination());
+        assertEquals("YYC", f2.getFLightDestination());
+    }
+
+
 }
 

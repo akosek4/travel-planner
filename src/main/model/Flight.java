@@ -22,6 +22,44 @@ public class Flight {
         this.departure = departure;
     }
 
+    // REQUIRES: newPrice >= 0
+    // MODIFIES: this
+    // EFFECTS: changes the current price to the new price
+    public void changePrice(int newPrice) {
+        price = newPrice;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the current date to the new date
+    public void changeDate(String newDate) {
+        date = newDate;
+    }
+
+    // REQUIRES: newTime > 0
+    // MODIFIES: this
+    // EFFECTS: changes the current time to the new time
+    public void changeTime(int newTime) {
+        time = newTime;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the current ID to the new ID
+    public void changeID(String newID) {
+        identification = newID;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the current departure to the new departure
+    public void changeDeparture(String newDeparture) {
+        departure = newDeparture;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the current destination to the new destination
+    public void changeDestination(String newDestination) {
+        destination = newDestination;
+    }
+
     public int getFlightPrice() {
         return price;
     }

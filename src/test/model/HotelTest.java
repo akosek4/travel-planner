@@ -27,7 +27,7 @@ public class HotelTest {
         assertEquals("May 10", h1.getHotelDate());
         assertEquals("December 1", h2.getHotelDate());
         assertEquals("The Modern Honolulu", h1.getHotelName());
-        assertEquals("The Westin Bayshore 29", h2.getHotelName());
+        assertEquals("The Westin Bayshore", h2.getHotelName());
         assertEquals("Honolulu", h1.getHotelLocation());
         assertEquals("Vancouver", h2.getHotelLocation());
 
