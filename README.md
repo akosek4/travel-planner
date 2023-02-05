@@ -29,5 +29,5 @@ more convenient and prevent logistical problems from occurring.
 - As a user, I want to be able to see an overview of all my trips.
 - As a user, I want to be able to add a trip to my overview.
 - As a user, I want to be able to access detailed information on individual trips.
-- As a user, I want to be able to change the dates of one of my trips.
+- As a user, I want to be able to change the details of one of my trips.
 - As a user, I want to be able to remove a trip.
