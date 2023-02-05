@@ -35,41 +35,41 @@ public class HotelTest {
 
 
     @Test
-    public void changeHotelDurationTest() {
-        h1.changeHotelDuration(3);
-        h2.changeHotelDuration(8);
+    public void changeDurationTest() {
+        h1.changeDuration(3);
+        h2.changeDuration(8);
         assertEquals(3, h1.getHotelDuration());
         assertEquals(8, h2.getHotelDuration());
     }
 
     @Test
-    public void changeHotelPriceTest() {
-        h1.changeHotelPrice(1700);
-        h2.changeHotelPrice(0);
+    public void changePriceTest() {
+        h1.changePrice(1700);
+        h2.changePrice(0);
         assertEquals(1700, h1.getHotelPrice());
         assertEquals(0, h2.getHotelPrice());
     }
 
     @Test
-    public void changeHotelNameTest() {
-        h1.changeHotelName("Best Western Santa Cruz");
-        h2.changeHotelName("Motel 6 San Diego");
+    public void changeNameTest() {
+        h1.changeName("Best Western Santa Cruz");
+        h2.changeName("Motel 6 San Diego");
         assertEquals("Best Western Santa Cruz", h1.getHotelName());
         assertEquals("Motel 6 San Diego", h2.getHotelName());
     }
 
     @Test
-    public void changeHotelDateTest() {
-        h1.changeHotelDate("May 2");
-        h2.changeHotelDate("September 8");
+    public void changeDateTest() {
+        h1.changeDate("May 2");
+        h2.changeDate("September 8");
         assertEquals("May 2", h1.getHotelDate());
         assertEquals("September 8", h2.getHotelDate());
     }
 
     @Test
-    public void changeHotelLocationTest() {
-        h1.changeHotelLocation("Santa Cruz");
-        h2.changeHotelLocation("San Diego");
+    public void changeLocationTest() {
+        h1.changeLocation("Santa Cruz");
+        h2.changeLocation("San Diego");
         assertEquals("Santa Cruz", h1.getHotelLocation());
         assertEquals("San Diego", h2.getHotelLocation());
     }

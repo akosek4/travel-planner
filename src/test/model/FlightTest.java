@@ -53,9 +53,9 @@ public class FlightTest {
     @Test
     public void changeTimeTest() {
         f1.changeTime(1000);
-        f2.changeTime(300);
+        f2.changeTime(0);
         assertEquals(1000, f1.getFlightTime());
-        assertEquals(300, f2.getFlightTime());
+        assertEquals(0, f2.getFlightTime());
     }
 
     @Test

@@ -35,7 +35,7 @@ public class Flight {
         date = newDate;
     }
 
-    // REQUIRES: newTime > 0
+    // REQUIRES: 2400 > newTime >= 0
     // MODIFIES: this
     // EFFECTS: changes the current time to the new time
     public void changeTime(int newTime) {

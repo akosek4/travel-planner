@@ -21,32 +21,32 @@ public class Hotel {
     // REQUIRES: newDuration > 0
     // MODIFIES: this
     // EFFECTS: changes the current duration to the new duration
-    public void changeHotelDuration(int newDuration) {
+    public void changeDuration(int newDuration) {
         duration = newDuration;
     }
 
     // REQUIRES: newPrice >= 0
     // MODIFIES: this
     // EFFECTS: changes the current price to the new price
-    public void changeHotelPrice(int newPrice) {
+    public void changePrice(int newPrice) {
         price = newPrice;
     }
 
     // MODIFIES: this
     // EFFECTS: changes the current name to the new name
-    public void changeHotelName(String newName) {
+    public void changeName(String newName) {
         name = newName;
     }
 
     // MODIFIES: this
     // EFFECTS: changes the current date to the new date
-    public void changeHotelDate(String newDate) {
+    public void changeDate(String newDate) {
         date = newDate;
     }
 
     // MODIFIES: this
     // EFFECTS: changes the current location to the new location
-    public void changeHotelLocation(String newLocation) {
+    public void changeLocation(String newLocation) {
         location = newLocation;
     }
 
