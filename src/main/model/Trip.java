@@ -13,7 +13,7 @@ public class Trip {
     private List<Activity> activities;
     private int price;
 
-    // EFFECTS: creates a trip with a name, a date, a flight, a hotel, and a price
+    // EFFECTS: creates a trip with a name, a date, a flight, a hotel, a price, and an empty list of activities
     public Trip(String name, String date, Flight flight, Hotel hotel) {
         this.name = name;
         this.date = date;
@@ -30,9 +30,14 @@ public class Trip {
     }
 
     // MODIFIES: this
-    //EFFECTS: removes activity from activities
-    public void removeActivity(Activity activity) {
-        activities.remove(activity);
+    //EFFECTS: removes activity from activities or returns false if activity is not in list
+    public boolean removeActivity(Activity activity) {
+        if (activities.contains(activity)) {
+            activities.remove(activity);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // REQUIRES: flightPrice >= 0, 2400 > flightTime >= 0

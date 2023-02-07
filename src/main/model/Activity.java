@@ -1,5 +1,7 @@
 package model;
 
+// Represents an Activity having a name, price, date, time, and location
+
 public class Activity {
     private String name;
     private int price;

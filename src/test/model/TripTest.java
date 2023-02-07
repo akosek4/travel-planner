@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class TripTest {
     private Trip trip1;
@@ -185,7 +186,7 @@ class TripTest {
     }
 
     @Test
-    public void removeActivityTest() {
+    public void removeActivityTrueTest() {
         trip1.addActivity(a1);
         trip1.addActivity(a2);
         trip2.addActivity(a1);
@@ -198,6 +199,12 @@ class TripTest {
         t2Result.add(a2);
         assertEquals(t1Result, trip1.getActivities());
         assertEquals(t2Result, trip2.getActivities());
+    }
+
+    @Test
+    public void removeActivityFalseTest() {
+        assertFalse(trip1.removeActivity(a1));
+        assertFalse(trip2.removeActivity(a1));
     }
 
 }

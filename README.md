@@ -3,9 +3,9 @@
 ## Description
 
 This project is an application for recording and managing travel itineraries. 
-The program will include an arbitrary number of travel entries, each with a name, date, and 
-location that specifies the content of each trip. Within each trip entry, further and more 
-detailed information will be given. Some examples of these possible sections included in each
+The program will include an arbitrary number of travel entries, each with a name that specifies the content 
+of each trip. Within each trip entry, further and more detailed information will be given. Some examples of these 
+possible sections included in each
 trip are:
 - pricing
 - flight information
