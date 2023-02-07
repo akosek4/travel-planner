@@ -3,13 +3,14 @@ package model;
 // Represents a Trip having a name, date, and internal details
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Trip {
     private String name;
     private String date;
     private Flight flight;
     private Hotel hotel;
-    private ArrayList<Activity> activities;
+    private List<Activity> activities;
     private int price;
 
     // EFFECTS: creates a trip with a name, a date, a flight, a hotel, and a price
@@ -19,8 +20,20 @@ public class Trip {
         this.flight = flight;
         this.hotel = hotel;
         this.price = flight.getFlightPrice() + hotel.getHotelPrice();
+        this.activities = new ArrayList<>();
     }
-        //TODO 1: add activity price
+
+    // MODIFIES: this
+    //EFFECTS: adds activity to activities
+    public void addActivity(Activity activity) {
+        activities.add(activity);
+    }
+
+    // MODIFIES: this
+    //EFFECTS: removes activity from activities
+    public void removeActivity(Activity activity) {
+        activities.remove(activity);
+    }
 
     // REQUIRES: flightPrice >= 0, 2400 > flightTime >= 0
     // MODIFIES: this
@@ -117,6 +130,17 @@ public class Trip {
         hotel.changeLocation(hotelLocation);
     }
 
+    // MODIFIES: this
+    // EFFECTS: changes the name to a new name
+    public void changeName(String newName) {
+        name = newName;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the date to a new date
+    public void changeDate(String newDate) {
+        date = newDate;
+    }
 
     public String getTripName() {
         return name;
@@ -136,6 +160,10 @@ public class Trip {
 
     public Hotel getHotel() {
         return hotel;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
     }
 
 }

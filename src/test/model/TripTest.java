@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TripTest {
@@ -16,6 +19,10 @@ class TripTest {
             7, "Honolulu");
     private Hotel h2  = new Hotel("The Westin Bayshore", 1900, "December 1",
             4, "Vancouver");
+    private Activity a1 = new Activity("Zip Lining",300, "December 1", 900,
+                              "Kona");
+    private Activity a2 = new Activity("ATV Riding",500, "May 2", 1300,
+                               "Santa Cruz");
 
     @BeforeEach
     public void setup() {
@@ -38,13 +45,25 @@ class TripTest {
     }
 
     @Test
+    public void changeNameTest() {
+        trip1.changeName("Ski Trip");
+        trip2.changeName("Beach Trip");
+        assertEquals("Ski Trip", trip1.getTripName());
+        assertEquals("Beach Trip", trip2.getTripName());
+    }
+
+    @Test
+    public void changeDateTest() {
+        trip1.changeDate("January 1");
+        trip2.changeDate("December 31");
+        assertEquals("January 1", trip1.getTripDate());
+        assertEquals("December 31", trip2.getTripDate());
+    }
+
+    @Test
     public void changeAllFlightDetailsTest() {
-        trip1.changeFlightPrice(200);
-        trip1.changeFlightDate("May 10");
-        trip1.changeFlightTime(200);
-        trip1.changeFlightID("AC444");
-        trip1.changeFlightDestination("SJC");
-        trip1.changeFlightDeparture("SJO");
+        trip1.changeAllFlightDetails(200, "May 10", 200,
+                "AC444",  "SJC", "SJO");
         assertEquals(200, trip1.getFlight().getFlightPrice());
         assertEquals("May 10", trip1.getFlight().getFlightDate());
         assertEquals(200, trip1.getFlight().getFlightTime());
@@ -104,11 +123,8 @@ class TripTest {
 
     @Test
     public void changeAllHotelDetails() {
-        trip1.changeHotelLocation("Kona");
-        trip1.changeHotelDate("May 1");
-        trip1.changeHotelName("Marriott Kona");
-        trip1.changeHotelPrice(1900);
-        trip1.changeHotelDuration(9);
+        trip1.changeAllHotelDetails("Marriott Kona", 1900, "May 1",
+                9, "Kona");
         assertEquals("Kona", trip1.getHotel().getHotelLocation());
         assertEquals("May 1", trip1.getHotel().getHotelDate());
         assertEquals("Marriott Kona", trip1.getHotel().getHotelName());
@@ -154,6 +170,34 @@ class TripTest {
         trip2.changeHotelLocation("Victoria");
         assertEquals("Kona", trip1.getHotel().getHotelLocation());
         assertEquals("Victoria", trip2.getHotel().getHotelLocation());
+    }
+
+    @Test
+    public void addActivityTest() {
+        trip1.addActivity(a1);
+        trip2.addActivity(a2);
+        List<Activity> t1Result = new ArrayList<Activity>();
+        t1Result.add(a1);
+        List<Activity> t2Result = new ArrayList<Activity>();
+        t2Result.add(a2);
+        assertEquals(t1Result, trip1.getActivities());
+        assertEquals(t2Result, trip2.getActivities());
+    }
+
+    @Test
+    public void removeActivityTest() {
+        trip1.addActivity(a1);
+        trip1.addActivity(a2);
+        trip2.addActivity(a1);
+        trip2.addActivity(a2);
+        trip1.removeActivity(a2);
+        trip2.removeActivity(a1);
+        List<Activity> t1Result = new ArrayList<Activity>();
+        t1Result.add(a1);
+        List<Activity> t2Result = new ArrayList<Activity>();
+        t2Result.add(a2);
+        assertEquals(t1Result, trip1.getActivities());
+        assertEquals(t2Result, trip2.getActivities());
     }
 
 }
