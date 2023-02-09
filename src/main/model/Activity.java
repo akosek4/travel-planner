@@ -18,6 +18,7 @@ public class Activity {
         this.location = location;
     }
 
+
     // MODIFIES: this
     // EFFECTS: changes the current date to the new date
     public void changeName(String newName) {
