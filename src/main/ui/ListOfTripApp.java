@@ -1,9 +1,8 @@
 package ui;
 
-import model.Hotel;
-import model.ListOfTrips;
-import model.Trip;
+import model.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ListOfTripApp {
@@ -63,21 +62,18 @@ public class ListOfTripApp {
         }
     }
 
-    //TODO: figure out why call to getTrip isn't working
     private void removeTrip(String name) {
-        Trip trip = getTrip(name);
+        Trip trip = trips.getTrip(name);
         trips.removeTrip(trip);
     }
 
-    //TODO: figure out why call to getTrip isn't working
     private void addTrip(String name) {
-        Trip trip = getTrip(name);
+        Trip trip = trips.getTrip(name);
         trips.addTrip(trip);
     }
 
-    //TODO: figure out why call to getTrip isn't working
     private void selectTrip(String name) {
-        Trip trip = getTrip(name);
+        Trip trip = trips.getTrip(name);
         String command = null;
         command = input.next();
         command = command.toLowerCase();
@@ -103,7 +99,7 @@ public class ListOfTripApp {
     //EFFECTS: processes user command
     private void processTripCommand(String command, Trip trip) {
         if (command.equals("v")) {
-            veiwTripDetails(trip);
+            viewTripDetails(trip);
         } else if (command.equals("h")) {
             veiwHotel(trip);
         } else if (command.equals("f")) {
@@ -116,11 +112,21 @@ public class ListOfTripApp {
     }
 
     private void viewActivities(Trip trip) {
-        trip.getActivities();
+        List<Activity> activities = trip.getActivities();
+        String command = null;
+        command = input.next();
+        command = command.toLowerCase();
+        displayListOfActivityMenu();
+        processListOfActivityCommand(command, activities, trip);
     }
 
     private void viewFlight(Trip trip) {
-        trip.getFlight();
+        Flight flight = trip.getFlight();
+        String command = null;
+        command = input.next();
+        command = command.toLowerCase();
+        displayFlightMenu();
+        processFlightCommand(command, flight);
     }
 
     private void veiwHotel(Trip trip) {
@@ -132,7 +138,7 @@ public class ListOfTripApp {
         processHotelCommand(command, hotel);
     }
 
-    private void veiwTripDetails(Trip trip) {
+    private void viewTripDetails(Trip trip) {
         trip.getTripDate();
         trip.getTripName();
         trip.getTripPrice();
@@ -153,6 +159,7 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
+    //TODO: Figure out how to add/insert more user inputs
     private void processHotelCommand(String command, Hotel hotel) {
         if (command.equals("v")) {
             veiwHotelDetails(hotel);
@@ -171,29 +178,24 @@ public class ListOfTripApp {
         }
     }
 
-    //TODO: figure out how to insert user command into method call
-    private void changeHotelLocation(Hotel hotel) {
-        hotel.changeLocation();
+    private void changeHotelLocation(Hotel hotel, String location) {
+        hotel.changeLocation(location);
     }
 
-    //TODO: figure out how to insert user command into method call
-    private void changeHotelDate(Hotel hotel) {
-        hotel.changeDate();
+    private void changeHotelDate(Hotel hotel, String date) {
+        hotel.changeDate(date);
     }
 
-    //TODO: figure out how to insert user command into method call
-    private void changeHotelName(Hotel hotel) {
-        hotel.changeName();
+    private void changeHotelName(Hotel hotel, String name) {
+        hotel.changeName(name);
     }
 
-    //TODO: figure out how to insert user command into method call
-    private void changeHotelPrice(Hotel hotel) {
-        hotel.changePrice();
+    private void changeHotelPrice(Hotel hotel, int price) {
+        hotel.changePrice(price);
     }
 
-    //TODO: figure out how to insert user command into method call
-    private void changeHotelDuration(Hotel hotel) {
-        hotel.changeDuration();
+    private void changeHotelDuration(Hotel hotel, int duration) {
+        hotel.changeDuration(duration);
     }
 
     private void veiwHotelDetails(Hotel hotel) {
@@ -220,58 +222,58 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processFlightCommand(String command) {
+    //TODO: Figure out how to add/insert more user inputs
+    private void processFlightCommand(String command, Flight flight) {
         if (command.equals("v")) {
-            veiwFlightDetails();
-        } else if (command.equals("a")) {
-            changeAllFlight();
+            veiwFlightDetails(flight);
         } else if (command.equals("t")) {
-            changeFlightTime();
+            changeFlightTime(flight);
         } else if (command.equals("p")) {
-            changeFlightPrice();
+            changeFlightPrice(flight);
         } else if (command.equals("i")) {
-            changeFlightID();
+            changeFlightID(flight);
         } else if (command.equals("d")) {
-            changeFlightDate();
+            changeFlightDate(flight);
         } else if (command.equals("des")) {
-            changeFlightDestination();
+            changeFlightDestination(flight);
         } else if (command.equals("dep")) {
-            changeFlightDeparture();
+            changeFlightDeparture(flight);
         } else {
             System.out.println("Selection is not valid");
         }
     }
 
-    //TODO: finish method body
-    private void changeFlightDeparture() {
+    private void changeFlightDeparture(Flight flight, String departure) {
+        flight.changeDeparture(departure);
     }
 
-    //TODO: finish method body
-    private void changeFlightDestination() {
+    private void changeFlightDestination(Flight flight, String destination) {
+        flight.changeDestination(destination);
     }
 
-    //TODO: finish method body
-    private void changeFlightDate() {
+    private void changeFlightDate(Flight flight, String date) {
+        flight.changeDate(date);
     }
 
-    //TODO: finish method body
-    private void changeFlightID() {
+    private void changeFlightID(Flight flight, String id) {
+        flight.changeID(id);
     }
 
-    //TODO: finish method body
-    private void changeFlightPrice() {
+    private void changeFlightPrice(Flight flight, int price) {
+        flight.changePrice(price);
     }
 
-    //TODO: finish method body
-    private void changeFlightTime() {
+    private void changeFlightTime(Flight flight, int time) {
+        flight.changeTime(time);
     }
 
-    //TODO: finish method body
-    private void changeAllFlight() {
-    }
-
-    //TODO: finish method body
-    private void veiwFlightDetails() {
+    private void veiwFlightDetails(Flight flight) {
+        flight.getFlightPrice();
+        flight.getFlightID();
+        flight.getFlightDate();
+        flight.getFlightDeparture();
+        flight.getFlightTime();
+        flight.getFLightDestination();
     }
 
     // EFFECTS: displays menu of options to user
@@ -286,34 +288,43 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processListOfActivityCommand(String command) {
+    //TODO: Figure out how to add/insert more user inputs
+    private void processListOfActivityCommand(String command, List<Activity> activities, Trip trip) {
         if (command.equals("v")) {
-            veiwAllActivities();
+            veiwAllActivities(trip);
         } else if (command.equals("s")) {
-            selectActivity();
+            selectActivity(activities);
         } else if (command.equals("a")) {
-            addActivity();
+            addActivity(activities, trip);
         } else if (command.equals("r")) {
-            removeActivity();
+            removeActivity(activities);
         } else {
             System.out.println("Selection is not valid");
         }
     }
 
-    //TODO: finish method body
-    private void removeActivity() {
+    private void removeActivity(List<Activity> activities, Trip trip, String name) {
+        Activity activity = trip.getActivity(name);
+        if (activities.contains(activity)) {
+            activities.remove(activity);
+        }
     }
 
-    //TODO: finish method body
-    private void addActivity() {
+    private void addActivity(List<Activity> activities, Activity activity) {
+        activities.add(activity);
     }
 
-    //TODO: finish method body
-    private void selectActivity() {
+    private void selectActivity(Trip trip, String name) {
+        Activity activity = trip.getActivity(name);
+        String command = null;
+        command = input.next();
+        command = command.toLowerCase();
+        displayActivityMenu();
+        processActivityCommand(command, activity);
     }
 
-    //TODO: finish method body
-    private void veiwAllActivities() {
+    private void veiwAllActivities(Trip trip) {
+        trip.getActivities();
     }
 
     // EFFECTS: displays menu of options to user
@@ -330,46 +341,51 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processActivityCommand(String command) {
+    //TODO: Figure out how to add/insert more user inputs
+    private void processActivityCommand(String command, Activity activity) {
         if (command.equals("v")) {
-            veiwActivityDetails();
+            veiwActivityDetails(activity);
         } else if (command.equals("n")) {
-            changeActivityName();
+            changeActivityName(activity);
         } else if (command.equals("p")) {
-            changeActivityPrice();
+            changeActivityPrice(activity);
         } else if (command.equals("t")) {
-            changeActivityTime();
+            changeActivityTime(activity);
         } else if (command.equals("d")) {
-            changeActivitylDate();
+            changeActivitylDate(activity);
         } else if (command.equals("l")) {
-            changeActivityLocation();
+            changeActivityLocation(activity);
         } else {
             System.out.println("Selection is not valid");
         }
     }
 
-    //TODO: finish method body
-    private void changeActivityLocation() {
+    private void changeActivityLocation(Activity activity, String location) {
+        activity.changeLocation(location);
     }
 
-    //TODO: finish method body
-    private void changeActivitylDate() {
+    private void changeActivitylDate(Activity activity, String date) {
+        activity.changeDate(date);
     }
 
-    //TODO: finish method body
-    private void changeActivityTime() {
+    private void changeActivityTime(Activity activity, int time) {
+        activity.changeTime(time);
     }
 
-    //TODO: finish method body
-    private void changeActivityPrice() {
+    private void changeActivityPrice(Activity activity, int price) {
+        activity.changePrice(price);
     }
 
-    //TODO: finish method body
-    private void changeActivityName() {
+    private void changeActivityName(Activity activity, String name) {
+        activity.changeName(name);
     }
 
-    //TODO: finish method body
-    private void veiwActivityDetails() {
+    private void veiwActivityDetails(Activity activity) {
+        activity.getDate();
+        activity.getLocation();
+        activity.getName();
+        activity.getPrice();
+        activity.getTime();
     }
 
 

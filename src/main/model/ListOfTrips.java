@@ -35,8 +35,12 @@ public class ListOfTrips {
         return trips;
     }
 
-    //TODO: finish method body
     public Trip getTrip(String name) {
-        return trip;
+        for (Trip trip : trips) {
+            if (trip.getTripName() == name) {
+                return trip;
+            }
+        }
+        return null;
     }
 }
