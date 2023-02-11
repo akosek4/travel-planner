@@ -1,9 +1,14 @@
 package ui;
 
+import model.Hotel;
+import model.ListOfTrips;
+import model.Trip;
+
 import java.util.Scanner;
 
 public class ListOfTripApp {
     private Scanner input;
+    private ListOfTrips trips;
 
     //EFFECTS: runs the list of trip application
     public ListOfTripApp() {
@@ -40,11 +45,13 @@ public class ListOfTripApp {
         System.out.println("\tq -> quit");
     }
 
+
     //MODIFIES: this
     //EFFECTS: processes user command
+    //TODO: Figure out how to add/insert more user inputs
     private void processListOfTripCommand(String command) {
         if (command.equals("v")) {
-            veiwAllTrips();
+            viewAllTrips();
         } else if (command.equals("s")) {
             selectTrip();
         } else if (command.equals("a")) {
@@ -54,6 +61,32 @@ public class ListOfTripApp {
         } else {
             System.out.println("Selection is not valid");
         }
+    }
+
+    //TODO: figure out why call to getTrip isn't working
+    private void removeTrip(String name) {
+        Trip trip = getTrip(name);
+        trips.removeTrip(trip);
+    }
+
+    //TODO: figure out why call to getTrip isn't working
+    private void addTrip(String name) {
+        Trip trip = getTrip(name);
+        trips.addTrip(trip);
+    }
+
+    //TODO: figure out why call to getTrip isn't working
+    private void selectTrip(String name) {
+        Trip trip = getTrip(name);
+        String command = null;
+        command = input.next();
+        command = command.toLowerCase();
+        displayTripMenu();
+        processTripCommand(command, trip);
+    }
+
+    private void viewAllTrips() {
+        trips.getTrips();
     }
 
     // EFFECTS: displays menu of options to user
@@ -68,18 +101,41 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processTripCommand(String command) {
+    private void processTripCommand(String command, Trip trip) {
         if (command.equals("v")) {
-            veiwTripDetails();
+            veiwTripDetails(trip);
         } else if (command.equals("h")) {
-            veiwHotel();
+            veiwHotel(trip);
         } else if (command.equals("f")) {
-            viewFlight();
+            viewFlight(trip);
         } else if (command.equals("a")) {
-            viewActivities();
+            viewActivities(trip);
         } else {
             System.out.println("Selection is not valid");
         }
+    }
+
+    private void viewActivities(Trip trip) {
+        trip.getActivities();
+    }
+
+    private void viewFlight(Trip trip) {
+        trip.getFlight();
+    }
+
+    private void veiwHotel(Trip trip) {
+        Hotel hotel = trip.getHotel();
+        String command = null;
+        command = input.next();
+        command = command.toLowerCase();
+        displayHotelMenu();
+        processHotelCommand(command, hotel);
+    }
+
+    private void veiwTripDetails(Trip trip) {
+        trip.getTripDate();
+        trip.getTripName();
+        trip.getTripPrice();
     }
 
     // EFFECTS: displays menu of options to user
@@ -97,24 +153,55 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processHotelCommand(String command) {
+    private void processHotelCommand(String command, Hotel hotel) {
         if (command.equals("v")) {
-            veiwHotelDetails();
-        } else if (command.equals("a")) {
-            changeAllHotel();
+            veiwHotelDetails(hotel);
         } else if (command.equals("du")) {
-            changeHotelDuration();
+            changeHotelDuration(hotel);
         } else if (command.equals("p")) {
-            changeHotelPrice();
+            changeHotelPrice(hotel);
         } else if (command.equals("n")) {
-            changeHotelName();
+            changeHotelName(hotel);
         } else if (command.equals("da")) {
-            changeHotelDate();
+            changeHotelDate(hotel);
         } else if (command.equals("l")) {
-            changeHotelLocation();
+            changeHotelLocation(hotel);
         } else {
             System.out.println("Selection is not valid");
         }
+    }
+
+    //TODO: figure out how to insert user command into method call
+    private void changeHotelLocation(Hotel hotel) {
+        hotel.changeLocation();
+    }
+
+    //TODO: figure out how to insert user command into method call
+    private void changeHotelDate(Hotel hotel) {
+        hotel.changeDate();
+    }
+
+    //TODO: figure out how to insert user command into method call
+    private void changeHotelName(Hotel hotel) {
+        hotel.changeName();
+    }
+
+    //TODO: figure out how to insert user command into method call
+    private void changeHotelPrice(Hotel hotel) {
+        hotel.changePrice();
+    }
+
+    //TODO: figure out how to insert user command into method call
+    private void changeHotelDuration(Hotel hotel) {
+        hotel.changeDuration();
+    }
+
+    private void veiwHotelDetails(Hotel hotel) {
+        hotel.getHotelPrice();
+        hotel.getHotelDate();
+        hotel.getHotelLocation();
+        hotel.getHotelDuration();
+        hotel.getHotelName();
     }
 
     // EFFECTS: displays menu of options to user
@@ -155,6 +242,38 @@ public class ListOfTripApp {
         }
     }
 
+    //TODO: finish method body
+    private void changeFlightDeparture() {
+    }
+
+    //TODO: finish method body
+    private void changeFlightDestination() {
+    }
+
+    //TODO: finish method body
+    private void changeFlightDate() {
+    }
+
+    //TODO: finish method body
+    private void changeFlightID() {
+    }
+
+    //TODO: finish method body
+    private void changeFlightPrice() {
+    }
+
+    //TODO: finish method body
+    private void changeFlightTime() {
+    }
+
+    //TODO: finish method body
+    private void changeAllFlight() {
+    }
+
+    //TODO: finish method body
+    private void veiwFlightDetails() {
+    }
+
     // EFFECTS: displays menu of options to user
     private void displayListOfActivityMenu() {
         System.out.println("\n Select from:");
@@ -179,6 +298,22 @@ public class ListOfTripApp {
         } else {
             System.out.println("Selection is not valid");
         }
+    }
+
+    //TODO: finish method body
+    private void removeActivity() {
+    }
+
+    //TODO: finish method body
+    private void addActivity() {
+    }
+
+    //TODO: finish method body
+    private void selectActivity() {
+    }
+
+    //TODO: finish method body
+    private void veiwAllActivities() {
     }
 
     // EFFECTS: displays menu of options to user
@@ -213,9 +348,29 @@ public class ListOfTripApp {
         }
     }
 
+    //TODO: finish method body
+    private void changeActivityLocation() {
+    }
 
+    //TODO: finish method body
+    private void changeActivitylDate() {
+    }
 
+    //TODO: finish method body
+    private void changeActivityTime() {
+    }
 
+    //TODO: finish method body
+    private void changeActivityPrice() {
+    }
+
+    //TODO: finish method body
+    private void changeActivityName() {
+    }
+
+    //TODO: finish method body
+    private void veiwActivityDetails() {
+    }
 
 
 }

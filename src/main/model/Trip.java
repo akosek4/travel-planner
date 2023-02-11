@@ -40,19 +40,6 @@ public class Trip {
         }
     }
 
-    // REQUIRES: flightPrice >= 0, 2400 > flightTime >= 0
-    // MODIFIES: this
-    // EFFECTS: changes the all current details about the hotel to parameter
-    public void changeAllFlightDetails(int flightPrice, String flightDate, int flightTime, String flightID,
-                                       String flightDestination, String flightDeparture) {
-        this.changeFlightPrice(flightPrice);
-        this.changeFlightDate(flightDate);
-        this.changeFlightTime(flightTime);
-        this.changeFlightID(flightID);
-        this.changeFlightDestination(flightDestination);
-        this.changeFlightDeparture(flightDeparture);
-    }
-
     // REQUIRES: newPrice >= 0
     // MODIFIES: this
     // EFFECTS: changes the current price to the new price
@@ -89,18 +76,6 @@ public class Trip {
     // EFFECTS: changes the current destination to the new destination
     public void changeFlightDestination(String newDestination) {
         flight.changeDestination(newDestination);
-    }
-
-    // REQUIRES: hotelPrice >= 0, hotelDuration >0
-    // MODIFIES: this
-    // EFFECTS: changes the all current details about the hotel to parameter
-    public void changeAllHotelDetails(String hotelName, int hotelPrice, String hotelDate, int hotelDuration,
-                                   String hotelLocation) {
-        this.changeHotelLocation(hotelLocation);
-        this.changeHotelDate(hotelDate);
-        this.changeHotelName(hotelName);
-        this.changeHotelPrice(hotelPrice);
-        this.changeHotelDuration(hotelDuration);
     }
 
     // MODIFIES: this

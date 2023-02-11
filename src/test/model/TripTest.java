@@ -61,17 +61,6 @@ class TripTest {
         assertEquals("December 31", trip2.getTripDate());
     }
 
-    @Test
-    public void changeAllFlightDetailsTest() {
-        trip1.changeAllFlightDetails(200, "May 10", 200,
-                "AC444",  "SJC", "SJO");
-        assertEquals(200, trip1.getFlight().getFlightPrice());
-        assertEquals("May 10", trip1.getFlight().getFlightDate());
-        assertEquals(200, trip1.getFlight().getFlightTime());
-        assertEquals("AC444", trip1.getFlight().getFlightID());
-        assertEquals("SJC", trip1.getFlight().getFLightDestination());
-        assertEquals("SJO", trip1.getFlight().getFlightDeparture());
-    }
 
     @Test
     public void changeFlightPriceTest() {
@@ -122,16 +111,6 @@ class TripTest {
     }
 
 
-    @Test
-    public void changeAllHotelDetails() {
-        trip1.changeAllHotelDetails("Marriott Kona", 1900, "May 1",
-                9, "Kona");
-        assertEquals("Kona", trip1.getHotel().getHotelLocation());
-        assertEquals("May 1", trip1.getHotel().getHotelDate());
-        assertEquals("Marriott Kona", trip1.getHotel().getHotelName());
-        assertEquals(1900, trip1.getHotel().getHotelPrice());
-        assertEquals(9, trip1.getHotel().getHotelDuration());
-    }
 
     @Test
     public void changeHotelNameTest() {

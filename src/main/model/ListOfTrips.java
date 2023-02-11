@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ListOfTrips {
     private List<Trip> trips;
+    private Trip trip;
 
     // EFFECTS: creates a list of trips
     public ListOfTrips() {
@@ -32,5 +33,10 @@ public class ListOfTrips {
 
     public List<Trip> getTrips() {
         return trips;
+    }
+
+    //TODO: finish method body
+    public Trip getTrip(String name) {
+        return trip;
     }
 }
