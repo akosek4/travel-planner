@@ -175,7 +175,7 @@ public class ListOfTripApp {
     }
 
     private void viewAllTrips() {
-        trips.getTrips();
+        System.out.print(trips.getTrips());
     }
 
     // EFFECTS: displays menu of options to user
@@ -232,9 +232,9 @@ public class ListOfTripApp {
     }
 
     private void viewTripDetails(Trip trip) {
-        trip.getTripDate();
-        trip.getTripName();
-        trip.getTripPrice();
+        System.out.println(trip.getTripDate());
+        System.out.println(trip.getTripName());
+        System.out.println(trip.getTripPrice());
     }
 
     // EFFECTS: displays menu of options to user
@@ -296,11 +296,11 @@ public class ListOfTripApp {
     }
 
     private void viewHotelDetails(Hotel hotel) {
-        hotel.getHotelPrice();
-        hotel.getHotelDate();
-        hotel.getHotelLocation();
-        hotel.getHotelDuration();
-        hotel.getHotelName();
+        System.out.println(hotel.getHotelPrice());
+        System.out.println(hotel.getHotelDate());
+        System.out.println(hotel.getHotelLocation());
+        System.out.println(hotel.getHotelDuration());
+        System.out.println(hotel.getHotelName());
     }
 
     // EFFECTS: displays menu of options to user
@@ -370,12 +370,12 @@ public class ListOfTripApp {
     }
 
     private void viewFlightDetails(Flight flight) {
-        flight.getFlightPrice();
-        flight.getFlightID();
-        flight.getFlightDate();
-        flight.getFlightDeparture();
-        flight.getFlightTime();
-        flight.getFLightDestination();
+        System.out.println(flight.getFlightPrice());
+        System.out.println(flight.getFlightID());
+        System.out.println(flight.getFlightDate());
+        System.out.println(flight.getFlightDeparture());
+        System.out.println(flight.getFlightTime());
+        System.out.println(flight.getFLightDestination());
     }
 
     // EFFECTS: displays menu of options to user
@@ -439,7 +439,7 @@ public class ListOfTripApp {
     }
 
     private void viewAllActivities(Trip trip) {
-        trip.getActivities();
+        System.out.println(trip.getActivities());
     }
 
     // EFFECTS: displays menu of options to user
@@ -495,11 +495,11 @@ public class ListOfTripApp {
     }
 
     private void viewActivityDetails(Activity activity) {
-        activity.getDate();
-        activity.getLocation();
-        activity.getName();
-        activity.getPrice();
-        activity.getTime();
+        System.out.println(activity.getDate());
+        System.out.println(activity.getLocation());
+        System.out.println(activity.getName());
+        System.out.println(activity.getPrice());
+        System.out.println(activity.getTime());
     }
 
 
