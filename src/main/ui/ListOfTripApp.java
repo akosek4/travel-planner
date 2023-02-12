@@ -44,19 +44,108 @@ public class ListOfTripApp {
         System.out.println("\tq -> quit");
     }
 
+    //EFFECTS: displays prompt for user to input name selection
+    private void displayNamePrompt() {
+        System.out.println("\n Write name/ID: ");
+    }
+
+    //EFFECTS: displays prompt for user to input date selection
+    private void displayDatePrompt() {
+        System.out.println("\n Write date: ");
+    }
+
+    //EFFECTS: displays prompt for user to input price selection
+    private void displayPricePrompt() {
+        System.out.println("\n Write price: ");
+    }
+
+    //EFFECTS: displays prompt for user to input duration selection
+    private void displayDurationPrompt() {
+        System.out.println("\n Write duration: ");
+    }
+
+    //EFFECTS: displays prompt for user to input location selection
+    private void displayLocationPrompt() {
+        System.out.println("\n Write location: ");
+    }
+
+    //EFFECTS: displays prompt for user to input time selection
+    private void displayTimePrompt() {
+        System.out.println("\n Write time: ");
+    }
+
+    //EFFECTS: displays prompt for user to input destination selection
+    private void displayDestinationPrompt() {
+        System.out.println("\n Write destination: ");
+    }
+
+    //EFFECTS: displays prompt for user to input departure selection
+    private void displayDeparturePrompt() {
+        System.out.println("\n Write departure: ");
+    }
+
+    //EFFECTS: displays prompt for user to input hotel selection
+    private void displayHotelPrompt() {
+        System.out.println("\n Write hotel details: ");
+    }
+
+    //EFFECTS: displays prompt for user to input flight selection
+    private void displayFLightPrompt() {
+        System.out.println("\n Write flight details: ");
+    }
+
+    //EFFECTS: displays prompt for user to input trip selection
+    private void displayTripPrompt() {
+        System.out.println("\n Write trip details: ");
+    }
+
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    //TODO: Figure out how to add/insert more user inputs
     private void processListOfTripCommand(String command) {
         if (command.equals("v")) {
             viewAllTrips();
         } else if (command.equals("s")) {
-            selectTrip();
+            displayNamePrompt();
+            selectTrip(command);
         } else if (command.equals("a")) {
-            addTrip();
+            displayTripPrompt();
+            displayNamePrompt();
+            String tripName = command;
+            displayDatePrompt();
+            String tripDate = command;
+
+            displayHotelPrompt();
+            displayNamePrompt();
+            String hotelName = command;
+            displayPricePrompt();
+            int hotelPrice = Integer.parseInt(command);
+            displayDatePrompt();
+            String hotelDate = command;
+            displayDurationPrompt();
+            int hotelDuration = Integer.parseInt(command);
+            displayLocationPrompt();
+            String hotelLocation = command;
+
+            displayFLightPrompt();
+            displayPricePrompt();
+            int flightPrice = Integer.parseInt(command);
+            displayDatePrompt();
+            String flightDate = command;
+            displayTimePrompt();
+            int flightTime = Integer.parseInt(command);
+            displayNamePrompt();
+            String flightID = command;
+            displayDestinationPrompt();
+            String flightDes = command;
+            displayDeparturePrompt();
+            String flightDep = command;
+
+            addTrip(tripName, tripDate, hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation, flightPrice,
+                    flightDate, flightTime, flightID, flightDes, flightDep);
         } else if (command.equals("r")) {
-            removeTrip();
+            displayNamePrompt();
+            removeTrip(command);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -67,8 +156,12 @@ public class ListOfTripApp {
         trips.removeTrip(trip);
     }
 
-    private void addTrip(String name) {
-        Trip trip = trips.getTrip(name);
+    private void addTrip(String name, String date, String hotelName, int hotelPrice, String hotelDate,
+                         int hotelDuration, String hotelLocation, int flightPrice, String flightDate, int flightTime,
+                         String flightID, String flightDes, String flightDep) {
+        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightID, flightDes, flightDep);
+        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation);
+        Trip trip = new Trip(name, date, flight, hotel);
         trips.addTrip(trip);
     }
 
@@ -101,7 +194,7 @@ public class ListOfTripApp {
         if (command.equals("v")) {
             viewTripDetails(trip);
         } else if (command.equals("h")) {
-            veiwHotel(trip);
+            viewHotel(trip);
         } else if (command.equals("f")) {
             viewFlight(trip);
         } else if (command.equals("a")) {
@@ -129,7 +222,7 @@ public class ListOfTripApp {
         processFlightCommand(command, flight);
     }
 
-    private void veiwHotel(Trip trip) {
+    private void viewHotel(Trip trip) {
         Hotel hotel = trip.getHotel();
         String command = null;
         command = input.next();
@@ -159,20 +252,24 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    //TODO: Figure out how to add/insert more user inputs
     private void processHotelCommand(String command, Hotel hotel) {
         if (command.equals("v")) {
-            veiwHotelDetails(hotel);
+            viewHotelDetails(hotel);
         } else if (command.equals("du")) {
-            changeHotelDuration(hotel);
+            displayDurationPrompt();
+            changeHotelDuration(hotel, Integer.parseInt(command));
         } else if (command.equals("p")) {
-            changeHotelPrice(hotel);
+            displayPricePrompt();
+            changeHotelPrice(hotel, Integer.parseInt(command));
         } else if (command.equals("n")) {
-            changeHotelName(hotel);
+            displayNamePrompt();
+            changeHotelName(hotel, command);
         } else if (command.equals("da")) {
-            changeHotelDate(hotel);
+            displayDatePrompt();
+            changeHotelDate(hotel, command);
         } else if (command.equals("l")) {
-            changeHotelLocation(hotel);
+            displayLocationPrompt();
+            changeHotelLocation(hotel, command);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -198,7 +295,7 @@ public class ListOfTripApp {
         hotel.changeDuration(duration);
     }
 
-    private void veiwHotelDetails(Hotel hotel) {
+    private void viewHotelDetails(Hotel hotel) {
         hotel.getHotelPrice();
         hotel.getHotelDate();
         hotel.getHotelLocation();
@@ -222,22 +319,27 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    //TODO: Figure out how to add/insert more user inputs
     private void processFlightCommand(String command, Flight flight) {
         if (command.equals("v")) {
-            veiwFlightDetails(flight);
+            viewFlightDetails(flight);
         } else if (command.equals("t")) {
-            changeFlightTime(flight);
+            displayTimePrompt();
+            changeFlightTime(flight, Integer.parseInt(command));
         } else if (command.equals("p")) {
-            changeFlightPrice(flight);
+            displayPricePrompt();
+            changeFlightPrice(flight, Integer.parseInt(command));
         } else if (command.equals("i")) {
-            changeFlightID(flight);
+            displayNamePrompt();
+            changeFlightID(flight, command);
         } else if (command.equals("d")) {
-            changeFlightDate(flight);
+            displayDatePrompt();
+            changeFlightDate(flight, command);
         } else if (command.equals("des")) {
-            changeFlightDestination(flight);
+            displayDestinationPrompt();
+            changeFlightDestination(flight, command);
         } else if (command.equals("dep")) {
-            changeFlightDeparture(flight);
+            displayDeparturePrompt();
+            changeFlightDeparture(flight, command);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -267,7 +369,7 @@ public class ListOfTripApp {
         flight.changeTime(time);
     }
 
-    private void veiwFlightDetails(Flight flight) {
+    private void viewFlightDetails(Flight flight) {
         flight.getFlightPrice();
         flight.getFlightID();
         flight.getFlightDate();
@@ -288,16 +390,27 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    //TODO: Figure out how to add/insert more user inputs
     private void processListOfActivityCommand(String command, List<Activity> activities, Trip trip) {
         if (command.equals("v")) {
-            veiwAllActivities(trip);
+            viewAllActivities(trip);
         } else if (command.equals("s")) {
-            selectActivity(activities);
+            displayNamePrompt();
+            selectActivity(trip, command);
         } else if (command.equals("a")) {
-            addActivity(activities, trip);
+            displayNamePrompt();
+            String name = command;
+            displayPricePrompt();
+            int price = Integer.parseInt(command);
+            displayDatePrompt();
+            String date = command;
+            displayTimePrompt();
+            int time = Integer.parseInt(command);
+            displayLocationPrompt();
+            String location = command;
+            addActivity(activities, name, price, date, time, location);
         } else if (command.equals("r")) {
-            removeActivity(activities);
+            displayNamePrompt();
+            removeActivity(activities, trip, command);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -310,7 +423,9 @@ public class ListOfTripApp {
         }
     }
 
-    private void addActivity(List<Activity> activities, Activity activity) {
+    private void addActivity(List<Activity> activities, String name, int price, String date, int time,
+                             String location) {
+        Activity activity = new Activity(name, price, date, time, location);
         activities.add(activity);
     }
 
@@ -323,7 +438,7 @@ public class ListOfTripApp {
         processActivityCommand(command, activity);
     }
 
-    private void veiwAllActivities(Trip trip) {
+    private void viewAllActivities(Trip trip) {
         trip.getActivities();
     }
 
@@ -341,20 +456,19 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    //TODO: Figure out how to add/insert more user inputs
     private void processActivityCommand(String command, Activity activity) {
         if (command.equals("v")) {
-            veiwActivityDetails(activity);
+            viewActivityDetails(activity);
         } else if (command.equals("n")) {
-            changeActivityName(activity);
+            changeActivityName(activity, command);
         } else if (command.equals("p")) {
-            changeActivityPrice(activity);
+            changeActivityPrice(activity, Integer.parseInt(command));
         } else if (command.equals("t")) {
-            changeActivityTime(activity);
+            changeActivityTime(activity, Integer.parseInt(command));
         } else if (command.equals("d")) {
-            changeActivitylDate(activity);
+            changeActivityDate(activity, command);
         } else if (command.equals("l")) {
-            changeActivityLocation(activity);
+            changeActivityLocation(activity, command);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -364,7 +478,7 @@ public class ListOfTripApp {
         activity.changeLocation(location);
     }
 
-    private void changeActivitylDate(Activity activity, String date) {
+    private void changeActivityDate(Activity activity, String date) {
         activity.changeDate(date);
     }
 
@@ -380,7 +494,7 @@ public class ListOfTripApp {
         activity.changeName(name);
     }
 
-    private void veiwActivityDetails(Activity activity) {
+    private void viewActivityDetails(Activity activity) {
         activity.getDate();
         activity.getLocation();
         activity.getName();

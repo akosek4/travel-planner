@@ -146,7 +146,6 @@ public class Trip {
         return activities;
     }
 
-    //TODO: Finish method
     public Activity getActivity(String name) {
         for (Activity activity : activities) {
             if (activity.getName() == name) {
