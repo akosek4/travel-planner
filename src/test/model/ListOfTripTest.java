@@ -89,7 +89,16 @@ public class ListOfTripTest {
 
     @Test
     public void printAllTripsNullTest() {
-        assertEquals(null, lot1.printAllTrips());
-        assertEquals(null, lot2.printAllTrips());
+        assertEquals("", lot1.printAllTrips());
+        assertEquals("", lot2.printAllTrips());
+    }
+
+    @Test
+    public void printAllTripsNotNullTest() {
+        lot1.addTrip(trip1);
+        lot2.addTrip(trip1);
+        lot2.addTrip(trip2);
+        assertEquals(" trip1", lot1.printAllTrips());
+        assertEquals(" trip1 trip2", lot2.printAllTrips());
     }
 }
