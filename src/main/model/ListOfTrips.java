@@ -43,4 +43,11 @@ public class ListOfTrips {
         }
         return null;
     }
+
+    public String printAllTrips() {
+        for (Trip trip : trips) {
+            return trip.getTripName();
+        }
+        return null;
+    }
 }

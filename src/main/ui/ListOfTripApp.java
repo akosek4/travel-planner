@@ -20,6 +20,8 @@ public class ListOfTripApp {
         boolean keepGoing = true;
         String command = null;
 
+        init();
+
         while (keepGoing) {
             displayMainMenu();
             command = input.next();
@@ -32,6 +34,14 @@ public class ListOfTripApp {
             }
         }
         System.out.println("\nGoodbye!");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes accounts
+    private void init() {
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
+        trips = new ListOfTrips();
     }
 
     // EFFECTS: displays menu of options to user
@@ -107,53 +117,58 @@ public class ListOfTripApp {
             viewAllTrips();
         } else if (command.equals("s")) {
             displayNamePrompt();
-            selectTrip(command);
+            String tripName = input.next();
+            selectTrip(tripName);
         } else if (command.equals("a")) {
             displayTripPrompt();
             displayNamePrompt();
-            String tripName = command;
+            String tripName = input.next();
             displayDatePrompt();
-            String tripDate = command;
+            String tripDate = input.next();
 
             displayHotelPrompt();
             displayNamePrompt();
-            String hotelName = command;
+            String hotelName = input.next();
             displayPricePrompt();
-            int hotelPrice = Integer.parseInt(command);
+            int hotelPrice = input.nextInt();
             displayDatePrompt();
-            String hotelDate = command;
+            String hotelDate = input.next();
             displayDurationPrompt();
-            int hotelDuration = Integer.parseInt(command);
+            int hotelDuration = input.nextInt();
             displayLocationPrompt();
-            String hotelLocation = command;
+            String hotelLocation = input.next();
 
             displayFLightPrompt();
             displayPricePrompt();
-            int flightPrice = Integer.parseInt(command);
+            int flightPrice = input.nextInt();
             displayDatePrompt();
-            String flightDate = command;
+            String flightDate = input.next();;
             displayTimePrompt();
-            int flightTime = Integer.parseInt(command);
+            int flightTime = input.nextInt();
             displayNamePrompt();
-            String flightID = command;
+            String flightID = input.next();;
             displayDestinationPrompt();
-            String flightDes = command;
+            String flightDes = input.next();;
             displayDeparturePrompt();
-            String flightDep = command;
+            String flightDep = input.next();;
 
             addTrip(tripName, tripDate, hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation, flightPrice,
                     flightDate, flightTime, flightID, flightDes, flightDep);
         } else if (command.equals("r")) {
             displayNamePrompt();
-            removeTrip(command);
+            String tripName = input.next();
+            removeTrip(tripName);
         } else {
             System.out.println("Selection is not valid");
         }
     }
 
+    // TODO: fix
     private void removeTrip(String name) {
         Trip trip = trips.getTrip(name);
         trips.removeTrip(trip);
+        displayMainMenu();
+        processListOfTripCommand(input.next());
     }
 
     private void addTrip(String name, String date, String hotelName, int hotelPrice, String hotelDate,
@@ -167,15 +182,12 @@ public class ListOfTripApp {
 
     private void selectTrip(String name) {
         Trip trip = trips.getTrip(name);
-        String command = null;
-        command = input.next();
-        command = command.toLowerCase();
         displayTripMenu();
-        processTripCommand(command, trip);
+        processTripCommand(input.next(), trip);
     }
 
     private void viewAllTrips() {
-        System.out.print(trips.getTrips());
+        System.out.println(trips.printAllTrips());
     }
 
     // EFFECTS: displays menu of options to user
@@ -257,19 +269,24 @@ public class ListOfTripApp {
             viewHotelDetails(hotel);
         } else if (command.equals("du")) {
             displayDurationPrompt();
-            changeHotelDuration(hotel, Integer.parseInt(command));
+            int hotelDuration = input.nextInt();
+            changeHotelDuration(hotel, hotelDuration);
         } else if (command.equals("p")) {
             displayPricePrompt();
-            changeHotelPrice(hotel, Integer.parseInt(command));
+            int hotelPrice = input.nextInt();
+            changeHotelPrice(hotel, hotelPrice);
         } else if (command.equals("n")) {
             displayNamePrompt();
-            changeHotelName(hotel, command);
+            String hotelName = input.next();
+            changeHotelName(hotel, hotelName);
         } else if (command.equals("da")) {
             displayDatePrompt();
-            changeHotelDate(hotel, command);
+            String hotelDate = input.next();
+            changeHotelDate(hotel, hotelDate);
         } else if (command.equals("l")) {
             displayLocationPrompt();
-            changeHotelLocation(hotel, command);
+            String hotelLoc = input.next();
+            changeHotelLocation(hotel, hotelLoc);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -324,22 +341,28 @@ public class ListOfTripApp {
             viewFlightDetails(flight);
         } else if (command.equals("t")) {
             displayTimePrompt();
-            changeFlightTime(flight, Integer.parseInt(command));
+            int flightTime = input.nextInt();
+            changeFlightTime(flight, flightTime);
         } else if (command.equals("p")) {
             displayPricePrompt();
-            changeFlightPrice(flight, Integer.parseInt(command));
+            int flightPrice = input.nextInt();
+            changeFlightPrice(flight, flightPrice);
         } else if (command.equals("i")) {
             displayNamePrompt();
-            changeFlightID(flight, command);
+            String flightName = input.next();
+            changeFlightID(flight, flightName);
         } else if (command.equals("d")) {
             displayDatePrompt();
-            changeFlightDate(flight, command);
+            String flightDate = input.next();
+            changeFlightDate(flight, flightDate);
         } else if (command.equals("des")) {
             displayDestinationPrompt();
-            changeFlightDestination(flight, command);
+            String flightDes = input.next();
+            changeFlightDestination(flight, flightDes);
         } else if (command.equals("dep")) {
             displayDeparturePrompt();
-            changeFlightDeparture(flight, command);
+            String flightDep = input.next();
+            changeFlightDeparture(flight, flightDep);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -395,22 +418,24 @@ public class ListOfTripApp {
             viewAllActivities(trip);
         } else if (command.equals("s")) {
             displayNamePrompt();
-            selectActivity(trip, command);
+            String actName = input.next();
+            selectActivity(trip, actName);
         } else if (command.equals("a")) {
             displayNamePrompt();
-            String name = command;
+            String actName = input.next();
             displayPricePrompt();
-            int price = Integer.parseInt(command);
+            int actPrice = input.nextInt();
             displayDatePrompt();
-            String date = command;
+            String actDate = input.next();
             displayTimePrompt();
-            int time = Integer.parseInt(command);
+            int actTime = input.nextInt();
             displayLocationPrompt();
-            String location = command;
-            addActivity(activities, name, price, date, time, location);
+            String actLoc = input.next();
+            addActivity(activities, actName, actPrice, actDate, actTime, actLoc);
         } else if (command.equals("r")) {
             displayNamePrompt();
-            removeActivity(activities, trip, command);
+            String actName = input.next();
+            removeActivity(activities, trip, actName);
         } else {
             System.out.println("Selection is not valid");
         }
@@ -460,15 +485,25 @@ public class ListOfTripApp {
         if (command.equals("v")) {
             viewActivityDetails(activity);
         } else if (command.equals("n")) {
-            changeActivityName(activity, command);
+            displayNamePrompt();
+            String actName = input.next();
+            changeActivityName(activity, actName);
         } else if (command.equals("p")) {
-            changeActivityPrice(activity, Integer.parseInt(command));
+            displayPricePrompt();
+            int actPrice = input.nextInt();
+            changeActivityPrice(activity, actPrice);
         } else if (command.equals("t")) {
-            changeActivityTime(activity, Integer.parseInt(command));
+            displayTimePrompt();
+            int actTime = input.nextInt();
+            changeActivityTime(activity, actTime);
         } else if (command.equals("d")) {
-            changeActivityDate(activity, command);
+            displayDatePrompt();
+            String actDate = input.next();
+            changeActivityDate(activity, actDate);
         } else if (command.equals("l")) {
-            changeActivityLocation(activity, command);
+            displayLocationPrompt();
+            String actLoc = input.next();
+            changeActivityLocation(activity, actLoc);
         } else {
             System.out.println("Selection is not valid");
         }

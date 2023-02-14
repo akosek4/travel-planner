@@ -186,4 +186,24 @@ class TripTest {
         assertFalse(trip2.removeActivity(a1));
     }
 
+    @Test
+    public void getActivityNotNullTest() {
+        trip1.addActivity(a1);
+        trip1.addActivity(a2);
+        trip2.addActivity(a1);
+        trip2.addActivity(a2);
+        assertEquals(a1, trip1.getActivity("Zip Lining"));
+        assertEquals(a2, trip2.getActivity("ATV Riding"));
+    }
+
+    @Test
+    public void getActivityNullTest() {
+        trip1.addActivity(a1);
+        trip1.addActivity(a2);
+        trip2.addActivity(a1);
+        trip2.addActivity(a2);
+        assertEquals(null, trip1.getActivity("hello"));
+        assertEquals(null, trip2.getActivity("false"));
+    }
+
 }

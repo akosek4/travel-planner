@@ -65,4 +65,31 @@ public class ListOfTripTest {
         assertEquals(t1Result, lot1.getTrips());
         assertEquals(t2Result, lot2.getTrips());
     }
+
+    @Test
+    public void getTripNotNullTest() {
+        lot1.addTrip(trip1);
+        lot1.addTrip(trip2);
+        lot2.addTrip(trip1);
+        lot2.addTrip(trip2);
+        assertEquals(trip1, lot1.getTrip("trip1"));
+        assertEquals(trip2, lot2.getTrip("trip2"));
+    }
+
+
+    @Test
+    public void getTripNullTest() {
+        lot1.addTrip(trip1);
+        lot1.addTrip(trip2);
+        lot2.addTrip(trip1);
+        lot2.addTrip(trip2);
+        assertEquals(null, lot1.getTrip("not trip"));
+        assertEquals(null, lot2.getTrip("false"));
+    }
+
+    @Test
+    public void printAllTripsNullTest() {
+        assertEquals(null, lot1.printAllTrips());
+        assertEquals(null, lot2.printAllTrips());
+    }
 }
