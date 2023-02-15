@@ -7,7 +7,6 @@ import java.util.List;
 
 public class ListOfTrips {
     private List<Trip> trips;
-    private String toPrint = "";
 
     // EFFECTS: creates a list of trips
     public ListOfTrips() {
@@ -44,9 +43,12 @@ public class ListOfTrips {
         return null;
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates a string with all trip names in trips
     public String printAllTrips() {
+        String toPrint = "";
         for (Trip trip : trips) {
-            toPrint += " " + trip.getTripName();
+            toPrint = toPrint + " " + trip.getTripName();
         }
         return toPrint;
     }
