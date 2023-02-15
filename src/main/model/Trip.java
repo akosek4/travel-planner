@@ -12,6 +12,7 @@ public class Trip {
     private Hotel hotel;
     private List<Activity> activities;
     private int price;
+    private String toPrint = "";
 
     // EFFECTS: creates a trip with a name, a date, a flight, a hotel, a price, and an empty list of activities
     public Trip(String name, String date, Flight flight, Hotel hotel) {
@@ -155,4 +156,10 @@ public class Trip {
         return null;
     }
 
+    public String printActivities() {
+        for (Activity a : activities) {
+            toPrint += ", " + a.getName();
+        }
+        return toPrint;
+    }
 }

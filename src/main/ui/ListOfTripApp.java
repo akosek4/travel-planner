@@ -66,17 +66,17 @@ public class ListOfTripApp {
 
     //EFFECTS: displays prompt for user to input date selection
     private void displayDatePrompt() {
-        System.out.println("\n Write date: ");
+        System.out.println("\n Write date (in word format): ");
     }
 
     //EFFECTS: displays prompt for user to input price selection
     private void displayPricePrompt() {
-        System.out.println("\n Write price: ");
+        System.out.println("\n Write price (int): ");
     }
 
     //EFFECTS: displays prompt for user to input duration selection
     private void displayDurationPrompt() {
-        System.out.println("\n Write duration: ");
+        System.out.println("\n Write duration (int): ");
     }
 
     //EFFECTS: displays prompt for user to input location selection
@@ -86,7 +86,7 @@ public class ListOfTripApp {
 
     //EFFECTS: displays prompt for user to input time selection
     private void displayTimePrompt() {
-        System.out.println("\n Write time: ");
+        System.out.println("\n Write time (int): ");
     }
 
     //EFFECTS: displays prompt for user to input destination selection
@@ -265,8 +265,6 @@ public class ListOfTripApp {
         System.out.println(trip.getTripPrice());
     }
 
-    //TODO: Fix
-
     // EFFECTS: displays menu of options to user
     private void displayHotelMenu() {
         System.out.println("\n Select from:");
@@ -350,13 +348,11 @@ public class ListOfTripApp {
         System.out.println(hotel.getHotelName());
     }
 
-    //TODO: Fix
 
     // EFFECTS: displays menu of options to user
     private void displayFlightMenu() {
         System.out.println("\n Select from:");
         System.out.println("\tv -> view all details");
-        System.out.println("\ta -> change all flight details");
         System.out.println("\tt -> change time");
         System.out.println("\tp -> change price");
         System.out.println("\ti -> change ID");
@@ -518,7 +514,11 @@ public class ListOfTripApp {
     //MODIFIES: this
     //EFFECTS: displays all activities
     private void viewAllActivities() {
-        System.out.println(trip.getActivities());
+        if (trip.printActivities().equals("")) {
+            System.out.println("No activities yet!");
+        } else {
+            System.out.println(trip.printActivities());
+        }
     }
 
     // EFFECTS: displays menu of options to user

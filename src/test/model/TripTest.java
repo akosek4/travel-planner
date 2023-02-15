@@ -206,4 +206,18 @@ class TripTest {
         assertEquals(null, trip2.getActivity("false"));
     }
 
+    @Test
+    public void printActivitiesNullTest() {
+        assertEquals("", trip1.printActivities());
+        assertEquals("", trip2.printActivities());
+    }
+
+    @Test
+    public void printActivities() {
+        trip1.addActivity(a1);
+        trip2.addActivity(a1);
+        trip2.addActivity(a2);
+        assertEquals(", Zip Lining", trip1.printActivities());
+        assertEquals(", Zip Lining, ATV Riding", trip2.printActivities());
+    }
 }
