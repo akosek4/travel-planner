@@ -148,7 +148,7 @@ public class Trip {
 
     public Activity getActivity(String name) {
         for (Activity activity : activities) {
-            if (activity.getName() == name) {
+            if (activity.getName().equals(name)) {
                 return activity;
             }
         }

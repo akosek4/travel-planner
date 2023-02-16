@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 //Represents the trip class tests
 
@@ -158,9 +157,9 @@ class TripTest {
     public void addActivityTest() {
         trip1.addActivity(a1);
         trip2.addActivity(a2);
-        List<Activity> t1Result = new ArrayList<Activity>();
+        List<Activity> t1Result = new ArrayList<>();
         t1Result.add(a1);
-        List<Activity> t2Result = new ArrayList<Activity>();
+        List<Activity> t2Result = new ArrayList<>();
         t2Result.add(a2);
         assertEquals(t1Result, trip1.getActivities());
         assertEquals(t2Result, trip2.getActivities());
@@ -174,9 +173,9 @@ class TripTest {
         trip2.addActivity(a2);
         trip1.removeActivity(a2);
         trip2.removeActivity(a1);
-        List<Activity> t1Result = new ArrayList<Activity>();
+        List<Activity> t1Result = new ArrayList<>();
         t1Result.add(a1);
-        List<Activity> t2Result = new ArrayList<Activity>();
+        List<Activity> t2Result = new ArrayList<>();
         t2Result.add(a2);
         assertEquals(t1Result, trip1.getActivities());
         assertEquals(t2Result, trip2.getActivities());
@@ -204,8 +203,8 @@ class TripTest {
         trip1.addActivity(a2);
         trip2.addActivity(a1);
         trip2.addActivity(a2);
-        assertEquals(null, trip1.getActivity("hello"));
-        assertEquals(null, trip2.getActivity("false"));
+        assertNull(trip1.getActivity("hello"));
+        assertNull(trip2.getActivity("false"));
     }
 
     @Test

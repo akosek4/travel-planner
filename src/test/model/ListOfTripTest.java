@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 //Represents the listoftrip class tests
 
@@ -32,7 +32,7 @@ public class ListOfTripTest {
 
     @Test
     public void constructorTest() {
-        List<Trip> result = new ArrayList<Trip>();
+        List<Trip> result = new ArrayList<>();
 
         assertEquals(result, lot1.getTrips());
         assertEquals(result, lot2.getTrips());
@@ -43,8 +43,8 @@ public class ListOfTripTest {
         lot1.addTrip(trip1);
         lot2.addTrip(trip1);
         lot2.addTrip(trip2);
-        List<Trip> t1Result = new ArrayList<Trip>();
-        List<Trip> t2Result = new ArrayList<Trip>();
+        List<Trip> t1Result = new ArrayList<>();
+        List<Trip> t2Result = new ArrayList<>();
         t1Result.add(trip1);
         t2Result.add(trip1);
         t2Result.add(trip2);
@@ -60,12 +60,19 @@ public class ListOfTripTest {
         lot2.addTrip(trip2);
         lot1.removeTrip(trip2);
         lot2.removeTrip(trip1);
-        List<Trip> t1Result = new ArrayList<Trip>();
-        List<Trip> t2Result = new ArrayList<Trip>();
+        List<Trip> t1Result = new ArrayList<>();
+        List<Trip> t2Result = new ArrayList<>();
         t1Result.add(trip1);
         t2Result.add(trip2);
         assertEquals(t1Result, lot1.getTrips());
         assertEquals(t2Result, lot2.getTrips());
+    }
+
+    @Test
+    public void removeTripFalseTest() {
+        lot2.addTrip(trip1);
+        assertFalse(lot1.removeTrip(trip2));
+        assertFalse(lot2.removeTrip(trip2));
     }
 
     @Test
@@ -85,8 +92,8 @@ public class ListOfTripTest {
         lot1.addTrip(trip2);
         lot2.addTrip(trip1);
         lot2.addTrip(trip2);
-        assertEquals(null, lot1.getTrip("not trip"));
-        assertEquals(null, lot2.getTrip("false"));
+        assertNull(lot1.getTrip("not trip"));
+        assertNull(lot2.getTrip("false"));
     }
 
     @Test
