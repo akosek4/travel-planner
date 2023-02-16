@@ -190,6 +190,8 @@ public class ListOfTripApp {
         flightDep = input.next();
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes a trip from trips
     private void removeTrip(String name) {
         this.trip = trips.getTrip(name);
         trips.removeTrip(this.trip);
@@ -197,6 +199,8 @@ public class ListOfTripApp {
         processListOfTripCommand(input.next());
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds a trip to trips
     private void addTrip(String name, String date, String hotelName, int hotelPrice, String hotelDate,
                          int hotelDuration, String hotelLocation, int flightPrice, String flightDate, int flightTime,
                          String flightID, String flightDes, String flightDep) {
@@ -206,6 +210,7 @@ public class ListOfTripApp {
         trips.addTrip(trip);
     }
 
+    //EFFECTS: selects a trip from trips and gives further options for the trip
     private void selectTrip(String name) {
         if (trips.getTrip(name) == null) {
             System.out.println("Not a valid trip");
@@ -216,6 +221,7 @@ public class ListOfTripApp {
         }
     }
 
+    //EFFECTS: prints out a list of all trip names
     private void viewAllTrips() {
         System.out.println(trips.printAllTrips());
     }

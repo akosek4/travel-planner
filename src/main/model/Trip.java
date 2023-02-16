@@ -155,6 +155,8 @@ public class Trip {
         return null;
     }
 
+    //MODIFIES: this
+    //EFFECTS: gets all activity names in activities and forms a string
     public String printActivities() {
         String toPrint = "";
         for (Activity a : activities) {

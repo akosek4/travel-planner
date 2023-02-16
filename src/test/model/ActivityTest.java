@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Represents the activity class tests
+
 public class ActivityTest {
     private Activity a1;
     private Activity a2;

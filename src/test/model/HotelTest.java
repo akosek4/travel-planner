@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Represents the hotel class tests
+
 public class HotelTest {
     private Hotel h1;
     private Hotel h2;

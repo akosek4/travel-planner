@@ -8,6 +8,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Represents the listoftrip class tests
+
 public class ListOfTripTest {
     private ListOfTrips lot1;
     private ListOfTrips lot2;

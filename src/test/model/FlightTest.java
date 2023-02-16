@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Represents the flight class tests
+
 public class FlightTest {
     private Flight f1;
     private Flight f2;
