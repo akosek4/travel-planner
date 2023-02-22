@@ -31,3 +31,5 @@ more convenient and prevent logistical problems from occurring.
 - As a user, I want to be able to access detailed information on individual trips.
 - As a user, I want to be able to change the details of one of my trips.
 - As a user, I want to be able to remove a trip.
+- As a user, I want to be able to save all trips in my list of trips if I choose to.
+- As a user, I want to be able to load my list of trips from file if I choose to.
