@@ -1,11 +1,14 @@
 package ui;
 
 import model.*;
+import persistence.Reader;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class ListOfTripApp {
+    private static final String data = "./data/listoftrip.json";
     private Scanner input;
     private ListOfTrips trips;
     private Trip trip;
@@ -24,6 +27,7 @@ public class ListOfTripApp {
     private String flightID;
     private String flightDes;
     private String flightDep;
+    private Reader reader;
 
     //EFFECTS: runs the list of trip application
     public ListOfTripApp() {
@@ -35,8 +39,9 @@ public class ListOfTripApp {
     private void runListOfTrip() {
         boolean keepGoing = true;
         String command = null;
+        String tripsName = input.next();
 
-        init();
+        init(tripsName);
 
         while (keepGoing) {
             displayMainMenu();
@@ -54,10 +59,11 @@ public class ListOfTripApp {
 
     // MODIFIES: this
     // EFFECTS: initializes accounts
-    private void init() {
+    private void init(String tripsName) {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-        trips = new ListOfTrips();
+        trips = new ListOfTrips(tripsName);
+        reader = new Reader(data);
     }
 
     // EFFECTS: displays menu of options to user
@@ -617,5 +623,14 @@ public class ListOfTripApp {
         System.out.println(activity.getTime());
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: loads listoftrip from file
+    private void loadListOfTrip() {
+        try {
+            trips = reader.read();
+            System.out.println("Loaded " + trips.getTripsName() + " from " + data);
+        } catch (IOException e) {
+            System.out.println("Unable to read from " + data);
+        }
+    }
 }

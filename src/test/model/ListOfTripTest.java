@@ -26,8 +26,8 @@ public class ListOfTripTest {
 
     @BeforeEach
     public void setup() {
-        lot1 = new ListOfTrips();
-        lot2  = new ListOfTrips();
+        lot1 = new ListOfTrips("trips 1");
+        lot2  = new ListOfTrips("trips 2");
     }
 
     @Test
@@ -36,6 +36,8 @@ public class ListOfTripTest {
 
         assertEquals(result, lot1.getTrips());
         assertEquals(result, lot2.getTrips());
+        assertEquals("trips 1", lot1.getTripsName());
+        assertEquals("trips 2", lot2.getTripsName());
     }
 
     @Test

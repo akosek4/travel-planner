@@ -7,9 +7,11 @@ import java.util.List;
 
 public class ListOfTrips {
     private List<Trip> trips;
+    private String name;
 
-    // EFFECTS: creates a list of trips
-    public ListOfTrips() {
+    // EFFECTS: creates a list of trips with a name and an empty list of trips
+    public ListOfTrips(String name) {
+        this.name = name;
         this.trips = new ArrayList<>();
     }
 
@@ -41,6 +43,10 @@ public class ListOfTrips {
             }
         }
         return null;
+    }
+
+    public String getTripsName() {
+        return name;
     }
 
     //MODIFIES: this
