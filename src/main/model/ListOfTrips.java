@@ -2,10 +2,14 @@ package model;
 
 // Represents a list of trips
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListOfTrips {
+public class ListOfTrips implements Writable {
     private List<Trip> trips;
     private String name;
 
@@ -57,5 +61,30 @@ public class ListOfTrips {
             toPrint = toPrint + " " + trip.getTripName();
         }
         return toPrint;
+    }
+
+    public int getTripsSize() {
+        return trips.size();
+    }
+
+    //Code is based on JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("trips", tripsToJson());
+        return json;
+    }
+
+    //Code is based on JsonSerializationDemo
+    // EFFECTS: returns trips in this list as a JSON array
+    private JSONArray tripsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Trip t : trips) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
     }
 }

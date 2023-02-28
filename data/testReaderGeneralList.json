@@ -1,0 +1,35 @@
+{
+  "trips": [
+    {
+      "tripName": "trip1",
+      "tripDate": "september 1",
+      "flightPrice": 200,
+      "flightDate": "september 1",
+      "flightTime": 900,
+      "flightID": "UA900",
+      "flightDes": "SFO",
+      "flightDep": "YVR",
+      "hotelName": "Marriot",
+      "hotelPrice": 900,
+      "hotelDate": "september 1",
+      "hotelDuration": 7,
+      "hotelLocation": "Hawaii"
+    },
+    {
+      "tripName": "trip2",
+      "tripDate": "may 1",
+      "flightPrice": 400,
+      "flightDate": "may 1",
+      "flightTime": 1300,
+      "flightID": "UA555",
+      "flightDes": "YVR",
+      "flightDep": "SFO",
+      "hotelName": "Best Western",
+      "hotelPrice": 400,
+      "hotelDate": "may 1",
+      "hotelDuration": 4,
+      "hotelLocation": "Santa Cruz"
+    }
+  ],
+  "name" : "My trips"
+}

@@ -2,10 +2,13 @@ package model;
 
 // Represents a Trip having a name, date, and internal details
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Trip {
+public class Trip implements Writable {
     private String name;
     private String date;
     private Flight flight;
@@ -163,5 +166,25 @@ public class Trip {
             toPrint += ", " + a.getName();
         }
         return toPrint;
+    }
+
+    //Code is based on JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("tripName", name);
+        json.put("tripDate", date);
+        json.put("flightPrice", flight.getFlightPrice());
+        json.put("flightDate", flight.getFlightDate());
+        json.put("flightTime", flight.getFlightTime());
+        json.put("flightID", flight.getFlightID());
+        json.put("flightDes", flight.getFLightDestination());
+        json.put("flightDep", flight.getFlightDeparture());
+        json.put("hotelName", hotel.getHotelName());
+        json.put("hotelPrice", hotel.getHotelPrice());
+        json.put("hotelDate", hotel.getHotelDate());
+        json.put("hotelDuration", hotel.getHotelDuration());
+        json.put("hotelLocation", hotel.getHotelLocation());
+        return json;
     }
 }

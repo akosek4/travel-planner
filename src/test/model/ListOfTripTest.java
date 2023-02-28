@@ -112,4 +112,13 @@ public class ListOfTripTest {
         assertEquals(" trip1", lot1.printAllTrips());
         assertEquals(" trip1 trip2", lot2.printAllTrips());
     }
+
+    @Test
+    public void getTripsSizeTest() {
+        lot1.addTrip(trip1);
+        lot2.addTrip(trip1);
+        lot2.addTrip(trip2);
+        assertEquals(1, lot1.getTripsSize());
+        assertEquals(2, lot2.getTripsSize());
+    }
 }

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+//Code is based on JsonSerializationDemo
+
 public class Reader {
     private String source;
     
@@ -61,19 +63,19 @@ public class Reader {
     //MODIFIES: lot
     //EFFECTS: parses trip from object and adds it to ListOfTrips
     private void addTrip(ListOfTrips lot, JSONObject object) {
-        String tripName = object.getString("name");
-        String tripDate = object.getString("date");
-        int flightPrice = object.getInt("price");
-        String flightDate = object.getString("date");
-        int flightTime = object.getInt("time");
-        String flightID = object.getString("identification");
-        String flightDes = object.getString("destination");
-        String flightDep = object.getString("departure");
-        String hotelName = object.getString("name");
-        int hotelPrice = object.getInt("price");
-        String hotelDate = object.getString("name");
-        int hotelDuration = object.getInt("duration");
-        String hotelLocation = object.getString("name");
+        String tripName = object.getString("tripName");
+        String tripDate = object.getString("tripDate");
+        int flightPrice = object.getInt("flightPrice");
+        String flightDate = object.getString("flightDate");
+        int flightTime = object.getInt("flightTime");
+        String flightID = object.getString("flightID");
+        String flightDes = object.getString("flightDes");
+        String flightDep = object.getString("flightDep");
+        String hotelName = object.getString("hotelName");
+        int hotelPrice = object.getInt("hotelPrice");
+        String hotelDate = object.getString("hotelDate");
+        int hotelDuration = object.getInt("hotelDuration");
+        String hotelLocation = object.getString("hotelLocation");
 
         Flight flight = new Flight(flightPrice, flightDate, flightTime, flightID, flightDes, flightDep);
         Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation);

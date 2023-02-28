@@ -2,10 +2,14 @@ package ui;
 
 import model.*;
 import persistence.Reader;
+import persistence.Writer;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+//Code is based on TellerApp
 
 public class ListOfTripApp {
     private static final String data = "./data/listoftrip.json";
@@ -16,6 +20,8 @@ public class ListOfTripApp {
     private Flight flight;
     private List<Activity> activities;
     private Activity activity;
+    private String tripName;
+    private String tripDate;
     private String hotelName;
     private int hotelPrice;
     private String hotelDate;
@@ -39,9 +45,8 @@ public class ListOfTripApp {
     private void runListOfTrip() {
         boolean keepGoing = true;
         String command = null;
-        String tripsName = input.next();
 
-        init(tripsName);
+        init();
 
         while (keepGoing) {
             displayMainMenu();
@@ -59,9 +64,11 @@ public class ListOfTripApp {
 
     // MODIFIES: this
     // EFFECTS: initializes accounts
-    private void init(String tripsName) {
+    private void init() {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        displayNamePrompt();
+        String tripsName = input.next();
         trips = new ListOfTrips(tripsName);
         reader = new Reader(data);
     }
@@ -70,9 +77,11 @@ public class ListOfTripApp {
     private void displayMainMenu() {
         System.out.println("\n Select from:");
         System.out.println("\tv -> view all trips");
-        System.out.println("\ts -> select a trip");
+        System.out.println("\tsel -> select a trip");
         System.out.println("\ta -> add a trip");
         System.out.println("\tr -> remove a trip");
+        System.out.println("\tsave -> save list of trips to file");
+        System.out.println("\tl -> load list of trips from file");
         System.out.println("\tq -> quit");
     }
 
@@ -137,17 +146,12 @@ public class ListOfTripApp {
     private void processListOfTripCommand(String command) {
         if (command.equals("v")) {
             viewAllTrips();
-        } else if (command.equals("s")) {
+        } else if (command.equals("sel")) {
             displayNamePrompt();
             String tripName = input.next();
             selectTrip(tripName);
         } else if (command.equals("a")) {
-            displayTripPrompt();
-            displayNamePrompt();
-            String tripName = input.next();
-            displayDatePrompt();
-            String tripDate = input.next();
-
+            createTrip();
             makeHotel();
             makeFlight();
 
@@ -157,9 +161,23 @@ public class ListOfTripApp {
             displayNamePrompt();
             String tripName = input.next();
             removeTrip(tripName);
+        } else if (command.equals("save")) {
+            saveTrips();
+        } else if (command.equals("l")) {
+            loadTrips();
         } else {
             System.out.println("Selection is not valid");
         }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: makes a trip to user specifications
+    private void createTrip() {
+        displayTripPrompt();
+        displayNamePrompt();
+        tripName = input.next();
+        displayDatePrompt();
+        tripDate = input.next();
     }
 
     //MODIFIES: this
@@ -624,13 +642,25 @@ public class ListOfTripApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: loads listoftrip from file
-    private void loadListOfTrip() {
+    //EFFECTS: loads trips from file
+    private void loadTrips() {
         try {
             trips = reader.read();
             System.out.println("Loaded " + trips.getTripsName() + " from " + data);
         } catch (IOException e) {
             System.out.println("Unable to read from " + data);
+        }
+    }
+
+    // EFFECTS: saves trips to file
+    private void saveTrips() {
+        try {
+            Writer.open();
+            Writer.write(trips);
+            Writer.close();
+            System.out.println("Saved " + trips.getTripsName() + " to " + data);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + data);
         }
     }
 }
