@@ -1,0 +1,18 @@
+{
+    "trips": [{
+        "flightDes": "3",
+        "flightDate": "3",
+        "flightPrice": 3,
+        "flightID": "3",
+        "hotelDate": "3",
+        "hotelName": "3",
+        "hotelLocation": "3",
+        "hotelDuration": 3,
+        "hotelPrice": 3,
+        "tripDate": "3",
+        "tripName": "3",
+        "flightTime": 3,
+        "flightDep": "3"
+    }],
+    "name": "a"
+}

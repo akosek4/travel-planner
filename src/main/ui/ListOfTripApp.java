@@ -34,6 +34,7 @@ public class ListOfTripApp {
     private String flightDes;
     private String flightDep;
     private Reader reader;
+    private Writer writer;
 
     //EFFECTS: runs the list of trip application
     public ListOfTripApp() {
@@ -71,6 +72,7 @@ public class ListOfTripApp {
         String tripsName = input.next();
         trips = new ListOfTrips(tripsName);
         reader = new Reader(data);
+        writer = new Writer(data);
     }
 
     // EFFECTS: displays menu of options to user
@@ -145,7 +147,7 @@ public class ListOfTripApp {
     //EFFECTS: processes user command
     private void processListOfTripCommand(String command) {
         if (command.equals("v")) {
-            viewAllTrips();
+            viewTrips();
         } else if (command.equals("sel")) {
             displayNamePrompt();
             String tripName = input.next();
@@ -246,8 +248,60 @@ public class ListOfTripApp {
     }
 
     //EFFECTS: prints out a list of all trip names
-    private void viewAllTrips() {
-        System.out.println(trips.printAllTrips());
+    private void viewTrips() {
+        displayViewMenu();
+        processView(input.next());
+    }
+
+    private void displayViewMenu() {
+        System.out.println("\n Select from:");
+        System.out.println("\tall -> view all trips");
+        System.out.println("\tjan -> view all trips in january");
+        System.out.println("\tfeb -> view all trips in february");
+        System.out.println("\tmar -> view all trips in march");
+        System.out.println("\tapr -> view all trips in april");
+        System.out.println("\tmay -> view all trips in may");
+        System.out.println("\tjun -> view all trips in june");
+        System.out.println("\tjul -> view all trips in july");
+        System.out.println("\taug -> view all trips in august");
+        System.out.println("\tsep -> view all trips in september");
+        System.out.println("\toct -> view all trips in october");
+        System.out.println("\tnov -> view all trips in november");
+        System.out.println("\tdec -> view all trips in december");
+    }
+
+    private void processView(String command) {
+        if (command.equals("all")) {
+            System.out.println(trips.printAllTrips());
+        } else {
+            trips.groupTripsByMonth();
+            if (command.equals("jan")) {
+                System.out.println(trips.getGroupedTrips("command").printJanTrips());
+            } else if (command.equals("feb")) {
+                viewFlight();
+            } else if (command.equals("mar")) {
+                viewActivities();
+            } else if (command.equals("apr")) {
+                viewActivities();
+            } else if (command.equals("may")) {
+                viewActivities();
+            } else if (command.equals("jun")) {
+                viewActivities();
+            } else if (command.equals("jul")) {
+                viewActivities();
+            } else if (command.equals("aug")) {
+                viewActivities();
+            } else if (command.equals("sep")) {
+                viewActivities();
+            } else if (command.equals("oct")) {
+                viewActivities();
+            } else if (command.equals("nov")) {
+                viewActivities();
+            } else if (command.equals("dec")) {
+                viewActivities();
+            }
+        }
+
     }
 
     // EFFECTS: displays menu of options to user
@@ -655,9 +709,9 @@ public class ListOfTripApp {
     // EFFECTS: saves trips to file
     private void saveTrips() {
         try {
-            Writer.open();
-            Writer.write(trips);
-            Writer.close();
+            writer.open();
+            writer.write(trips);
+            writer.close();
             System.out.println("Saved " + trips.getTripsName() + " to " + data);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + data);
