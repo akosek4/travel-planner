@@ -199,6 +199,8 @@ public class ListOfTrips implements Writable {
         return trips.size();
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds trips to specified list based on month
     public void groupTripsByMonth() {
         for (Trip trip : trips) {
             if (trip.getTripDate().contains("jan")) {
@@ -229,36 +231,25 @@ public class ListOfTrips implements Writable {
         }
     }
 
-    public List<Trip> getGroupedTrips(String month) {
-        if (month.contains("jan")) {
-            return jan;
-        } else if (month.contains("feb")) {
-            return feb;
-        } else if (month.contains("mar")) {
-            return mar;
-        } else if (month.contains("apr")) {
-            return apr;
-        } else if (month.contains("may")) {
-            return may;
-        } else if (month.contains("jun")) {
-            return jun;
-        } else if (month.contains("jul")) {
-            return jul;
-        } else if (month.contains("aug")) {
-            return aug;
-        } else if (month.contains("sep")) {
-            return sep;
-        } else if (month.contains("oct")) {
-            return oct;
-        } else if (month.contains("nov")) {
-            return nov;
-        } else if (month.contains("dec")) {
-            return dec;
-        }
-        return null;
+    //MODIFIES: this
+    //EFFECTS: erases all trips month lists
+    public void eraseGroups() {
+        jan.clear();
+        feb.clear();
+        mar.clear();
+        apr.clear();
+        may.clear();
+        jun.clear();
+        jul.clear();
+        aug.clear();
+        sep.clear();
+        oct.clear();
+        nov.clear();
+        dec.clear();
     }
 
     //Code is based on JsonSerializationDemo
+    //EFFECTS: returns trip list as a json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

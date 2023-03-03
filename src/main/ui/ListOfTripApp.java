@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 //Code is based on TellerApp
+// represents a trip application that alters, saves, and loads lists of trips
 
 public class ListOfTripApp {
     private static final String data = "./data/listoftrip.json";
@@ -253,6 +254,7 @@ public class ListOfTripApp {
         processView(input.next());
     }
 
+    //EFFECTS: displays menu of view options for user
     private void displayViewMenu() {
         System.out.println("\n Select from:");
         System.out.println("\tall -> view all trips");
@@ -270,38 +272,46 @@ public class ListOfTripApp {
         System.out.println("\tdec -> view all trips in december");
     }
 
+    //MODIFIES: this
+    //EFFECTS: processes user command
     private void processView(String command) {
         if (command.equals("all")) {
             System.out.println(trips.printAllTrips());
         } else {
             trips.groupTripsByMonth();
-            if (command.equals("jan")) {
-                System.out.println(trips.getGroupedTrips("command").printJanTrips());
-            } else if (command.equals("feb")) {
-                viewFlight();
-            } else if (command.equals("mar")) {
-                viewActivities();
-            } else if (command.equals("apr")) {
-                viewActivities();
-            } else if (command.equals("may")) {
-                viewActivities();
-            } else if (command.equals("jun")) {
-                viewActivities();
-            } else if (command.equals("jul")) {
-                viewActivities();
-            } else if (command.equals("aug")) {
-                viewActivities();
-            } else if (command.equals("sep")) {
-                viewActivities();
-            } else if (command.equals("oct")) {
-                viewActivities();
-            } else if (command.equals("nov")) {
-                viewActivities();
-            } else if (command.equals("dec")) {
-                viewActivities();
-            }
+            printGroup(command);
+            trips.eraseGroups();
         }
 
+    }
+
+    //EFFECTS: prints out list of trips with given month
+    private void printGroup(String command) {
+        if (command.equals("jan")) {
+            System.out.println(trips.printJanTrips());
+        } else if (command.equals("feb")) {
+            System.out.println(trips.printFebTrips());
+        } else if (command.equals("mar")) {
+            System.out.println(trips.printMarTrips());
+        } else if (command.equals("apr")) {
+            System.out.println(trips.printAprTrips());
+        } else if (command.equals("may")) {
+            System.out.println(trips.printMayTrips());
+        } else if (command.equals("jun")) {
+            System.out.println(trips.printJunTrips());
+        } else if (command.equals("jul")) {
+            System.out.println(trips.printJulTrips());
+        } else if (command.equals("aug")) {
+            System.out.println(trips.printAugTrips());
+        } else if (command.equals("sep")) {
+            System.out.println(trips.printSepTrips());
+        } else if (command.equals("oct")) {
+            System.out.println(trips.printOctTrips());
+        } else if (command.equals("nov")) {
+            System.out.println(trips.printNovTrips());
+        } else if (command.equals("dec")) {
+            System.out.println(trips.printDecTrips());
+        }
     }
 
     // EFFECTS: displays menu of options to user

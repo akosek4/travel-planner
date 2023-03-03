@@ -1,18 +1,50 @@
 {
-    "trips": [{
-        "flightDes": "3",
-        "flightDate": "3",
-        "flightPrice": 3,
-        "flightID": "3",
-        "hotelDate": "3",
-        "hotelName": "3",
-        "hotelLocation": "3",
-        "hotelDuration": 3,
-        "hotelPrice": 3,
-        "tripDate": "3",
-        "tripName": "3",
-        "flightTime": 3,
-        "flightDep": "3"
-    }],
+    "trips": [
+        {
+            "flightDes": "3",
+            "flightDate": "3",
+            "flightPrice": 3,
+            "flightID": "3",
+            "hotelDate": "3",
+            "hotelName": "3",
+            "hotelLocation": "3",
+            "hotelDuration": 3,
+            "hotelPrice": 3,
+            "tripDate": "january 10",
+            "tripName": "jan",
+            "flightTime": 3,
+            "flightDep": "3"
+        },
+        {
+            "flightDes": "3",
+            "flightDate": "3",
+            "flightPrice": 3,
+            "flightID": "3",
+            "hotelDate": "3",
+            "hotelName": "3",
+            "hotelLocation": "3",
+            "hotelDuration": 3,
+            "hotelPrice": 3,
+            "tripDate": "february 10",
+            "tripName": "feb",
+            "flightTime": 3,
+            "flightDep": "3"
+        },
+        {
+            "flightDes": "3",
+            "flightDate": "3",
+            "flightPrice": 3,
+            "flightID": "3",
+            "hotelDate": "",
+            "hotelName": "3",
+            "hotelLocation": "3",
+            "hotelDuration": 3,
+            "hotelPrice": 33,
+            "tripDate": "3",
+            "tripName": "ddd",
+            "flightTime": 3,
+            "flightDep": "3"
+        }
+    ],
     "name": "a"
 }
