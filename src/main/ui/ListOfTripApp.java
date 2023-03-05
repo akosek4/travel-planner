@@ -315,6 +315,8 @@ public class ListOfTripApp {
     private void displayTripMenu() {
         System.out.println("\n Select from:");
         System.out.println("\tv -> view all details");
+        System.out.println("\td -> view date");
+        System.out.println("\tp -> view price");
         System.out.println("\th -> view hotel");
         System.out.println("\tf -> view flight");
         System.out.println("\tm -> main menu");
@@ -325,6 +327,10 @@ public class ListOfTripApp {
     private void processTripCommand(String command) {
         if (command.equals("v")) {
             viewTripDetails();
+        } else if (command.equals("d")) {
+            viewDate();
+        } else if (command.equals("p")) {
+            viewPrice();
         } else if (command.equals("h")) {
             viewHotel();
         } else if (command.equals("f")) {
@@ -332,6 +338,16 @@ public class ListOfTripApp {
         } else {
             System.out.println("Selection is not valid");
         }
+    }
+
+    //EFFECTS: displays trip price
+    private void viewPrice() {
+        System.out.println(trip.getTripPrice());
+    }
+
+    //EFFECTS: displays trip date
+    private void viewDate() {
+        System.out.println(trip.getTripDate());
     }
 
     //MODIFIES: this

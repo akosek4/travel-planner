@@ -10,8 +10,6 @@ trip are:
 - pricing
 - flight information
 - hotel details
-- activities
-- packing lists
 
 ## Audience and Reasoning
 

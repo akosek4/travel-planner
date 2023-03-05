@@ -130,6 +130,7 @@ public class Trip implements Writable {
         JSONObject json = new JSONObject();
         json.put("tripName", name);
         json.put("tripDate", date);
+        json.put("tripPrice", price);
         json.put("flightPrice", flight.getFlightPrice());
         json.put("flightDate", flight.getFlightDate());
         json.put("flightTime", flight.getFlightTime());
