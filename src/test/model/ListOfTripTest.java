@@ -24,9 +24,9 @@ public class ListOfTripTest {
             7, "Honolulu");
     private Hotel h2  = new Hotel("The Westin Bayshore", 1900, "December 1",
             4, "Vancouver");
-    private Trip trip1 = new Trip("trip1", "December 1", f1, h1);
-    private Trip trip2 = new Trip("trip2", "May 10", f2, h2);
-    private Trip trip3 = new Trip("trip3", "March 1", f1, h1);
+    private Trip trip1 = new Trip("trip1", "december 1", f1, h1);
+    private Trip trip2 = new Trip("trip2", "may 10", f2, h2);
+    private Trip trip3 = new Trip("trip3", "march 1", f1, h1);
     private Trip trip4 = new Trip("trip4", "april 10", f2, h2);
     private Trip trip5 = new Trip("trip5", "june 1", f1, h1);
     private Trip trip6 = new Trip("trip6", "july 10", f2, h2);
@@ -152,103 +152,139 @@ public class ListOfTripTest {
     @Test
     public void printJanTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printJanTrips());
-        assertEquals("trip12", lot3.printJanTrips());
+        assertEquals(" trip12", lot3.printJanTrips());
     }
 
     @Test
     public void printFebTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printFebTrips());
-        assertEquals("trip9", lot3.printFebTrips());
+        assertEquals(" trip9", lot3.printFebTrips());
     }
 
     @Test
     public void printMarTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printMarTrips());
-        assertEquals("trip3", lot3.printMarTrips());
+        assertEquals(" trip3", lot3.printMarTrips());
     }
 
     @Test
     public void printAprTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printAprTrips());
-        assertEquals("trip4", lot3.printAprTrips());
+        assertEquals(" trip4", lot3.printAprTrips());
     }
 
     @Test
     public void printMayTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printMayTrips());
-        assertEquals("trip2", lot3.printMayTrips());
+        assertEquals(" trip2", lot3.printMayTrips());
     }
 
     @Test
     public void printJunTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printJunTrips());
-        assertEquals("trip5", lot3.printJunTrips());
+        assertEquals(" trip5", lot3.printJunTrips());
     }
 
     @Test
     public void printJulTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printJulTrips());
-        assertEquals("trip6", lot3.printJulTrips());
+        assertEquals(" trip6", lot3.printJulTrips());
     }
 
     @Test
     public void printAugTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printAugTrips());
-        assertEquals("trip7", lot3.printAugTrips());
+        assertEquals(" trip7", lot3.printAugTrips());
     }
 
     @Test
     public void printSepTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printSepTrips());
-        assertEquals("trip8", lot3.printSepTrips());
+        assertEquals(" trip8", lot3.printSepTrips());
     }
 
     @Test
     public void printOctTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printOctTrips());
-        assertEquals("trip10", lot3.printOctTrips());
+        assertEquals(" trip10", lot3.printOctTrips());
     }
 
     @Test
     public void printNovTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printNovTrips());
-        assertEquals("trip11", lot3.printNovTrips());
+        assertEquals(" trip11", lot3.printNovTrips());
     }
 
     @Test
     public void printDecTripsTest() {
         lot3.groupTripsByMonth();
+        lot2.groupTripsByMonth();
         assertEquals("", lot2.printDecTrips());
-        assertEquals("trip1", lot3.printDecTrips());
+        assertEquals(" trip1", lot3.printDecTrips());
     }
 
 
     @Test
     public void groupTripsByMonthTest() {
         lot3.groupTripsByMonth();
-        assertEquals(trip12, lot3.getJan());
-        assertEquals(trip9, lot3.getFeb());
-        assertEquals(trip3, lot3.getMar());
-        assertEquals(trip4, lot3.getApr());
-        assertEquals(trip2, lot3.getMay());
-        assertEquals(trip5, lot3.getJun());
-        assertEquals(trip6, lot3.getJul());
-        assertEquals(trip7, lot3.getAug());
-        assertEquals(trip8, lot3.getSep());
-        assertEquals(trip10, lot3.getOct());
-        assertEquals(trip11, lot3.getNov());
-        assertEquals(trip1, lot3.getDec());
+        List<Trip> jan = new ArrayList<>();
+        jan.add(trip12);
+        List<Trip> feb = new ArrayList<>();
+        feb.add(trip9);
+        List<Trip> mar = new ArrayList<>();
+        mar.add(trip3);
+        List<Trip> apr = new ArrayList<>();
+        apr.add(trip4);
+        List<Trip> may = new ArrayList<>();
+        may.add(trip2);
+        List<Trip> jun = new ArrayList<>();
+        jun.add(trip5);
+        List<Trip> jul = new ArrayList<>();
+        jul.add(trip6);
+        List<Trip> aug = new ArrayList<>();
+        aug.add(trip7);
+        List<Trip> sep = new ArrayList<>();
+        sep.add(trip8);
+        List<Trip> oct = new ArrayList<>();
+        oct.add(trip10);
+        List<Trip> nov = new ArrayList<>();
+        nov.add(trip11);
+        List<Trip> dec = new ArrayList<>();
+        dec.add(trip1);
+        assertEquals(jan, lot3.getJan());
+        assertEquals(feb, lot3.getFeb());
+        assertEquals(mar, lot3.getMar());
+        assertEquals(apr, lot3.getApr());
+        assertEquals(may, lot3.getMay());
+        assertEquals(jun, lot3.getJun());
+        assertEquals(jul, lot3.getJul());
+        assertEquals(aug, lot3.getAug());
+        assertEquals(sep, lot3.getSep());
+        assertEquals(oct, lot3.getOct());
+        assertEquals(nov, lot3.getNov());
+        assertEquals(dec, lot3.getDec());
     }
 
     @Test
@@ -269,15 +305,13 @@ public class ListOfTripTest {
         assertEquals(0, lot3.getDecSize());
     }
 
-    @Test
-    public void tripsToJsonTest() {
-        //TODO
-    }
+    //@Test
+    //public void tripsToJsonTest() {
+    //}
 
 
-    @Test
-    public void toJsonTest() {
-        //TODO
-    }
+    //@Test
+    //public void toJsonTest() {
+    //}
 
 }

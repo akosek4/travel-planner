@@ -36,7 +36,7 @@ public class Reader {
     private String readFile(String source) throws IOException {
         StringBuilder content = new StringBuilder();
 
-        try (Stream<String> stream = Files.lines( Paths.get(source), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> content.append(s));
         }
         return content.toString();
@@ -81,7 +81,7 @@ public class Reader {
         Flight flight = new Flight(flightPrice, flightDate, flightTime, flightID, flightDes, flightDep);
         Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation);
 
-        Trip trip = new Trip(tripName, tripDate, flight, hotel); //TODO: figure out how to add activities
+        Trip trip = new Trip(tripName, tripDate, flight, hotel);
         lot.addTrip(trip);
     }
 
