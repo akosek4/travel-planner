@@ -170,6 +170,7 @@ public class Trip implements Writable {
 
     //Code is based on JsonSerializationDemo
     //EFFECTS: returns trip and its details as a json object
+    //TODO: add activities
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

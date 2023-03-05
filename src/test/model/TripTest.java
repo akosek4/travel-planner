@@ -221,4 +221,9 @@ class TripTest {
         assertEquals(", Zip Lining", trip1.printActivities());
         assertEquals(", Zip Lining, ATV Riding", trip2.printActivities());
     }
+
+    @Test
+    public void toJsonTest() {
+        //TODO
+    }
 }

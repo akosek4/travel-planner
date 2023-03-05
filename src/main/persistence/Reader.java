@@ -62,6 +62,7 @@ public class Reader {
 
     //MODIFIES: lot
     //EFFECTS: parses trip from object and adds it to ListOfTrips
+    //TODO: add activities
     private void addTrip(ListOfTrips lot, JSONObject object) {
         String tripName = object.getString("tripName");
         String tripDate = object.getString("tripDate");
