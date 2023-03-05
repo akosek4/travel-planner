@@ -284,6 +284,11 @@ public class ListOfTripApp {
 
     //EFFECTS: prints out list of trips with given month
     private void printGroup(String command) {
+        printJanToJun(command);
+    }
+
+    //EFFECTS: prints out list of trips with given months january to june
+    private void printJanToJun(String command) {
         if (command.equals("jan")) {
             System.out.println(trips.printJanTrips());
         } else if (command.equals("feb")) {
@@ -296,7 +301,14 @@ public class ListOfTripApp {
             System.out.println(trips.printMayTrips());
         } else if (command.equals("jun")) {
             System.out.println(trips.printJunTrips());
-        } else if (command.equals("jul")) {
+        } else {
+            printJulToDec(command);
+        }
+    }
+
+    //EFFECTS: prints out list of trips with given months july to december
+    private void printJulToDec(String command) {
+        if (command.equals("jul")) {
             System.out.println(trips.printJulTrips());
         } else if (command.equals("aug")) {
             System.out.println(trips.printAugTrips());

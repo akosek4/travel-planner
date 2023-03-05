@@ -300,31 +300,45 @@ public class ListOfTrips implements Writable {
     //EFFECTS: adds trips to specified list based on month
     public void groupTripsByMonth() {
         for (Trip trip : trips) {
-            if (trip.getTripDate().contains("jan")) {
-                jan.add(trip);
-            } else if (trip.getTripDate().contains("feb")) {
-                feb.add(trip);
-            } else if (trip.getTripDate().contains("mar")) {
-                mar.add(trip);
-            } else if (trip.getTripDate().contains("apr")) {
-                apr.add(trip);
-            } else if (trip.getTripDate().contains("may")) {
-                may.add(trip);
-            } else if (trip.getTripDate().contains("jun")) {
-                jun.add(trip);
-            } else if (trip.getTripDate().contains("jul")) {
-                jul.add(trip);
-            } else if (trip.getTripDate().contains("aug")) {
-                aug.add(trip);
-            } else if (trip.getTripDate().contains("sep")) {
-                sep.add(trip);
-            } else if (trip.getTripDate().contains("oct")) {
-                oct.add(trip);
-            } else if (trip.getTripDate().contains("nov")) {
-                nov.add(trip);
-            } else if (trip.getTripDate().contains("dec")) {
-                dec.add(trip);
-            }
+            groupJanToJun(trip);
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds trips to specified list based on month (jan to june)
+    private void groupJanToJun(Trip trip) {
+        if (trip.getTripDate().contains("jan")) {
+            jan.add(trip);
+        } else if (trip.getTripDate().contains("feb")) {
+            feb.add(trip);
+        } else if (trip.getTripDate().contains("mar")) {
+            mar.add(trip);
+        } else if (trip.getTripDate().contains("apr")) {
+            apr.add(trip);
+        } else if (trip.getTripDate().contains("may")) {
+            may.add(trip);
+        } else if (trip.getTripDate().contains("jun")) {
+            jun.add(trip);
+        } else {
+            groupJulToDec(trip);
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds trips to specified list based on month (jul to dec)
+    private void groupJulToDec(Trip trip) {
+        if (trip.getTripDate().contains("jul")) {
+            jul.add(trip);
+        } else if (trip.getTripDate().contains("aug")) {
+            aug.add(trip);
+        } else if (trip.getTripDate().contains("sep")) {
+            sep.add(trip);
+        } else if (trip.getTripDate().contains("oct")) {
+            oct.add(trip);
+        } else if (trip.getTripDate().contains("nov")) {
+            nov.add(trip);
+        } else if (trip.getTripDate().contains("dec")) {
+            dec.add(trip);
         }
     }
 
