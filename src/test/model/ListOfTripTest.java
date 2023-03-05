@@ -1,7 +1,5 @@
 package model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -304,14 +302,5 @@ public class ListOfTripTest {
         assertEquals(0, lot3.getNovSize());
         assertEquals(0, lot3.getDecSize());
     }
-
-    //@Test
-    //public void tripsToJsonTest() {
-    //}
-
-
-    //@Test
-    //public void toJsonTest() {
-    //}
 
 }

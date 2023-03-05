@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 //Code is based on JsonSerializationDemo
@@ -62,7 +60,6 @@ public class Reader {
 
     //MODIFIES: lot
     //EFFECTS: parses trip from object and adds it to ListOfTrips
-    //TODO: add activities
     private void addTrip(ListOfTrips lot, JSONObject object) {
         String tripName = object.getString("tripName");
         String tripDate = object.getString("tripDate");

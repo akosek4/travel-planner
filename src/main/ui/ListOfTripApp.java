@@ -6,7 +6,6 @@ import persistence.Writer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 //Code is based on TellerApp
@@ -19,8 +18,6 @@ public class ListOfTripApp {
     private Trip trip;
     private Hotel hotel;
     private Flight flight;
-    private List<Activity> activities;
-    private Activity activity;
     private String tripName;
     private String tripDate;
     private String hotelName;
@@ -320,7 +317,6 @@ public class ListOfTripApp {
         System.out.println("\tv -> view all details");
         System.out.println("\th -> view hotel");
         System.out.println("\tf -> view flight");
-        System.out.println("\ta -> view all activities");
         System.out.println("\tm -> main menu");
     }
 
@@ -333,22 +329,9 @@ public class ListOfTripApp {
             viewHotel();
         } else if (command.equals("f")) {
             viewFlight();
-        } else if (command.equals("a")) {
-            viewActivities();
         } else {
             System.out.println("Selection is not valid");
         }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: displays Activity options
-    private void viewActivities() {
-        this.activities = trip.getActivities();
-        displayListOfActivityMenu();
-        String command = null;
-        command = input.next();
-        command = command.toLowerCase();
-        processListOfActivityCommand(command);
     }
 
     //MODIFIES: this
@@ -547,162 +530,6 @@ public class ListOfTripApp {
         System.out.println(flight.getFlightDeparture());
         System.out.println(flight.getFlightTime());
         System.out.println(flight.getFLightDestination());
-    }
-
-    // EFFECTS: displays menu of options to user
-    private void displayListOfActivityMenu() {
-        System.out.println("\n Select from:");
-        System.out.println("\tv -> view all activities");
-        System.out.println("\ts -> select an activity");
-        System.out.println("\ta -> add an activity");
-        System.out.println("\tr -> remove an activity");
-        System.out.println("\tm -> main menu");
-    }
-
-    //MODIFIES: this
-    //EFFECTS: processes user command
-    private void processListOfActivityCommand(String command) {
-        if (command.equals("v")) {
-            viewAllActivities();
-        } else if (command.equals("s")) {
-            displayNamePrompt();
-            String actName = input.next();
-            selectActivity(actName);
-        } else if (command.equals("a")) {
-            displayNamePrompt();
-            String actName = input.next();
-            displayPricePrompt();
-            int actPrice = input.nextInt();
-            displayDatePrompt();
-            String actDate = input.next();
-            displayTimePrompt();
-            int actTime = input.nextInt();
-            displayLocationPrompt();
-            String actLoc = input.next();
-            addActivity(actName, actPrice, actDate, actTime, actLoc);
-        } else if (command.equals("r")) {
-            displayNamePrompt();
-            String actName = input.next();
-            removeActivity(actName);
-        }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: removes given activity
-    private void removeActivity(String name) {
-        this.activity = trip.getActivity(name);
-        if (activities.contains(activity)) {
-            activities.remove(activity);
-        }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: adds specified activity
-    private void addActivity(String name, int price, String date, int time,
-                             String location) {
-        this.activity = new Activity(name, price, date, time, location);
-        activities.add(activity);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: displays activity options
-    private void selectActivity(String name) {
-        if (trip.getActivity(name) == (null)) {
-            System.out.println("Not a valid activity");
-        } else {
-            this.activity = trip.getActivity(name);
-            String command = null;
-            command = input.next();
-            command = command.toLowerCase();
-            displayActivityMenu();
-            processActivityCommand(command);
-        }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: displays all activities
-    private void viewAllActivities() {
-        System.out.println(trip.printActivities());
-    }
-
-    // EFFECTS: displays menu of options to user
-    private void displayActivityMenu() {
-        System.out.println("\n Select from:");
-        System.out.println("\tv -> view all details");
-        System.out.println("\tn -> change name");
-        System.out.println("\tp -> change price");
-        System.out.println("\td -> change date");
-        System.out.println("\tt -> change time");
-        System.out.println("\tl -> change location");
-        System.out.println("\tm -> main menu");
-    }
-
-    //MODIFIES: this
-    //EFFECTS: processes user command
-    private void processActivityCommand(String command) {
-        if (command.equals("v")) {
-            viewActivityDetails();
-        } else if (command.equals("n")) {
-            displayNamePrompt();
-            String actName = input.next();
-            changeActivityName(actName);
-        } else if (command.equals("p")) {
-            displayPricePrompt();
-            int actPrice = input.nextInt();
-            changeActivityPrice(actPrice);
-        } else if (command.equals("t")) {
-            displayTimePrompt();
-            int actTime = input.nextInt();
-            changeActivityTime(actTime);
-        } else if (command.equals("d")) {
-            displayDatePrompt();
-            String actDate = input.next();
-            changeActivityDate(actDate);
-        } else if (command.equals("l")) {
-            displayLocationPrompt();
-            String actLoc = input.next();
-            changeActivityLocation(actLoc);
-        }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes activity location
-    private void changeActivityLocation(String location) {
-        activity.changeLocation(location);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes activity date
-    private void changeActivityDate(String date) {
-        activity.changeDate(date);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes activity time
-    private void changeActivityTime(int time) {
-        activity.changeTime(time);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes activity price
-    private void changeActivityPrice(int price) {
-        activity.changePrice(price);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes activity name
-    private void changeActivityName(String name) {
-        activity.changeName(name);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: displays activity date, location, name, price, and time
-    private void viewActivityDetails() {
-        System.out.println(activity.getDate());
-        System.out.println(activity.getLocation());
-        System.out.println(activity.getName());
-        System.out.println(activity.getPrice());
-        System.out.println(activity.getTime());
     }
 
     //MODIFIES: this

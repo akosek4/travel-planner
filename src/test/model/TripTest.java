@@ -3,9 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 //Represents the trip class tests
@@ -21,10 +18,6 @@ class TripTest {
             7, "Honolulu");
     private Hotel h2  = new Hotel("The Westin Bayshore", 1900, "December 1",
             4, "Vancouver");
-    private Activity a1 = new Activity("Zip Lining",300, "December 1", 900,
-                              "Kona");
-    private Activity a2 = new Activity("ATV Riding",500, "May 2", 1300,
-                               "Santa Cruz");
 
     @BeforeEach
     public void setup() {
@@ -153,76 +146,4 @@ class TripTest {
         assertEquals("Victoria", trip2.getHotel().getHotelLocation());
     }
 
-    @Test
-    public void addActivityTest() {
-        trip1.addActivity(a1);
-        trip2.addActivity(a2);
-        List<Activity> t1Result = new ArrayList<>();
-        t1Result.add(a1);
-        List<Activity> t2Result = new ArrayList<>();
-        t2Result.add(a2);
-        assertEquals(t1Result, trip1.getActivities());
-        assertEquals(t2Result, trip2.getActivities());
-    }
-
-    @Test
-    public void removeActivityTrueTest() {
-        trip1.addActivity(a1);
-        trip1.addActivity(a2);
-        trip2.addActivity(a1);
-        trip2.addActivity(a2);
-        trip1.removeActivity(a2);
-        trip2.removeActivity(a1);
-        List<Activity> t1Result = new ArrayList<>();
-        t1Result.add(a1);
-        List<Activity> t2Result = new ArrayList<>();
-        t2Result.add(a2);
-        assertEquals(t1Result, trip1.getActivities());
-        assertEquals(t2Result, trip2.getActivities());
-    }
-
-    @Test
-    public void removeActivityFalseTest() {
-        assertFalse(trip1.removeActivity(a1));
-        assertFalse(trip2.removeActivity(a1));
-    }
-
-    @Test
-    public void getActivityNotNullTest() {
-        trip1.addActivity(a1);
-        trip1.addActivity(a2);
-        trip2.addActivity(a1);
-        trip2.addActivity(a2);
-        assertEquals(a1, trip1.getActivity("Zip Lining"));
-        assertEquals(a2, trip2.getActivity("ATV Riding"));
-    }
-
-    @Test
-    public void getActivityNullTest() {
-        trip1.addActivity(a1);
-        trip1.addActivity(a2);
-        trip2.addActivity(a1);
-        trip2.addActivity(a2);
-        assertNull(trip1.getActivity("hello"));
-        assertNull(trip2.getActivity("false"));
-    }
-
-    @Test
-    public void printActivitiesNullTest() {
-        assertEquals("", trip1.printActivities());
-        assertEquals("", trip2.printActivities());
-    }
-
-    @Test
-    public void printActivities() {
-        trip1.addActivity(a1);
-        trip2.addActivity(a1);
-        trip2.addActivity(a2);
-        assertEquals(", Zip Lining", trip1.printActivities());
-        assertEquals(", Zip Lining, ATV Riding", trip2.printActivities());
-    }
-
-    //@Test
-    //public void toJsonTest() {
-    //}
 }

@@ -5,42 +5,20 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Trip implements Writable {
     private String name;
     private String date;
     private Flight flight;
     private Hotel hotel;
-    private List<Activity> activities;
     private int price;
 
-    // EFFECTS: creates a trip with a name, a date, a flight, a hotel, a price, and an empty list of activities
+    // EFFECTS: creates a trip with a name, a date, a flight, a hotel, and a price.
     public Trip(String name, String date, Flight flight, Hotel hotel) {
         this.name = name;
         this.date = date;
         this.flight = flight;
         this.hotel = hotel;
         this.price = flight.getFlightPrice() + hotel.getHotelPrice();
-        this.activities = new ArrayList<>();
-    }
-
-    // MODIFIES: this
-    //EFFECTS: adds activity to activities
-    public void addActivity(Activity activity) {
-        activities.add(activity);
-    }
-
-    // MODIFIES: this
-    //EFFECTS: removes activity from activities or returns false if activity is not in list
-    public boolean removeActivity(Activity activity) {
-        if (activities.contains(activity)) {
-            activities.remove(activity);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     // REQUIRES: newPrice >= 0
@@ -145,32 +123,8 @@ public class Trip implements Writable {
         return hotel;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
-    }
-
-    public Activity getActivity(String name) {
-        for (Activity activity : activities) {
-            if (activity.getName().equals(name)) {
-                return activity;
-            }
-        }
-        return null;
-    }
-
-    //MODIFIES: this
-    //EFFECTS: gets all activity names in activities and forms a string
-    public String printActivities() {
-        String toPrint = "";
-        for (Activity a : activities) {
-            toPrint += ", " + a.getName();
-        }
-        return toPrint;
-    }
-
     //Code is based on JsonSerializationDemo
     //EFFECTS: returns trip and its details as a json object
-    //TODO: add activities
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

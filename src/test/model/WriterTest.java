@@ -54,10 +54,12 @@ public class WriterTest extends JsonTest {
                 "SFO");
         Hotel hotel1 = new Hotel("Marriot", 900, "september 1", 7, "Hawaii");
         Hotel hotel2 = new Hotel("Best Western", 400, "may 1", 4, "Santa Cruz");
+        Trip trip1 = new Trip("trip1", "september 1", flight1, hotel1);
+        Trip trip2 = new Trip("trip2", "may 1", flight2, hotel2);
         try {
             ListOfTrips lot = new ListOfTrips("My trips");
-            lot.addTrip(new Trip("trip1", "september 1", flight1, hotel1));
-            lot.addTrip(new Trip("trip2", "may 1", flight2, hotel2));
+            lot.addTrip(trip1);
+            lot.addTrip(trip2);
             Writer writer = new Writer("./data/testWriterGeneralList.json");
             writer.open();
             writer.write(lot);
