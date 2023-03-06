@@ -284,50 +284,22 @@ public class ListOfTripTest {
         assertEquals(nov, lot3.getNov());
         assertEquals(dec, lot3.getDec());
     }
-
     @Test
-    public void groupTripsByMonthJanToJunTest() {
-        lot3.groupTripsByMonth();
-        List<Trip> jan = new ArrayList<>();
-        jan.add(trip12);
-        List<Trip> feb = new ArrayList<>();
-        feb.add(trip9);
-        List<Trip> mar = new ArrayList<>();
-        mar.add(trip3);
-        List<Trip> apr = new ArrayList<>();
-        apr.add(trip4);
-        List<Trip> may = new ArrayList<>();
-        may.add(trip2);
-        List<Trip> jun = new ArrayList<>();
-        jun.add(trip5);
-        assertEquals(jan, lot3.getJan());
-        assertEquals(feb, lot3.getFeb());
-        assertEquals(mar, lot3.getMar());
-        assertEquals(apr, lot3.getApr());
-        assertEquals(may, lot3.getMay());
-        assertEquals(jun, lot3.getJun());
-    }
-    @Test
-    public void groupTripsByMonthJulToDecTest() {
-        lot3.groupTripsByMonth();
-        List<Trip> jul = new ArrayList<>();
-        jul.add(trip6);
-        List<Trip> aug = new ArrayList<>();
-        aug.add(trip7);
-        List<Trip> sep = new ArrayList<>();
-        sep.add(trip8);
-        List<Trip> oct = new ArrayList<>();
-        oct.add(trip10);
-        List<Trip> nov = new ArrayList<>();
-        nov.add(trip11);
-        List<Trip> dec = new ArrayList<>();
-        dec.add(trip1);
-        assertEquals(jul, lot3.getJul());
-        assertEquals(aug, lot3.getAug());
-        assertEquals(sep, lot3.getSep());
-        assertEquals(oct, lot3.getOct());
-        assertEquals(nov, lot3.getNov());
-        assertEquals(dec, lot3.getDec());
+    public void groupTripsByMonthNull() {
+        lot2.groupTripsByMonth();
+        List<Trip> empty = new ArrayList<>();
+        assertEquals(empty, lot2.getJan());
+        assertEquals(empty, lot2.getFeb());
+        assertEquals(empty, lot2.getMar());
+        assertEquals(empty, lot2.getApr());
+        assertEquals(empty, lot2.getMay());
+        assertEquals(empty, lot2.getJun());
+        assertEquals(empty, lot2.getJul());
+        assertEquals(empty, lot2.getAug());
+        assertEquals(empty, lot2.getSep());
+        assertEquals(empty, lot2.getOct());
+        assertEquals(empty, lot2.getNov());
+        assertEquals(empty, lot2.getDec());
     }
 
     @Test
