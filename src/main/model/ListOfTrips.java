@@ -48,120 +48,6 @@ public class ListOfTrips implements Writable {
         }
     }
 
-    public List<Trip> getTrips() {
-        return trips;
-    }
-
-    public List<Trip> getJan() {
-        return jan;
-    }
-
-    public List<Trip> getFeb() {
-        return feb;
-    }
-
-    public List<Trip> getMar() {
-        return mar;
-    }
-
-    public List<Trip> getApr() {
-        return apr;
-    }
-
-    public List<Trip> getMay() {
-        return may;
-    }
-
-    public List<Trip> getJul() {
-        return jul;
-    }
-
-    public List<Trip> getJun() {
-        return jun;
-    }
-
-    public List<Trip> getAug() {
-        return aug;
-    }
-
-    public List<Trip> getSep() {
-        return sep;
-    }
-
-    public List<Trip> getOct() {
-        return oct;
-    }
-
-    public List<Trip> getNov() {
-        return nov;
-    }
-
-    public List<Trip> getDec() {
-        return dec;
-    }
-
-    public int getJanSize() {
-        return jan.size();
-    }
-
-    public int getFebSize() {
-        return feb.size();
-    }
-
-    public int getMarSize() {
-        return mar.size();
-    }
-
-    public int getAprSize() {
-        return apr.size();
-    }
-
-    public int getMaySize() {
-        return may.size();
-    }
-
-    public int getJulSize() {
-        return jul.size();
-    }
-
-    public int getJunSize() {
-        return jun.size();
-    }
-
-    public int getAugSize() {
-        return aug.size();
-    }
-
-    public int getSepSize() {
-        return sep.size();
-    }
-
-    public int getOctSize() {
-        return oct.size();
-    }
-
-    public int getNovSize() {
-        return nov.size();
-    }
-
-    public int getDecSize() {
-        return dec.size();
-    }
-
-
-    public Trip getTrip(String name) {
-        for (Trip trip : trips) {
-            if (trip.getTripName().equals(name)) {
-                return trip;
-            }
-        }
-        return null;
-    }
-
-    public String getTripsName() {
-        return name;
-    }
-
     //MODIFIES: this
     //EFFECTS: creates a string with all trip names in trips
     public String printAllTrips() {
@@ -379,6 +265,120 @@ public class ListOfTrips implements Writable {
         }
 
         return jsonArray;
+    }
+
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public List<Trip> getJan() {
+        return jan;
+    }
+
+    public List<Trip> getFeb() {
+        return feb;
+    }
+
+    public List<Trip> getMar() {
+        return mar;
+    }
+
+    public List<Trip> getApr() {
+        return apr;
+    }
+
+    public List<Trip> getMay() {
+        return may;
+    }
+
+    public List<Trip> getJul() {
+        return jul;
+    }
+
+    public List<Trip> getJun() {
+        return jun;
+    }
+
+    public List<Trip> getAug() {
+        return aug;
+    }
+
+    public List<Trip> getSep() {
+        return sep;
+    }
+
+    public List<Trip> getOct() {
+        return oct;
+    }
+
+    public List<Trip> getNov() {
+        return nov;
+    }
+
+    public List<Trip> getDec() {
+        return dec;
+    }
+
+    public int getJanSize() {
+        return jan.size();
+    }
+
+    public int getFebSize() {
+        return feb.size();
+    }
+
+    public int getMarSize() {
+        return mar.size();
+    }
+
+    public int getAprSize() {
+        return apr.size();
+    }
+
+    public int getMaySize() {
+        return may.size();
+    }
+
+    public int getJulSize() {
+        return jul.size();
+    }
+
+    public int getJunSize() {
+        return jun.size();
+    }
+
+    public int getAugSize() {
+        return aug.size();
+    }
+
+    public int getSepSize() {
+        return sep.size();
+    }
+
+    public int getOctSize() {
+        return oct.size();
+    }
+
+    public int getNovSize() {
+        return nov.size();
+    }
+
+    public int getDecSize() {
+        return dec.size();
+    }
+
+    public Trip getTrip(String name) {
+        for (Trip trip : trips) {
+            if (trip.getTripName().equals(name)) {
+                return trip;
+            }
+        }
+        return null;
+    }
+
+    public String getTripsName() {
+        return name;
     }
 
 }

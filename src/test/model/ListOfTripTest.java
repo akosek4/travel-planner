@@ -34,6 +34,8 @@ public class ListOfTripTest {
     private Trip trip10 = new Trip("trip10", "october 10", f2, h2);
     private Trip trip11 = new Trip("trip11", "november 1", f1, h1);
     private Trip trip12 = new Trip("trip12", "january 10", f2, h2);
+    private Trip trip13 = new Trip("trip13", "december 10", f2, h2);
+    private Trip trip14 = new Trip("trip13", "unsure", f2, h2);
 
 
     @BeforeEach
@@ -53,6 +55,8 @@ public class ListOfTripTest {
         lot3.addTrip(trip10);
         lot3.addTrip(trip11);
         lot3.addTrip(trip12);
+        lot3.addTrip(trip13);
+        lot3.addTrip(trip14);
     }
 
     @Test
@@ -240,7 +244,7 @@ public class ListOfTripTest {
         lot3.groupTripsByMonth();
         lot2.groupTripsByMonth();
         assertEquals("", lot2.printDecTrips());
-        assertEquals(" trip1", lot3.printDecTrips());
+        assertEquals(" trip1 trip13", lot3.printDecTrips());
     }
 
 
@@ -271,6 +275,7 @@ public class ListOfTripTest {
         nov.add(trip11);
         List<Trip> dec = new ArrayList<>();
         dec.add(trip1);
+        dec.add(trip13);
         assertEquals(jan, lot3.getJan());
         assertEquals(feb, lot3.getFeb());
         assertEquals(mar, lot3.getMar());
