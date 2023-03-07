@@ -1,6 +1,11 @@
-package model;
+package persistence;
 
+import model.Flight;
+import model.Hotel;
+import model.ListOfTrips;
+import model.Trip;
 import org.junit.jupiter.api.Test;
+import persistence.JsonTest;
 import persistence.Reader;
 import persistence.Writer;
 

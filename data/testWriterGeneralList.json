@@ -11,6 +11,7 @@
             "hotelDuration": 7,
             "hotelPrice": 900,
             "tripDate": "september 1",
+            "tripPrice": 1100,
             "tripName": "trip1",
             "flightTime": 900,
             "flightDep": "YVR"
@@ -26,6 +27,7 @@
             "hotelDuration": 4,
             "hotelPrice": 400,
             "tripDate": "may 1",
+            "tripPrice": 800,
             "tripName": "trip2",
             "flightTime": 1300,
             "flightDep": "SFO"

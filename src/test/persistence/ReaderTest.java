@@ -1,6 +1,11 @@
-package model;
+package persistence;
 
+import model.Flight;
+import model.Hotel;
+import model.ListOfTrips;
+import model.Trip;
 import org.junit.jupiter.api.Test;
+import persistence.JsonTest;
 import persistence.Reader;
 
 import java.io.IOException;
@@ -13,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 //Represents the Reader class tests
 
-public class ReaderTest extends JsonTest{
+public class ReaderTest extends JsonTest {
     @Test
     void testReaderNonExistentFile() {
         Reader reader = new Reader("./data/noFile.json");
