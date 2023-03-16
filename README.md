@@ -31,3 +31,10 @@ more convenient and prevent logistical problems from occurring.
 - As a user, I want to be able to remove a trip.
 - As a user, I want to be able to save all trips in my list of trips if I choose to.
 - As a user, I want to be able to load my list of trips from file if I choose to.
+
+## Instructions for Grader
+- You can generate the first required action related to adding Xs to a Y by clicking the add trip button.
+- You can generate the second required action related to adding Xs to a Y by clicking the remove trip button.
+- You can locate my visual component by viewing the splash screen that occurs when first opening the application.
+- You can save the state of my application by clicking the save button.
+- You can reload the state of my application by clicking the load button.
