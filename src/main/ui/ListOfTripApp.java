@@ -143,7 +143,7 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processListOfTripCommand(String command) {
+    protected void processListOfTripCommand(String command) {
         if (command.equals("v")) {
             viewTrips();
         } else if (command.equals("sel")) {

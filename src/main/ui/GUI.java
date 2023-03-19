@@ -1,42 +1,37 @@
 package ui;
 
+import model.Trip;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame {
     private static final int WIDTH = 600;
     private static final int HEIGHT = 900;
     private ListOfTripApp app;
     private JDesktopPane desktop;
-    private JInternalFrame controlPanel;
 
     public GUI() {
-        app = new ListOfTripApp();
 
         desktop = new JDesktopPane();
-        controlPanel = new JInternalFrame("Control Panel", false, false, false, false);
-        controlPanel.setLayout(new BorderLayout());
 
         setContentPane(desktop);
         setTitle("List Of Trips");
         setSize(WIDTH, HEIGHT);
-
-        addMenu();
-        addTripsDisplay();
-
-        controlPanel.pack();
-        controlPanel.setVisible(true);
-        desktop.add(controlPanel);
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         centreOnScreen();
+        addMenu();
         setVisible(true);
+
+        app = new ListOfTripApp();
+        addTripsDisplay();
 
     }
 
     private void addTripsDisplay() {
         TripsUi tripsUi = new TripsUi();
-        controlPanel.add(tripsUi, BorderLayout.NORTH);
+        //desktop.add(tripsUi);
     }
 
     private void addMenu() {
@@ -64,17 +59,52 @@ public class GUI extends JFrame {
     }
 
     private void centreOnScreen() {
+        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+        setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
     }
 
-    private class AddTripAction {
+    private class AddTripAction extends AbstractAction {
+        AddTripAction() {
+            super("Add trip");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            app.processListOfTripCommand("a");
+        }
     }
 
-    private class RemoveTripAction {
+    private class RemoveTripAction extends AbstractAction {
+        RemoveTripAction() {
+            super("Remove trip");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            app.processListOfTripCommand("r");
+        }
     }
 
-    private class LoadTripsAction {
+    private class LoadTripsAction extends AbstractAction {
+        LoadTripsAction() {
+            super("Load trips");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            app.processListOfTripCommand("l");
+        }
     }
 
-    private class SaveTripsAction {
+    private class SaveTripsAction extends AbstractAction {
+        SaveTripsAction() {
+            super("Save trips");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            app.processListOfTripCommand("save");
+        }
     }
 }
