@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ListOfTripApp {
     private static final String data = "./data/listoftrip.json";
     private Scanner input;
-    private ListOfTrips trips;
+    protected ListOfTrips trips;
     private Trip trip;
     private Hotel hotel;
     private Flight flight;
