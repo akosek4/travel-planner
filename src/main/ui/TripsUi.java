@@ -17,37 +17,51 @@ public class TripsUi extends JFrame implements ActionListener {
     private JButton remove;
     private JButton load;
     private JButton save;
-    
+
 
     public TripsUi() {
+        new SplashScreen();
+
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setVisible(true);
 
-        createTitle();
-
         app = new ListOfTripApp(); //TODO: make it so that you don't need to quit before use
 
-        titlePanel = new JPanel();
-        titlePanel.setBackground(Color.pink);
-        titlePanel.setPreferredSize(new Dimension(WIDTH, 100));
-        titlePanel.add(title);
+        createTitle();
 
-        listPanel = new JPanel();
-        listPanel.setBackground(Color.white);
-        listPanel.setPreferredSize(new Dimension(WIDTH, 800));
+        createTitlePanel();
+
+        createListPanel();
         addListOfTrips();
 
-        menuPanel = new JPanel();
-        menuPanel.setBackground(Color.gray);
-        menuPanel.setPreferredSize(new Dimension(150, 50));
+        createMenuPanel();
         addButtons();
         addTextBox();
 
         this.add(menuPanel, BorderLayout.WEST);
         this.add(titlePanel, BorderLayout.NORTH);
         this.add(listPanel, BorderLayout.CENTER);
+    }
+
+    private void createMenuPanel() {
+        menuPanel = new JPanel();
+        menuPanel.setBackground(Color.gray);
+        menuPanel.setPreferredSize(new Dimension(150, 50));
+    }
+
+    private void createListPanel() {
+        listPanel = new JPanel();
+        listPanel.setBackground(Color.white);
+        listPanel.setPreferredSize(new Dimension(WIDTH, 800));
+    }
+
+    private void createTitlePanel() {
+        titlePanel = new JPanel();
+        titlePanel.setBackground(Color.pink);
+        titlePanel.setPreferredSize(new Dimension(WIDTH, 100));
+        titlePanel.add(title);
     }
 
     private void createTitle() {
