@@ -3,11 +3,15 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+// represents the loading splash screen that displays before the main application is run
+
 public class SplashScreen {
     private ImageIcon plane = new ImageIcon("data/plane.png");
     private JLabel graphics = new JLabel();
     private JFrame frame = new JFrame();
 
+    // MODIFIES: this
+    // EFFECTS: creates the splash screen to be run
     public SplashScreen() {
         createImage();
 
@@ -27,6 +31,8 @@ public class SplashScreen {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the image that will be displayed on the splash screen
     private void createImage() {
         graphics.setText("Loading...");
         graphics.setIcon(plane);

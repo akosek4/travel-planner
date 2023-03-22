@@ -6,6 +6,7 @@ import persistence.Writer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 //Code is based on TellerApp
@@ -271,7 +272,7 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    private void processView(String command) {
+    protected void processView(String command) {
         if (command.equals("all")) {
             System.out.println(trips.printAllTrips());
         } else {
@@ -581,5 +582,9 @@ public class ListOfTripApp {
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + data);
         }
+    }
+
+    public List<String> getAllTripsInfoForGUI() {
+        return trips.getListOfTripsInfo();
     }
 }

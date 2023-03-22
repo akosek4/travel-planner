@@ -4,7 +4,7 @@ package ui;
 
 public class Main {
 
-    //EFFECTS: creates a new list of trip application with an empty list of trips
+    //EFFECTS: creates a new list of trip graphical interface with an empty list of trips
     public static void main(String[] args) {
         new TripsUi();
     }

@@ -381,4 +381,12 @@ public class ListOfTrips implements Writable {
         return name;
     }
 
+    public List<String> getListOfTripsInfo() {
+        List<String> result = new ArrayList<>();
+        for (Trip t : trips) {
+            result.add("Name: " + t.getTripName() + ", Date: " + t.getTripDate() + ", Price: " + t.getTripPrice());
+        }
+        return result;
+    }
+
 }
