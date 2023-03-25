@@ -1,12 +1,10 @@
 package ui;
 
-import model.Trip;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 // represents a list of trips graphical interface
@@ -19,10 +17,13 @@ public class TripsUi extends JFrame implements ActionListener {
     private JPanel menuPanel;
     private JPanel listPanel;
     private JPanel titlePanel;
+    private JPanel textPanel;
     private JButton add;
     private JButton remove;
     private JButton load;
     private JButton save;
+    private JButton submit;
+    private JTextField textBox;
 
 
     //MODIFIES: this and ListOfTripApp
@@ -43,13 +44,16 @@ public class TripsUi extends JFrame implements ActionListener {
 
         createListPanel();
 
+        createTextPanel();
+        addTextBox();
+
         createMenuPanel();
         addButtons();
-        addTextBox();
 
         this.add(menuPanel, BorderLayout.WEST);
         this.add(titlePanel, BorderLayout.NORTH);
         this.add(listPanel, BorderLayout.CENTER);
+        this.add(textPanel, BorderLayout.SOUTH);
         addListOfTrips();
     }
 
@@ -59,6 +63,14 @@ public class TripsUi extends JFrame implements ActionListener {
         menuPanel = new JPanel();
         menuPanel.setBackground(Color.gray);
         menuPanel.setPreferredSize(new Dimension(150, 50));
+    }
+
+    //MODIFIES: this
+    //EFFECTS: creates a new text box panel where the user can type in their response
+    private void createTextPanel() {
+        textPanel = new JPanel();
+        textPanel.setBackground(Color.lightGray);
+        textPanel.setPreferredSize(new Dimension(WIDTH, 150));
     }
 
     //MODIFIES: this
@@ -119,7 +131,15 @@ public class TripsUi extends JFrame implements ActionListener {
     }
 
     private void addTextBox() { //TODO: allow user to type in GUI
+        submit = new JButton("Submit");
+        submit.addActionListener(this);
 
+        textBox = new JTextField();
+        textBox.setPreferredSize(new Dimension((WIDTH - 150), 100));
+        textBox.setFont(new Font("Title", 20, 15));
+
+        textPanel.add(submit);
+        textPanel.add(textBox);
     }
 
 
@@ -191,6 +211,9 @@ public class TripsUi extends JFrame implements ActionListener {
         if (e.getSource() == load) {
             app.processListOfTripCommand("l");
             addListOfTrips();
+        }
+        if (e.getSource() == submit) {
+            textBox.getText();
         }
     }
 }
