@@ -157,7 +157,7 @@ public class ListOfTrips implements Writable {
     }
 
     //MODIFIES: this
-    //EFFECTS: creates a string with novemember trip names in trips
+    //EFFECTS: creates a string with november trip names in trips
     public String printNovTrips() {
         String toPrint = "";
         for (Trip trip : nov) {
@@ -377,7 +377,8 @@ public class ListOfTrips implements Writable {
     public List<String> getListOfTripsInfo() {
         List<String> result = new ArrayList<>();
         for (Trip t : trips) {
-            result.add("Name: " + t.getTripName() + ", Date: " + t.getTripDate() + ", Price: " + t.getTripPrice());
+            result.add("Name: " + t.getTripName() + ", Date: " + t.getTripDate() + ", Price: " + t.getTripPrice()
+                    + ", Location: " + t.getTripLocation());
         }
         return result;
     }

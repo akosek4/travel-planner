@@ -11,11 +11,13 @@ public class Trip implements Writable {
     private Flight flight;
     private Hotel hotel;
     private int price;
+    private String location;
 
-    // EFFECTS: creates a trip with a name, a date, a flight, a hotel, and a price.
-    public Trip(String name, String date, Flight flight, Hotel hotel) {
+    // EFFECTS: creates a trip with a name, a date, a flight, a hotel, a location and a price.
+    public Trip(String name, String date, String location, Flight flight, Hotel hotel) {
         this.name = name;
         this.date = date;
+        this.location = location;
         this.flight = flight;
         this.hotel = hotel;
         this.price = flight.getFlightPrice() + hotel.getHotelPrice();
@@ -28,11 +30,6 @@ public class Trip implements Writable {
         flight.changePrice(newPrice);
     }
 
-    // MODIFIES: this
-    // EFFECTS: changes the current date to the new date
-    public void changeFlightDate(String newDate) {
-        flight.changeDate(newDate);
-    }
 
     // REQUIRES: newTime > 0
     // MODIFIES: this
@@ -47,11 +44,6 @@ public class Trip implements Writable {
         flight.changeName(newName);
     }
 
-    // MODIFIES: this
-    // EFFECTS: changes the current location to the new location
-    public void changeFlightLocation(String newLocation) {
-        flight.changeLocation(newLocation);
-    }
 
     // MODIFIES: this
     // EFFECTS: changes the current hotel name to the parameter
@@ -64,18 +56,6 @@ public class Trip implements Writable {
     // EFFECTS: changes the current hotel price about to the parameter
     public void changeHotelPrice(int hotelPrice) {
         hotel.changePrice(hotelPrice);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: changes the current hotel date to the parameter
-    public void changeHotelDate(String hotelDate) {
-        hotel.changeDate(hotelDate);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: changes the current hotel location to the parameter
-    public void changeHotelLocation(String hotelLocation) {
-        hotel.changeLocation(hotelLocation);
     }
 
     // MODIFIES: this
@@ -102,6 +82,10 @@ public class Trip implements Writable {
         return price;
     }
 
+    public String getTripLocation() {
+        return location;
+    }
+
     public Flight getFlight() {
         return flight;
     }
@@ -118,15 +102,12 @@ public class Trip implements Writable {
         json.put("tripName", name);
         json.put("tripDate", date);
         json.put("tripPrice", price);
+        json.put("tripLocation", location);
         json.put("flightPrice", flight.getFlightPrice());
-        json.put("flightDate", flight.getFlightDate());
         json.put("flightTime", flight.getFlightTime());
         json.put("flightName", flight.getFlightName());
-        json.put("flightLocation", flight.getFlightLocation());
         json.put("hotelName", hotel.getHotelName());
         json.put("hotelPrice", hotel.getHotelPrice());
-        json.put("hotelDate", hotel.getHotelDate());
-        json.put("hotelLocation", hotel.getHotelLocation());
         return json;
     }
 }

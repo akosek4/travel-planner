@@ -201,8 +201,12 @@ public class TripsUi extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
+            try {
+                createTrip();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
             app.processListOfTripCommand("a");
-            createTrip(e);
             addListOfTrips();
         }
         if (e.getSource() == remove) {
@@ -219,58 +223,38 @@ public class TripsUi extends JFrame implements ActionListener {
         }
     }
 
-    private void createTrip(ActionEvent e) {
+    private void createTrip() throws InterruptedException {
         textBox.setText("Enter trip name: ");
-        if (e.getSource() == submit) {
-            app.tripName = textBox.getText();
-        }
+        Thread.sleep(6000);
+        app.tripName = textBox.getText();
         textBox.setText("Enter trip date: ");
-        if (e.getSource() == submit) {
-            app.tripDate = textBox.getText();
-        }
-        createHotel(e);
-        createFlight(e);
+        Thread.sleep(6000);
+        app.tripDate = textBox.getText();
+        textBox.setText("Enter trip location: ");
+        Thread.sleep(6000);
+        app.tripLocation = textBox.getText();
+        createHotel();
+        createFlight();
     }
 
-    private void createFlight(ActionEvent e) {
+    private void createFlight() throws InterruptedException {
         textBox.setText("Enter flight price: ");
-        if (e.getSource() == submit) {
-            app.flightPrice = Integer.parseInt(textBox.getText());
-        }
-        textBox.setText("Enter flight date: ");
-        if (e.getSource() == submit) {
-            app.flightDate = textBox.getText();
-        }
+        Thread.sleep(6000);
+        app.flightPrice = Integer.parseInt(textBox.getText());
         textBox.setText("Enter flight time: ");
-        if (e.getSource() == submit) {
-            app.flightTime = Integer.parseInt(textBox.getText());
-        }
+        Thread.sleep(6000);
+        app.flightTime = Integer.parseInt(textBox.getText());
         textBox.setText("Enter flight name: ");
-        if (e.getSource() == submit) {
-            app.flightName = textBox.getText();
-        }
-        textBox.setText("Enter flight location: ");
-        if (e.getSource() == submit) {
-            app.flightLocation = textBox.getText();
-        }
+        Thread.sleep(6000);
+        app.flightName = textBox.getText();
     }
 
-    private void createHotel(ActionEvent e) {
+    private void createHotel() throws InterruptedException {
         textBox.setText("Enter hotel name: ");
-        if (e.getSource() == submit) {
-            app.hotelName = textBox.getText();
-        }
+        Thread.sleep(6000);
+        app.hotelName = textBox.getText();
         textBox.setText("Enter hotel price: ");
-        if (e.getSource() == submit) {
-            app.hotelPrice = Integer.parseInt(textBox.getText());
-        }
-        textBox.setText("Enter hotel date: ");
-        if (e.getSource() == submit) {
-            app.hotelDate = textBox.getText();
-        }
-        textBox.setText("Enter hotel location: ");
-        if (e.getSource() == submit) {
-            app.hotelLocation = textBox.getText();
-        }
+        Thread.sleep(6000);
+        app.hotelPrice = Integer.parseInt(textBox.getText());
     }
 }

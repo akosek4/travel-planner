@@ -62,20 +62,17 @@ public class Reader {
     private void addTrip(ListOfTrips lot, JSONObject object) {
         String tripName = object.getString("tripName");
         String tripDate = object.getString("tripDate");
+        String tripLocation = object.getString("tripLocation");
         int flightPrice = object.getInt("flightPrice");
-        String flightDate = object.getString("flightDate");
         int flightTime = object.getInt("flightTime");
         String flightName = object.getString("flightName");
-        String flightLocation = object.getString("flightLocation");
         String hotelName = object.getString("hotelName");
         int hotelPrice = object.getInt("hotelPrice");
-        String hotelDate = object.getString("hotelDate");
-        String hotelLocation = object.getString("hotelLocation");
 
-        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightName, flightLocation);
-        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelLocation);
+        Flight flight = new Flight(flightPrice, flightTime, flightName);
+        Hotel hotel = new Hotel(hotelName, hotelPrice);
 
-        Trip trip = new Trip(tripName, tripDate, flight, hotel);
+        Trip trip = new Trip(tripName, tripDate, tripLocation, flight, hotel);
         lot.addTrip(trip);
     }
 

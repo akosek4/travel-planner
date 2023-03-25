@@ -15,18 +15,14 @@ public class GUIhelper {
     private static final String data = "./data/listoftrip.json";
     protected ListOfTrips trips;
     private Trip trip;
-    protected String tripsName;
     protected String tripName;
     protected String tripDate;
+    protected String tripLocation;
     protected String hotelName;
     protected int hotelPrice;
-    protected String hotelDate;
-    protected String hotelLocation;
     protected int flightPrice;
-    protected String flightDate;
     protected int flightTime;
     protected String flightName;
-    protected String flightLocation;
     private Reader reader;
     private Writer writer;
 
@@ -49,8 +45,7 @@ public class GUIhelper {
     //EFFECTS: processes user command
     protected void processListOfTripCommand(String command) {
         if (command.equals("a")) {
-            addTrip(tripName, tripDate, hotelName, hotelPrice, hotelDate, hotelLocation, flightPrice,
-                    flightDate, flightTime, flightName, flightLocation);
+            addTrip(tripName, tripDate, tripLocation, hotelName, hotelPrice, flightPrice, flightTime, flightName);
         } else if (command.equals("r")) {
             removeTrip(tripName);
         } else if (command.equals("save")) {
@@ -72,11 +67,11 @@ public class GUIhelper {
 
     //MODIFIES: this
     //EFFECTS: adds a trip to trips
-    private void addTrip(String name, String date, String hotelName, int hotelPrice, String hotelDate, String hotelLocation, int flightPrice, String flightDate, int flightTime,
-                         String flightName, String flightLocation) {
-        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightName, flightLocation);
-        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelLocation);
-        Trip trip = new Trip(name, date, flight, hotel);
+    private void addTrip(String name, String date, String location, String hotelName, int hotelPrice, int flightPrice,
+                         int flightTime, String flightName) {
+        Flight flight = new Flight(flightPrice, flightTime, flightName);
+        Hotel hotel = new Hotel(hotelName, hotelPrice);
+        Trip trip = new Trip(name, date, location, flight, hotel);
         trips.addTrip(trip);
     }
 

@@ -21,15 +21,12 @@ public class ListOfTripApp {
     private Flight flight;
     private String tripName;
     private String tripDate;
+    private String tripLocation;
     private String hotelName;
     private int hotelPrice;
-    private String hotelDate;
-    private String hotelLocation;
     private int flightPrice;
-    private String flightDate;
     private int flightTime;
     private String flightName;
-    private String flightLocation;
     private Reader reader;
     private Writer writer;
 
@@ -137,8 +134,8 @@ public class ListOfTripApp {
             makeHotel();
             makeFlight();
 
-            addTrip(tripName, tripDate, hotelName, hotelPrice, hotelDate, hotelLocation, flightPrice,
-                    flightDate, flightTime, flightName, flightLocation);
+            addTrip(tripName, tripDate, tripLocation, hotelName, hotelPrice, flightPrice,
+                    flightTime, flightName);
         } else if (command.equals("r")) {
             displayNamePrompt();
             String tripName = input.next();
@@ -160,6 +157,8 @@ public class ListOfTripApp {
         tripName = input.next();
         displayDatePrompt();
         tripDate = input.next();
+        displayLocationPrompt();
+        tripLocation = input.next();
     }
 
     //MODIFIES: this
@@ -170,10 +169,6 @@ public class ListOfTripApp {
         hotelName = input.next();
         displayPricePrompt();
         hotelPrice = input.nextInt();
-        displayDatePrompt();
-        hotelDate = input.next();
-        displayLocationPrompt();
-        hotelLocation = input.next();
     }
 
     //MODIFIES: this
@@ -182,14 +177,10 @@ public class ListOfTripApp {
         displayFlightPrompt();
         displayPricePrompt();
         flightPrice = input.nextInt();
-        displayDatePrompt();
-        flightDate = input.next();
         displayTimePrompt();
         flightTime = input.nextInt();
         displayNamePrompt();
         flightName = input.next();
-        displayLocationPrompt();
-        flightLocation = input.next();
     }
 
     //MODIFIES: this
@@ -203,12 +194,11 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: adds a trip to trips
-    private void addTrip(String name, String date, String hotelName, int hotelPrice, String hotelDate,
-                         String hotelLocation, int flightPrice, String flightDate, int flightTime,
-                         String flightName, String flightLocation) {
-        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightName, flightLocation);
-        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelLocation);
-        Trip trip = new Trip(name, date, flight, hotel);
+    private void addTrip(String name, String date, String location, String hotelName, int hotelPrice, int flightPrice,
+                         int flightTime, String flightName) {
+        Flight flight = new Flight(flightPrice, flightTime, flightName);
+        Hotel hotel = new Hotel(hotelName, hotelPrice);
+        Trip trip = new Trip(name, date, location, flight, hotel);
         trips.addTrip(trip);
     }
 
@@ -307,6 +297,7 @@ public class ListOfTripApp {
         System.out.println("\tv -> view all details");
         System.out.println("\td -> view date");
         System.out.println("\tp -> view price");
+        System.out.println("\tl -> view location");
         System.out.println("\th -> view hotel");
         System.out.println("\tf -> view flight");
         System.out.println("\tm -> main menu");
@@ -321,6 +312,8 @@ public class ListOfTripApp {
             viewDate();
         } else if (command.equals("p")) {
             viewPrice();
+        }  else if (command.equals("l")) {
+            viewLocation();
         } else if (command.equals("h")) {
             viewHotel();
         } else if (command.equals("f")) {
@@ -338,6 +331,11 @@ public class ListOfTripApp {
     //EFFECTS: displays trip date
     private void viewDate() {
         System.out.println(trip.getTripDate());
+    }
+
+    //EFFECTS: displays trip location
+    private void viewLocation() {
+        System.out.println(trip.getTripLocation());
     }
 
     //MODIFIES: this
@@ -363,10 +361,11 @@ public class ListOfTripApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: displays trip date, name, and price
+    //EFFECTS: displays trip date, name, and location, and price
     private void viewTripDetails() {
         System.out.println(trip.getTripDate());
         System.out.println(trip.getTripName());
+        System.out.println(trip.getTripLocation());
         System.out.println(trip.getTripPrice());
     }
 
@@ -377,8 +376,6 @@ public class ListOfTripApp {
         System.out.println("\ta -> change all hotel details");
         System.out.println("\tp -> change price");
         System.out.println("\tn -> change name");
-        System.out.println("\tda -> change date");
-        System.out.println("\tl -> change location");
         System.out.println("\tm -> main menu");
     }
 
@@ -395,27 +392,7 @@ public class ListOfTripApp {
             displayNamePrompt();
             String hotelName = input.next();
             changeHotelName(hotelName);
-        } else if (command.equals("da")) {
-            displayDatePrompt();
-            String hotelDate = input.next();
-            changeHotelDate(hotelDate);
-        } else if (command.equals("l")) {
-            displayLocationPrompt();
-            String hotelLoc = input.next();
-            changeHotelLocation(hotelLoc);
         }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes hotel location
-    private void changeHotelLocation(String location) {
-        hotel.changeLocation(location);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes hotel date
-    private void changeHotelDate(String date) {
-        hotel.changeDate(date);
     }
 
     //MODIFIES: this
@@ -431,11 +408,9 @@ public class ListOfTripApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: displays hotel price, date, location, duration, and name
+    //EFFECTS: displays hotel price and name
     private void viewHotelDetails() {
         System.out.println(hotel.getHotelPrice());
-        System.out.println(hotel.getHotelDate());
-        System.out.println(hotel.getHotelLocation());
         System.out.println(hotel.getHotelName());
     }
 
@@ -447,8 +422,6 @@ public class ListOfTripApp {
         System.out.println("\tt -> change time");
         System.out.println("\tp -> change price");
         System.out.println("\ti -> change name");
-        System.out.println("\tda -> change date");
-        System.out.println("\tdes -> change location");
         System.out.println("\tm -> main menu");
     }
 
@@ -466,25 +439,7 @@ public class ListOfTripApp {
         } else if (command.equals("i")) {
             displayNamePrompt();
             changeFlightName(input.next());
-        } else if (command.equals("d")) {
-            displayDatePrompt();
-            changeFlightDate(input.next());
-        } else if (command.equals("des")) {
-            displayLocationPrompt();
-            changeFlightLocation(input.next());
         }
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes flight destination
-    private void changeFlightLocation(String destination) {
-        flight.changeLocation(destination);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: changes flight date
-    private void changeFlightDate(String date) {
-        flight.changeDate(date);
     }
 
     //MODIFIES: this
@@ -506,13 +461,11 @@ public class ListOfTripApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: displays flight price, id, date, departure, time, and destination
+    //EFFECTS: displays flight price, id, and time
     private void viewFlightDetails() {
         System.out.println(flight.getFlightPrice());
         System.out.println(flight.getFlightName());
-        System.out.println(flight.getFlightDate());
         System.out.println(flight.getFlightTime());
-        System.out.println(flight.getFlightLocation());
     }
 
     //MODIFIES: this
