@@ -24,14 +24,12 @@ public class ListOfTripApp {
     private String hotelName;
     private int hotelPrice;
     private String hotelDate;
-    private int hotelDuration;
     private String hotelLocation;
     private int flightPrice;
     private String flightDate;
     private int flightTime;
-    private String flightID;
-    private String flightDes;
-    private String flightDep;
+    private String flightName;
+    private String flightLocation;
     private Reader reader;
     private Writer writer;
 
@@ -67,9 +65,7 @@ public class ListOfTripApp {
     private void init() {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-        displayNamePrompt();
-        String tripsName = input.next();
-        trips = new ListOfTrips(tripsName);
+        trips = new ListOfTrips();
         reader = new Reader(data);
         writer = new Writer(data);
     }
@@ -93,17 +89,12 @@ public class ListOfTripApp {
 
     //EFFECTS: displays prompt for user to input date selection
     private void displayDatePrompt() {
-        System.out.println("\n Write date (in word format): ");
+        System.out.println("\n Write date: ");
     }
 
     //EFFECTS: displays prompt for user to input price selection
     private void displayPricePrompt() {
         System.out.println("\n Write price (int): ");
-    }
-
-    //EFFECTS: displays prompt for user to input duration selection
-    private void displayDurationPrompt() {
-        System.out.println("\n Write duration (int): ");
     }
 
     //EFFECTS: displays prompt for user to input location selection
@@ -116,23 +107,13 @@ public class ListOfTripApp {
         System.out.println("\n Write time (int): ");
     }
 
-    //EFFECTS: displays prompt for user to input destination selection
-    private void displayDestinationPrompt() {
-        System.out.println("\n Write destination: ");
-    }
-
-    //EFFECTS: displays prompt for user to input departure selection
-    private void displayDeparturePrompt() {
-        System.out.println("\n Write departure: ");
-    }
-
     //EFFECTS: displays prompt for user to input hotel selection
     private void displayHotelPrompt() {
         System.out.println("\n Write hotel details: ");
     }
 
     //EFFECTS: displays prompt for user to input flight selection
-    private void displayFLightPrompt() {
+    private void displayFlightPrompt() {
         System.out.println("\n Write flight details: ");
     }
 
@@ -156,8 +137,8 @@ public class ListOfTripApp {
             makeHotel();
             makeFlight();
 
-            addTrip(tripName, tripDate, hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation, flightPrice,
-                    flightDate, flightTime, flightID, flightDes, flightDep);
+            addTrip(tripName, tripDate, hotelName, hotelPrice, hotelDate, hotelLocation, flightPrice,
+                    flightDate, flightTime, flightName, flightLocation);
         } else if (command.equals("r")) {
             displayNamePrompt();
             String tripName = input.next();
@@ -191,8 +172,6 @@ public class ListOfTripApp {
         hotelPrice = input.nextInt();
         displayDatePrompt();
         hotelDate = input.next();
-        displayDurationPrompt();
-        hotelDuration = input.nextInt();
         displayLocationPrompt();
         hotelLocation = input.next();
     }
@@ -200,7 +179,7 @@ public class ListOfTripApp {
     //MODIFIES: this
     //EFFECTS: makes a flight to user specifications
     private void makeFlight() {
-        displayFLightPrompt();
+        displayFlightPrompt();
         displayPricePrompt();
         flightPrice = input.nextInt();
         displayDatePrompt();
@@ -208,11 +187,9 @@ public class ListOfTripApp {
         displayTimePrompt();
         flightTime = input.nextInt();
         displayNamePrompt();
-        flightID = input.next();
-        displayDestinationPrompt();
-        flightDes = input.next();
-        displayDeparturePrompt();
-        flightDep = input.next();
+        flightName = input.next();
+        displayLocationPrompt();
+        flightLocation = input.next();
     }
 
     //MODIFIES: this
@@ -227,10 +204,10 @@ public class ListOfTripApp {
     //MODIFIES: this
     //EFFECTS: adds a trip to trips
     private void addTrip(String name, String date, String hotelName, int hotelPrice, String hotelDate,
-                         int hotelDuration, String hotelLocation, int flightPrice, String flightDate, int flightTime,
-                         String flightID, String flightDes, String flightDep) {
-        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightID, flightDes, flightDep);
-        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation);
+                         String hotelLocation, int flightPrice, String flightDate, int flightTime,
+                         String flightName, String flightLocation) {
+        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightName, flightLocation);
+        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelLocation);
         Trip trip = new Trip(name, date, flight, hotel);
         trips.addTrip(trip);
     }
@@ -398,7 +375,6 @@ public class ListOfTripApp {
         System.out.println("\n Select from:");
         System.out.println("\tv -> view all details");
         System.out.println("\ta -> change all hotel details");
-        System.out.println("\tdu -> change duration");
         System.out.println("\tp -> change price");
         System.out.println("\tn -> change name");
         System.out.println("\tda -> change date");
@@ -411,10 +387,6 @@ public class ListOfTripApp {
     private void processHotelCommand(String command) {
         if (command.equals("v")) {
             viewHotelDetails();
-        } else if (command.equals("du")) {
-            displayDurationPrompt();
-            int hotelDuration = input.nextInt();
-            changeHotelDuration(hotelDuration);
         } else if (command.equals("p")) {
             displayPricePrompt();
             int hotelPrice = input.nextInt();
@@ -459,18 +431,11 @@ public class ListOfTripApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: changes hotel duration
-    private void changeHotelDuration(int duration) {
-        hotel.changeDuration(duration);
-    }
-
-    //MODIFIES: this
     //EFFECTS: displays hotel price, date, location, duration, and name
     private void viewHotelDetails() {
         System.out.println(hotel.getHotelPrice());
         System.out.println(hotel.getHotelDate());
         System.out.println(hotel.getHotelLocation());
-        System.out.println(hotel.getHotelDuration());
         System.out.println(hotel.getHotelName());
     }
 
@@ -481,10 +446,9 @@ public class ListOfTripApp {
         System.out.println("\tv -> view all details");
         System.out.println("\tt -> change time");
         System.out.println("\tp -> change price");
-        System.out.println("\ti -> change ID");
+        System.out.println("\ti -> change name");
         System.out.println("\tda -> change date");
-        System.out.println("\tdes -> change destination location");
-        System.out.println("\tdep -> change departure location");
+        System.out.println("\tdes -> change location");
         System.out.println("\tm -> main menu");
     }
 
@@ -501,29 +465,20 @@ public class ListOfTripApp {
             changeFlightPrice(input.nextInt());
         } else if (command.equals("i")) {
             displayNamePrompt();
-            changeFlightID(input.next());
+            changeFlightName(input.next());
         } else if (command.equals("d")) {
             displayDatePrompt();
             changeFlightDate(input.next());
         } else if (command.equals("des")) {
-            displayDestinationPrompt();
-            changeFlightDestination(input.next());
-        } else if (command.equals("dep")) {
-            displayDeparturePrompt();
-            changeFlightDeparture(input.next());
+            displayLocationPrompt();
+            changeFlightLocation(input.next());
         }
     }
 
     //MODIFIES: this
-    //EFFECTS: changes flight departure location
-    private void changeFlightDeparture(String departure) {
-        flight.changeDeparture(departure);
-    }
-
-    //MODIFIES: this
     //EFFECTS: changes flight destination
-    private void changeFlightDestination(String destination) {
-        flight.changeDestination(destination);
+    private void changeFlightLocation(String destination) {
+        flight.changeLocation(destination);
     }
 
     //MODIFIES: this
@@ -534,8 +489,8 @@ public class ListOfTripApp {
 
     //MODIFIES: this
     //EFFECTS: changes flight ID
-    private void changeFlightID(String id) {
-        flight.changeID(id);
+    private void changeFlightName(String id) {
+        flight.changeName(id);
     }
 
     //MODIFIES: this
@@ -554,11 +509,10 @@ public class ListOfTripApp {
     //EFFECTS: displays flight price, id, date, departure, time, and destination
     private void viewFlightDetails() {
         System.out.println(flight.getFlightPrice());
-        System.out.println(flight.getFlightID());
+        System.out.println(flight.getFlightName());
         System.out.println(flight.getFlightDate());
-        System.out.println(flight.getFlightDeparture());
         System.out.println(flight.getFlightTime());
-        System.out.println(flight.getFLightDestination());
+        System.out.println(flight.getFlightLocation());
     }
 
     //MODIFIES: this
@@ -566,7 +520,7 @@ public class ListOfTripApp {
     private void loadTrips() {
         try {
             trips = reader.read();
-            System.out.println("Loaded " + trips.getTripsName() + " from " + data);
+            System.out.println("Loaded trips from " + data);
         } catch (IOException e) {
             System.out.println("Unable to read from " + data);
         }
@@ -578,7 +532,7 @@ public class ListOfTripApp {
             writer.open();
             writer.write(trips);
             writer.close();
-            System.out.println("Saved " + trips.getTripsName() + " to " + data);
+            System.out.println("Saved trips to " + data);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + data);
         }

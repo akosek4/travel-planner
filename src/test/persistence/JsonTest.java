@@ -17,8 +17,8 @@ public class JsonTest {
         assertEquals(flightPrice, trip.getFlight().getFlightPrice());
         assertEquals(flightDate, trip.getFlight().getFlightDate());
         assertEquals(flightTime, trip.getFlight().getFlightTime());
-        assertEquals(flightID, trip.getFlight().getFlightID());
-        assertEquals(flightDes, trip.getFlight().getFLightDestination());
+        assertEquals(flightID, trip.getFlight().getFlightName());
+        assertEquals(flightDes, trip.getFlight().getFlightLocation());
         assertEquals(flightDep, trip.getFlight().getFlightDeparture());
         assertEquals(hotelName, trip.getHotel().getHotelName());
         assertEquals(hotelPrice, trip.getHotel().getHotelPrice());

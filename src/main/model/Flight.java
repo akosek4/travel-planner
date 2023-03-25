@@ -7,19 +7,16 @@ public class Flight {
     private int price;
     private String date;
     private int time;
-    private String identification;
-    private String destination;
-    private String departure;
+    private String name;
+    private String location;
 
-    // EFFECTS: creates a flight with a price, date, time, ID, destination, and departure location
-    public Flight(int price, String date, int time, String identification,
-                  String destination, String departure) {
+    // EFFECTS: creates a flight with a price, date, time, ID (name), and destination location
+    public Flight(int price, String date, int time, String name, String location) {
         this.price = price;
         this.date = date;
         this.time = time;
-        this.identification = identification;
-        this.destination = destination;
-        this.departure = departure;
+        this.name = name;
+        this.location = location;
     }
 
     // REQUIRES: newPrice >= 0
@@ -43,29 +40,23 @@ public class Flight {
     }
 
     // MODIFIES: this
-    // EFFECTS: changes the current ID to the new ID
-    public void changeID(String newID) {
-        identification = newID;
+    // EFFECTS: changes the current name to the new name
+    public void changeName(String newName) {
+        name = newName;
     }
 
     // MODIFIES: this
-    // EFFECTS: changes the current departure to the new departure
-    public void changeDeparture(String newDeparture) {
-        departure = newDeparture;
-    }
-
-    // MODIFIES: this
-    // EFFECTS: changes the current destination to the new destination
-    public void changeDestination(String newDestination) {
-        destination = newDestination;
+    // EFFECTS: changes the current location to the new location
+    public void changeLocation(String newLocation) {
+        location = newLocation;
     }
 
     public int getFlightPrice() {
         return price;
     }
 
-    public String getFlightID() {
-        return identification;
+    public String getFlightName() {
+        return name;
     }
 
     public int getFlightTime() {
@@ -76,13 +67,10 @@ public class Flight {
         return date;
     }
 
-    public String getFLightDestination() {
-        return destination;
+    public String getFlightLocation() {
+        return location;
     }
 
-    public String getFlightDeparture() {
-        return departure;
-    }
 
 
 }

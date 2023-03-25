@@ -23,14 +23,14 @@ public class FlightTest {
     public void testConstructor() {
         assertEquals(300, f1.getFlightPrice());
         assertEquals(230, f2.getFlightPrice());
-        assertEquals("AC567", f1.getFlightID());
-        assertEquals("UN888", f2.getFlightID());
+        assertEquals("AC567", f1.getFlightName());
+        assertEquals("UN888", f2.getFlightName());
         assertEquals(900, f1.getFlightTime());
         assertEquals(1500, f2.getFlightTime());
         assertEquals("December 1", f1.getFlightDate());
         assertEquals("April 29", f2.getFlightDate());
-        assertEquals("YVR", f1.getFLightDestination());
-        assertEquals("SFO", f2.getFLightDestination());
+        assertEquals("YVR", f1.getFlightLocation());
+        assertEquals("SFO", f2.getFlightLocation());
         assertEquals("SFO", f1.getFlightDeparture());
         assertEquals("YVR", f2.getFlightDeparture());
 
@@ -62,10 +62,10 @@ public class FlightTest {
 
     @Test
     public void changeIDTest() {
-        f1.changeID("AC555");
-        f2.changeID("UN123");
-        assertEquals("AC555", f1.getFlightID());
-        assertEquals("UN123", f2.getFlightID());
+        f1.changeName("AC555");
+        f2.changeName("UN123");
+        assertEquals("AC555", f1.getFlightName());
+        assertEquals("UN123", f2.getFlightName());
     }
 
     @Test
@@ -78,10 +78,10 @@ public class FlightTest {
 
     @Test
     public void changeDestinationTest() {
-        f1.changeDestination("SJC");
-        f2.changeDestination("YYC");
-        assertEquals("SJC", f1.getFLightDestination());
-        assertEquals("YYC", f2.getFLightDestination());
+        f1.changeLocation("SJC");
+        f2.changeLocation("YYC");
+        assertEquals("SJC", f1.getFlightLocation());
+        assertEquals("YYC", f2.getFlightLocation());
     }
 
 

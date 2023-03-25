@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ListOfTrips implements Writable {
     private List<Trip> trips;
-    private String name;
     private List<Trip> jan = new ArrayList<>();
     private List<Trip> feb = new ArrayList<>();
     private List<Trip> mar = new ArrayList<>();
@@ -25,9 +24,8 @@ public class ListOfTrips implements Writable {
     private List<Trip> nov = new ArrayList<>();
     private List<Trip> dec = new ArrayList<>();
 
-    // EFFECTS: creates a list of trips with a name and an empty list of trips
-    public ListOfTrips(String name) {
-        this.name = name;
+    // EFFECTS: creates a list of trips with an empty list of trips
+    public ListOfTrips() {
         this.trips = new ArrayList<>();
     }
 
@@ -250,7 +248,6 @@ public class ListOfTrips implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", name);
         json.put("trips", tripsToJson());
         return json;
     }
@@ -375,10 +372,6 @@ public class ListOfTrips implements Writable {
             }
         }
         return null;
-    }
-
-    public String getTripsName() {
-        return name;
     }
 
     public List<String> getListOfTripsInfo() {

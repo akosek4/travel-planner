@@ -1,37 +1,14 @@
-{
-    "trips": [
-        {
-            "flightDes": "3",
-            "flightDate": "3",
-            "flightPrice": 3,
-            "flightID": "3",
-            "hotelDate": "3",
-            "hotelName": "3",
-            "hotelLocation": "3",
-            "hotelDuration": 3,
-            "hotelPrice": 3,
-            "tripDate": "3",
-            "tripPrice": 6,
-            "tripName": "3",
-            "flightTime": 3,
-            "flightDep": "3"
-        },
-        {
-            "flightDes": "3",
-            "flightDate": "3",
-            "flightPrice": 3,
-            "flightID": "3",
-            "hotelDate": "3",
-            "hotelName": "3",
-            "hotelLocation": "3",
-            "hotelDuration": 3,
-            "hotelPrice": 3,
-            "tripDate": "3",
-            "tripPrice": 6,
-            "tripName": "3",
-            "flightTime": 3,
-            "flightDep": "3"
-        }
-    ],
-    "name": "k"
-}
+{"trips": [{
+    "hotelPrice": 200,
+    "flightDate": "ac555",
+    "tripDate": "dec 10",
+    "flightPrice": 300,
+    "flightName": "ac444",
+    "tripPrice": 500,
+    "tripName": "aly",
+    "flightTime": 1900,
+    "hotelDate": "dec 10",
+    "flightLocation": "flordia",
+    "hotelName": "marriot",
+    "hotelLocation": "flordia"
+}]}

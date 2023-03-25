@@ -42,8 +42,7 @@ public class Reader {
     
     //EFFECTS: parses ListOfTrips from object
     private ListOfTrips parseTrips(JSONObject object) {
-        String name = object.getString("name");
-        ListOfTrips lot = new ListOfTrips(name);
+        ListOfTrips lot = new ListOfTrips();
         addTrips(lot, object);
         return lot;
     }
@@ -66,17 +65,15 @@ public class Reader {
         int flightPrice = object.getInt("flightPrice");
         String flightDate = object.getString("flightDate");
         int flightTime = object.getInt("flightTime");
-        String flightID = object.getString("flightID");
-        String flightDes = object.getString("flightDes");
-        String flightDep = object.getString("flightDep");
+        String flightName = object.getString("flightName");
+        String flightLocation = object.getString("flightLocation");
         String hotelName = object.getString("hotelName");
         int hotelPrice = object.getInt("hotelPrice");
         String hotelDate = object.getString("hotelDate");
-        int hotelDuration = object.getInt("hotelDuration");
         String hotelLocation = object.getString("hotelLocation");
 
-        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightID, flightDes, flightDep);
-        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelDuration, hotelLocation);
+        Flight flight = new Flight(flightPrice, flightDate, flightTime, flightName, flightLocation);
+        Hotel hotel = new Hotel(hotelName, hotelPrice, hotelDate, hotelLocation);
 
         Trip trip = new Trip(tripName, tripDate, flight, hotel);
         lot.addTrip(trip);

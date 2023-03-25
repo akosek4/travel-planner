@@ -42,21 +42,15 @@ public class Trip implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: changes the current ID to the new ID
-    public void changeFlightID(String newID) {
-        flight.changeID(newID);
+    // EFFECTS: changes the current name to the new name
+    public void changeFlightName(String newName) {
+        flight.changeName(newName);
     }
 
     // MODIFIES: this
-    // EFFECTS: changes the current departure to the new departure
-    public void changeFlightDeparture(String newDeparture) {
-        flight.changeDeparture(newDeparture);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: changes the current destination to the new destination
-    public void changeFlightDestination(String newDestination) {
-        flight.changeDestination(newDestination);
+    // EFFECTS: changes the current location to the new location
+    public void changeFlightLocation(String newLocation) {
+        flight.changeLocation(newLocation);
     }
 
     // MODIFIES: this
@@ -78,13 +72,6 @@ public class Trip implements Writable {
         hotel.changeDate(hotelDate);
     }
 
-    // REQUIRES: hotelDuration > 0
-    // MODIFIES: this
-    // EFFECTS: changes the current hotel duration about to the parameter
-    public void changeHotelDuration(int hotelDuration) {
-        hotel.changeDuration(hotelDuration);
-    }
-
     // MODIFIES: this
     // EFFECTS: changes the current hotel location to the parameter
     public void changeHotelLocation(String hotelLocation) {
@@ -93,13 +80,13 @@ public class Trip implements Writable {
 
     // MODIFIES: this
     // EFFECTS: changes the name to a new name
-    public void changeName(String newName) {
+    public void changeTripName(String newName) {
         name = newName;
     }
 
     // MODIFIES: this
     // EFFECTS: changes the date to a new date
-    public void changeDate(String newDate) {
+    public void changeTripDate(String newDate) {
         date = newDate;
     }
 
@@ -134,13 +121,11 @@ public class Trip implements Writable {
         json.put("flightPrice", flight.getFlightPrice());
         json.put("flightDate", flight.getFlightDate());
         json.put("flightTime", flight.getFlightTime());
-        json.put("flightID", flight.getFlightID());
-        json.put("flightDes", flight.getFLightDestination());
-        json.put("flightDep", flight.getFlightDeparture());
+        json.put("flightName", flight.getFlightName());
+        json.put("flightLocation", flight.getFlightLocation());
         json.put("hotelName", hotel.getHotelName());
         json.put("hotelPrice", hotel.getHotelPrice());
         json.put("hotelDate", hotel.getHotelDate());
-        json.put("hotelDuration", hotel.getHotelDuration());
         json.put("hotelLocation", hotel.getHotelLocation());
         return json;
     }

@@ -12,7 +12,7 @@ import java.util.List;
 public class TripsUi extends JFrame implements ActionListener {
     private static final int WIDTH = 600;
     private static final int HEIGHT = 900;
-    private ListOfTripApp app;
+    private GUIhelper app;
     private JLabel title;
     private JPanel menuPanel;
     private JPanel listPanel;
@@ -36,7 +36,8 @@ public class TripsUi extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
         setVisible(true);
 
-        app = new ListOfTripApp(); //TODO: make it so that you don't need to quit before use
+        app = new GUIhelper();
+
 
         createTitle();
 
@@ -95,7 +96,8 @@ public class TripsUi extends JFrame implements ActionListener {
     //EFFECTS: creates a new title to be added to the title panel
     private void createTitle() {
         title = new JLabel();
-        title.setText(app.trips.getTripsName());
+
+        title.setText("List Of Trips");
         title.setHorizontalTextPosition(JLabel.CENTER);
         title.setVerticalTextPosition(JLabel.CENTER);
         title.setFont(new Font("Title", 20, 60));
@@ -137,6 +139,7 @@ public class TripsUi extends JFrame implements ActionListener {
         textBox = new JTextField();
         textBox.setPreferredSize(new Dimension((WIDTH - 150), 100));
         textBox.setFont(new Font("Title", 20, 15));
+
 
         textPanel.add(submit);
         textPanel.add(textBox);
@@ -199,10 +202,12 @@ public class TripsUi extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
             app.processListOfTripCommand("a");
+            createTrip(e);
             addListOfTrips();
         }
         if (e.getSource() == remove) {
             app.processListOfTripCommand("r");
+            textBox.setText("Enter trip name to remove: ");
             addListOfTrips();
         }
         if (e.getSource() == save) {
@@ -212,8 +217,60 @@ public class TripsUi extends JFrame implements ActionListener {
             app.processListOfTripCommand("l");
             addListOfTrips();
         }
+    }
+
+    private void createTrip(ActionEvent e) {
+        textBox.setText("Enter trip name: ");
         if (e.getSource() == submit) {
-            textBox.getText();
+            app.tripName = textBox.getText();
+        }
+        textBox.setText("Enter trip date: ");
+        if (e.getSource() == submit) {
+            app.tripDate = textBox.getText();
+        }
+        createHotel(e);
+        createFlight(e);
+    }
+
+    private void createFlight(ActionEvent e) {
+        textBox.setText("Enter flight price: ");
+        if (e.getSource() == submit) {
+            app.flightPrice = Integer.parseInt(textBox.getText());
+        }
+        textBox.setText("Enter flight date: ");
+        if (e.getSource() == submit) {
+            app.flightDate = textBox.getText();
+        }
+        textBox.setText("Enter flight time: ");
+        if (e.getSource() == submit) {
+            app.flightTime = Integer.parseInt(textBox.getText());
+        }
+        textBox.setText("Enter flight name: ");
+        if (e.getSource() == submit) {
+            app.flightName = textBox.getText();
+        }
+        textBox.setText("Enter flight location: ");
+        if (e.getSource() == submit) {
+            app.flightLocation = textBox.getText();
+        }
+    }
+
+    private void createHotel(ActionEvent e) {
+        textBox.setText("Enter hotel name: ");
+        if (e.getSource() == submit) {
+            app.hotelName = textBox.getText();
+        }
+        textBox.setText("Enter hotel price: ");
+        if (e.getSource() == submit) {
+            app.hotelPrice = Integer.parseInt(textBox.getText());
+        }
+        textBox.setText("Enter hotel date: ");
+        if (e.getSource() == submit) {
+            app.hotelDate = textBox.getText();
+        }
+        textBox.setText("Enter hotel location: ");
+        if (e.getSource() == submit) {
+            app.hotelLocation = textBox.getText();
         }
     }
 }

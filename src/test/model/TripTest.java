@@ -41,16 +41,16 @@ class TripTest {
 
     @Test
     public void changeNameTest() {
-        trip1.changeName("Ski Trip");
-        trip2.changeName("Beach Trip");
+        trip1.changeTripName("Ski Trip");
+        trip2.changeTripName("Beach Trip");
         assertEquals("Ski Trip", trip1.getTripName());
         assertEquals("Beach Trip", trip2.getTripName());
     }
 
     @Test
     public void changeDateTest() {
-        trip1.changeDate("January 1");
-        trip2.changeDate("December 31");
+        trip1.changeTripDate("January 1");
+        trip2.changeTripDate("December 31");
         assertEquals("January 1", trip1.getTripDate());
         assertEquals("December 31", trip2.getTripDate());
     }
@@ -82,10 +82,10 @@ class TripTest {
 
     @Test
     public void changeFlightIDTest() {
-        trip1.changeFlightID("UN123");
-        trip2.changeFlightID("AC456");
-        assertEquals("UN123", trip1.getFlight().getFlightID());
-        assertEquals("AC456", trip2.getFlight().getFlightID());
+        trip1.changeFlightName("UN123");
+        trip2.changeFlightName("AC456");
+        assertEquals("UN123", trip1.getFlight().getFlightName());
+        assertEquals("AC456", trip2.getFlight().getFlightName());
     }
 
     @Test
@@ -98,10 +98,10 @@ class TripTest {
 
     @Test
     public void changeFlightDestinationTest() {
-        trip1.changeFlightDestination("PHX");
-        trip2.changeFlightDestination("MDW");
-        assertEquals("PHX", trip1.getFlight().getFLightDestination());
-        assertEquals("MDW", trip2.getFlight().getFLightDestination());
+        trip1.changeFlightLocation("PHX");
+        trip2.changeFlightLocation("MDW");
+        assertEquals("PHX", trip1.getFlight().getFlightLocation());
+        assertEquals("MDW", trip2.getFlight().getFlightLocation());
     }
 
 
