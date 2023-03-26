@@ -18,12 +18,18 @@ public class TripsUi extends JFrame implements ActionListener {
     private JPanel listPanel;
     private JPanel titlePanel;
     private JPanel textPanel;
+    private JTextField tripNameBox;
+    private JTextField tripDateBox;
+    private JTextField tripLocationBox;
+    private JTextField hotelPriceBox;
+    private JTextField hotelNameBox;
+    private JTextField flightNameBox;
+    private JTextField flightPriceBox;
+    private JTextField flightTimeBox;
     private JButton add;
     private JButton remove;
     private JButton load;
     private JButton save;
-    private JButton submit;
-    private JTextField textBox;
 
 
     //MODIFIES: this and ListOfTripApp
@@ -105,7 +111,7 @@ public class TripsUi extends JFrame implements ActionListener {
 
     //MODIFIES: this
     //EFFECTS: adds the info (date,name, and price) of all trips in list to ListPanel
-    private void addListOfTrips() { //TODO: make it so that list with multiple is not ugly
+    private void addListOfTrips() {
         clearPreviousList();
         List<String> info;
         info = app.getAllTripsInfoForGUI();
@@ -132,17 +138,108 @@ public class TripsUi extends JFrame implements ActionListener {
         listPanel.add(text);
     }
 
-    private void addTextBox() { //TODO: allow user to type in GUI
-        submit = new JButton("Submit");
-        submit.addActionListener(this);
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input trip information to add or remove
+    private void addTextBox() {
+        addTripName();
+        addTripDate();
+        addTripLocation();
+        addHotelName();
+        addHotelPrice();
+        addFlightName();
+        addFlightPrice();
+        addFlightTime();
+    }
 
-        textBox = new JTextField();
-        textBox.setPreferredSize(new Dimension((WIDTH - 150), 100));
-        textBox.setFont(new Font("Title", 20, 15));
+    //MODIFIES: this
+    //EFFECTS: adds a text field for user to input flight times
+    private void addFlightTime() {
+        flightTimeBox = new JTextField();
+        flightTimeBox.setPreferredSize(new Dimension((200), 50));
+        flightTimeBox.setFont(new Font("Title", 20, 15));
+        flightTimeBox.setText("Enter Flight Time");
 
+        textPanel.add(flightTimeBox);
+    }
 
-        textPanel.add(submit);
-        textPanel.add(textBox);
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input flight prices
+    private void addFlightPrice() {
+
+        flightPriceBox = new JTextField();
+        flightPriceBox.setPreferredSize(new Dimension((200), 50));
+        flightPriceBox.setFont(new Font("Title", 20, 15));
+        flightPriceBox.setText("Enter Flight Price");
+
+        textPanel.add(flightPriceBox);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input flight names
+    private void addFlightName() {
+
+        flightNameBox = new JTextField();
+        flightNameBox.setPreferredSize(new Dimension((200), 50));
+        flightNameBox.setFont(new Font("Title", 20, 15));
+        flightNameBox.setText("Enter Flight Name");
+
+        textPanel.add(flightNameBox);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input hotel prices
+    private void addHotelPrice() {
+        hotelPriceBox = new JTextField();
+        hotelPriceBox.setPreferredSize(new Dimension((200), 50));
+        hotelPriceBox.setFont(new Font("Title", 20, 15));
+        hotelPriceBox.setText("Enter Hotel Price");
+
+        textPanel.add(hotelPriceBox);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input hotel names
+    private void addHotelName() {
+        hotelNameBox = new JTextField();
+        hotelNameBox.setPreferredSize(new Dimension((200), 50));
+        hotelNameBox.setFont(new Font("Title", 20, 15));
+        hotelNameBox.setText("Enter Hotel Name");
+
+        textPanel.add(hotelNameBox);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input trip locations
+    private void addTripLocation() {
+        tripLocationBox = new JTextField();
+        tripLocationBox.setPreferredSize(new Dimension((200), 50));
+        tripLocationBox.setFont(new Font("Title", 20, 15));
+        tripLocationBox.setText("Enter Trip Location");
+
+        textPanel.add(tripLocationBox);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input trip dates
+    private void addTripDate() {
+        tripDateBox = new JTextField();
+        tripDateBox.setPreferredSize(new Dimension((200), 50));
+        tripDateBox.setFont(new Font("Title", 20, 15));
+        tripDateBox.setText("Enter Trip Date");
+
+        textPanel.add(tripDateBox);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds text fields for user to input trip names
+    private void addTripName() {
+
+        tripNameBox = new JTextField();
+        tripNameBox.setPreferredSize(new Dimension((200), 50));
+        tripNameBox.setFont(new Font("Title", 20, 15));
+        tripNameBox.setText("Enter Trip Name");
+
+        textPanel.add(tripNameBox);
     }
 
 
@@ -161,7 +258,7 @@ public class TripsUi extends JFrame implements ActionListener {
 
     //MODIFIES: this
     //EFFECTS: creates a button that adds a trip to the list
-    private void updateAdd() {
+    private void updateAdd() {  //TODO: reset textboxes once completed
         add = new JButton();
         add.setBounds(0, 0, 20, 20);
         add.setText("Add Trip");
@@ -196,22 +293,19 @@ public class TripsUi extends JFrame implements ActionListener {
     }
 
 
-    //MODIFIES: ListOfTripsApp
+    //MODIFIES: GUIhelper
     //EFFECTS: alters list of trips by calling correct trip action command
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
-            try {
-                createTrip();
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
+            //TODO: create popup to ensure trip info has been entered
+            createTrip();
             app.processListOfTripCommand("a");
             addListOfTrips();
         }
         if (e.getSource() == remove) {
+            //TODO: create popup to ensure trip name has been entered
             app.processListOfTripCommand("r");
-            textBox.setText("Enter trip name to remove: ");
             addListOfTrips();
         }
         if (e.getSource() == save) {
@@ -223,38 +317,28 @@ public class TripsUi extends JFrame implements ActionListener {
         }
     }
 
-    private void createTrip() throws InterruptedException {
-        textBox.setText("Enter trip name: ");
-        Thread.sleep(6000);
-        app.tripName = textBox.getText();
-        textBox.setText("Enter trip date: ");
-        Thread.sleep(6000);
-        app.tripDate = textBox.getText();
-        textBox.setText("Enter trip location: ");
-        Thread.sleep(6000);
-        app.tripLocation = textBox.getText();
+    //MODIFIES: this and GUIhelper
+    //EFFECTS: creates a trip based off of given trip info
+    private void createTrip() {
+        app.setTripName(tripNameBox.getText());
+        app.setTripDate(tripDateBox.getText());
+        app.setTripLocation(tripLocationBox.getText());
         createHotel();
         createFlight();
     }
 
-    private void createFlight() throws InterruptedException {
-        textBox.setText("Enter flight price: ");
-        Thread.sleep(6000);
-        app.flightPrice = Integer.parseInt(textBox.getText());
-        textBox.setText("Enter flight time: ");
-        Thread.sleep(6000);
-        app.flightTime = Integer.parseInt(textBox.getText());
-        textBox.setText("Enter flight name: ");
-        Thread.sleep(6000);
-        app.flightName = textBox.getText();
+    //MODIFIES: this and GUIhelper
+    //EFFECTS: creates a trip based off of given flight info
+    private void createFlight() {
+        app.setFlightPrice(Integer.parseInt(flightPriceBox.getText()));
+        app.setFlightTime(Integer.parseInt(flightTimeBox.getText()));
+        app.setFlightName(flightNameBox.getText());
     }
 
-    private void createHotel() throws InterruptedException {
-        textBox.setText("Enter hotel name: ");
-        Thread.sleep(6000);
-        app.hotelName = textBox.getText();
-        textBox.setText("Enter hotel price: ");
-        Thread.sleep(6000);
-        app.hotelPrice = Integer.parseInt(textBox.getText());
+    //MODIFIES: this and GUIhelper
+    //EFFECTS: creates a trip based off of given hotel info
+    private void createHotel() {
+        app.setHotelName(hotelNameBox.getText());
+        app.setHotelPrice(Integer.parseInt(hotelPriceBox.getText()));
     }
 }

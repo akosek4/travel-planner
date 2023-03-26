@@ -490,8 +490,4 @@ public class ListOfTripApp {
             System.out.println("Unable to write to file: " + data);
         }
     }
-
-    public List<String> getAllTripsInfoForGUI() {
-        return trips.getListOfTripsInfo();
-    }
 }

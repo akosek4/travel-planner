@@ -13,16 +13,16 @@ import java.util.List;
 
 public class GUIhelper {
     private static final String data = "./data/listoftrip.json";
-    protected ListOfTrips trips;
+    private ListOfTrips trips;
     private Trip trip;
-    protected String tripName;
-    protected String tripDate;
-    protected String tripLocation;
-    protected String hotelName;
-    protected int hotelPrice;
-    protected int flightPrice;
-    protected int flightTime;
-    protected String flightName;
+    private String tripName;
+    private String tripDate;
+    private String tripLocation;
+    private String hotelName;
+    private int hotelPrice;
+    private int flightPrice;
+    private int flightTime;
+    private String flightName;
     private Reader reader;
     private Writer writer;
 
@@ -45,9 +45,9 @@ public class GUIhelper {
     //EFFECTS: processes user command
     protected void processListOfTripCommand(String command) {
         if (command.equals("a")) {
-            addTrip(tripName, tripDate, tripLocation, hotelName, hotelPrice, flightPrice, flightTime, flightName);
+            addTrip();
         } else if (command.equals("r")) {
-            removeTrip(tripName);
+            removeTrip();
         } else if (command.equals("save")) {
             saveTrips();
         } else if (command.equals("l")) {
@@ -60,18 +60,17 @@ public class GUIhelper {
 
     //MODIFIES: this
     //EFFECTS: removes a trip from trips
-    private void removeTrip(String name) {
-        this.trip = trips.getTrip(name);
+    private void removeTrip() {
+        this.trip = trips.getTrip(tripName);
         trips.removeTrip(this.trip);
     }
 
     //MODIFIES: this
     //EFFECTS: adds a trip to trips
-    private void addTrip(String name, String date, String location, String hotelName, int hotelPrice, int flightPrice,
-                         int flightTime, String flightName) {
+    private void addTrip() {
         Flight flight = new Flight(flightPrice, flightTime, flightName);
         Hotel hotel = new Hotel(hotelName, hotelPrice);
-        Trip trip = new Trip(name, date, location, flight, hotel);
+        Trip trip = new Trip(tripName, tripDate, tripLocation, flight, hotel);
         trips.addTrip(trip);
     }
 
@@ -101,4 +100,77 @@ public class GUIhelper {
     public List<String> getAllTripsInfoForGUI() {
         return trips.getListOfTripsInfo();
     }
+
+    public ListOfTrips getTrips() {
+        return trips;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public String getTripName() {
+        return tripName;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public String getTripLocation() {
+        return tripLocation;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public int getHotelPrice() {
+        return hotelPrice;
+    }
+
+    public String getFlightName() {
+        return flightName;
+    }
+
+    public int getFlightTime() {
+        return flightTime;
+    }
+
+    public int getFlightPrice() {
+        return flightPrice;
+    }
+
+    public void setTripName(String name) {
+        tripName = name;
+    }
+
+    public void setTripDate(String date) {
+        tripDate = date;
+    }
+
+    public void setTripLocation(String loc) {
+        tripLocation = loc;
+    }
+
+    public void setHotelName(String name) {
+        hotelName = name;
+    }
+
+    public void setHotelPrice(int price) {
+        hotelPrice = price;
+    }
+
+    public void setFlightName(String name) {
+        flightName = name;
+    }
+
+    public void setFlightTime(int time) {
+        flightTime = time;
+    }
+
+    public void setFlightPrice(int price) {
+        flightPrice = price;
+    }
 }
+
