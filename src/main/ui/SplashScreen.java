@@ -34,12 +34,7 @@ public class SplashScreen {
     // MODIFIES: this
     // EFFECTS: creates the image that will be displayed on the splash screen
     private void createImage() {
-        graphics.setText("Loading...");
         graphics.setIcon(plane);
-        graphics.setVerticalTextPosition(JLabel.TOP);
-        graphics.setHorizontalTextPosition(JLabel.CENTER);
-        graphics.setForeground(Color.BLACK);
-        graphics.setFont(new Font("Title", 20, 30));
         graphics.setIconTextGap(30);
         graphics.setBackground(new Color(243, 243, 243));
         graphics.setOpaque(true);
