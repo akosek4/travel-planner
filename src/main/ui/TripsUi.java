@@ -14,6 +14,7 @@ public class TripsUi extends JFrame implements ActionListener {
     private static final int HEIGHT = 900;
     private GUIhelper app;
     private JLabel title;
+    private JLabel warningMessage;
     private JPanel menuPanel;
     private JPanel listPanel;
     private JPanel titlePanel;
@@ -67,9 +68,16 @@ public class TripsUi extends JFrame implements ActionListener {
     //MODIFIES: this
     //EFFECTS: creates a new menu panel where the options to save, load and alter trips exists
     private void createMenuPanel() {
+        warningMessage = new JLabel();
+        warningMessage.setText("Warning: Make sure all info is entered");
+        warningMessage.setHorizontalTextPosition(JLabel.CENTER);
+        warningMessage.setVerticalTextPosition(JLabel.CENTER);
+        warningMessage.setFont(new Font("Title", 20, 10));
+
         menuPanel = new JPanel();
         menuPanel.setBackground(Color.gray);
-        menuPanel.setPreferredSize(new Dimension(150, 50));
+        menuPanel.setPreferredSize(new Dimension(200, 50));
+        menuPanel.add(warningMessage);
     }
 
     //MODIFIES: this
@@ -258,7 +266,7 @@ public class TripsUi extends JFrame implements ActionListener {
 
     //MODIFIES: this
     //EFFECTS: creates a button that adds a trip to the list
-    private void updateAdd() {  //TODO: reset textboxes once completed
+    private void updateAdd() {
         add = new JButton();
         add.setBounds(0, 0, 20, 20);
         add.setText("Add Trip");
@@ -298,15 +306,16 @@ public class TripsUi extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
-            //TODO: create popup to ensure trip info has been entered
             createTrip();
             app.processListOfTripCommand("a");
             addListOfTrips();
+            resetTextBoxes();
         }
         if (e.getSource() == remove) {
-            //TODO: create popup to ensure trip name has been entered
+            app.setTripName(tripNameBox.getText());
             app.processListOfTripCommand("r");
             addListOfTrips();
+            resetTextBoxes();
         }
         if (e.getSource() == save) {
             app.processListOfTripCommand("save");
@@ -315,6 +324,17 @@ public class TripsUi extends JFrame implements ActionListener {
             app.processListOfTripCommand("l");
             addListOfTrips();
         }
+    }
+
+    private void resetTextBoxes() {
+        tripNameBox.setText("Enter Trip Name");
+        tripDateBox.setText("Enter Trip Date");
+        tripLocationBox.setText("Enter Trip Location");
+        hotelPriceBox.setText("Enter Hotel Price");
+        hotelNameBox.setText("Enter Hotel Name");
+        flightNameBox.setText("Enter Flight Name");
+        flightPriceBox.setText("Enter Flight Price");
+        flightTimeBox.setText("Enter Flight Time");
     }
 
     //MODIFIES: this and GUIhelper
