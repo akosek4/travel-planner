@@ -70,6 +70,12 @@ public class Trip implements Writable {
         date = newDate;
     }
 
+    // MODIFIES: this
+    // EFFECTS: changes the date to a new location
+    public void changeTripLocation(String newLocation) {
+        location = newLocation;
+    }
+
     public String getTripName() {
         return name;
     }

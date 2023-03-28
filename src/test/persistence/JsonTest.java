@@ -9,21 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 //Represents the tests to check if read trips are correct
 
 public class JsonTest {
-    protected void checkTrip(String tripName, String tripDate, int flightPrice, String flightDate, int flightTime,
-    String flightID, String flightDes, String flightDep, String hotelName, int hotelPrice, String hotelDate,
-    int hotelDuration, String hotelLocation, Trip trip) {
+    protected void checkTrip(String tripName, String tripDate, String tripLocation, int flightPrice, int flightTime,
+    String flightName, String hotelName, int hotelPrice, Trip trip) {
         assertEquals(tripName, trip.getTripName());
         assertEquals(tripDate, trip.getTripDate());
+        assertEquals(tripLocation, trip.getTripLocation());
         assertEquals(flightPrice, trip.getFlight().getFlightPrice());
-        assertEquals(flightDate, trip.getFlight().getFlightDate());
         assertEquals(flightTime, trip.getFlight().getFlightTime());
-        assertEquals(flightID, trip.getFlight().getFlightName());
-        assertEquals(flightDes, trip.getFlight().getFlightLocation());
-        assertEquals(flightDep, trip.getFlight().getFlightDeparture());
+        assertEquals(flightName, trip.getFlight().getFlightName());
         assertEquals(hotelName, trip.getHotel().getHotelName());
         assertEquals(hotelPrice, trip.getHotel().getHotelPrice());
-        assertEquals(hotelDate, trip.getHotel().getHotelDate());
-        assertEquals(hotelDuration, trip.getHotel().getHotelDuration());
-        assertEquals(hotelLocation, trip.getHotel().getHotelLocation());
     }
 }

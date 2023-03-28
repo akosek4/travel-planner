@@ -33,8 +33,10 @@ more convenient and prevent logistical problems from occurring.
 - As a user, I want to be able to load my list of trips from file if I choose to.
 
 ## Instructions for Grader
-- You can add multiple trips to a list of trips by clicking the add trip button.
-- You can remove trips from a list of trips by clicking the remove trip button.
+- You can add multiple trips to a list of trips by entering all trip information in the specified text fields and 
+  then clicking the add trip button.
+- You can remove trips from a list of trips by entering the name of the trip to remove in the specified text field and 
+  then clicking the remove trip button.
 - You can locate my visual component by viewing the splash screen that occurs when first opening the application.
 - You can save the state of my application by clicking the save button.
 - You can reload the state of my application by clicking the load button.

@@ -374,6 +374,7 @@ public class ListOfTrips implements Writable {
         return null;
     }
 
+    //EFFECTS: creates a list of names,dates, prices, and locations of each trip in list
     public List<String> getListOfTripsInfo() {
         List<String> result = new ArrayList<>();
         for (Trip t : trips) {

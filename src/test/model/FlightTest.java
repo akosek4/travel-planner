@@ -13,10 +13,10 @@ public class FlightTest {
 
     @BeforeEach
     public void setup() {
-        f1 = new Flight(300, "December 1", 900,
-                "AC567", "YVR", "SFO");
-        f2  = new Flight(230, "April 29", 1500,
-                "UN888", "SFO", "YVR");
+        f1 = new Flight(300, 900,
+                "AC567");
+        f2  = new Flight(230, 1500,
+                "UN888");
     }
 
     @Test
@@ -27,13 +27,6 @@ public class FlightTest {
         assertEquals("UN888", f2.getFlightName());
         assertEquals(900, f1.getFlightTime());
         assertEquals(1500, f2.getFlightTime());
-        assertEquals("December 1", f1.getFlightDate());
-        assertEquals("April 29", f2.getFlightDate());
-        assertEquals("YVR", f1.getFlightLocation());
-        assertEquals("SFO", f2.getFlightLocation());
-        assertEquals("SFO", f1.getFlightDeparture());
-        assertEquals("YVR", f2.getFlightDeparture());
-
     }
 
     @Test
@@ -44,13 +37,6 @@ public class FlightTest {
         assertEquals(0, f2.getFlightPrice());
     }
 
-    @Test
-    public void changeDateTest() {
-        f1.changeDate("December 3");
-        f2.changeDate("May 31");
-        assertEquals("December 3", f1.getFlightDate());
-        assertEquals("May 31", f2.getFlightDate());
-    }
 
     @Test
     public void changeTimeTest() {
@@ -61,27 +47,11 @@ public class FlightTest {
     }
 
     @Test
-    public void changeIDTest() {
+    public void changeNameTest() {
         f1.changeName("AC555");
         f2.changeName("UN123");
         assertEquals("AC555", f1.getFlightName());
         assertEquals("UN123", f2.getFlightName());
-    }
-
-    @Test
-    public void changeDepartureTest() {
-        f1.changeDeparture("YYC");
-        f2.changeDeparture("SJC");
-        assertEquals("YYC", f1.getFlightDeparture());
-        assertEquals("SJC", f2.getFlightDeparture());
-        }
-
-    @Test
-    public void changeDestinationTest() {
-        f1.changeLocation("SJC");
-        f2.changeLocation("YYC");
-        assertEquals("SJC", f1.getFlightLocation());
-        assertEquals("YYC", f2.getFlightLocation());
     }
 
 

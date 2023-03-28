@@ -1,35 +1,11 @@
-{"trips": [
-    {
-        "hotelPrice": 500,
-        "tripDate": "dec 21",
-        "flightPrice": 900,
-        "flightName": "un999",
-        "tripPrice": 1400,
-        "tripName": "joe",
-        "tripLocation": "spain",
-        "flightTime": 1700,
-        "hotelName": "best western"
-    },
-    {
-        "hotelPrice": 100,
-        "tripDate": "may 1",
-        "flightPrice": 500,
-        "flightName": "BA100",
-        "tripPrice": 600,
-        "tripName": "bob",
-        "tripLocation": "london",
-        "flightTime": 900,
-        "hotelName": "hostel 1"
-    },
-    {
-        "hotelPrice": 300,
-        "tripDate": "jun 21",
-        "flightPrice": 0,
-        "flightName": "Car",
-        "tripPrice": 300,
-        "tripName": "mary",
-        "tripLocation": "tahoe",
-        "flightTime": 1200,
-        "hotelName": "AirBNB"
-    }
-]}
+{"trips": [{
+    "hotelPrice": 500,
+    "tripDate": "dec 21",
+    "flightPrice": 900,
+    "flightName": "un999",
+    "tripPrice": 1400,
+    "tripName": "joe",
+    "tripLocation": "spain",
+    "flightTime": 1700,
+    "hotelName": "best western"
+}]}

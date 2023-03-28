@@ -14,35 +14,33 @@ public class ListOfTripTest {
     private ListOfTrips lot1;
     private ListOfTrips lot2;
     private ListOfTrips lot3;
-    private Flight f1 = new Flight(300, "December 1", 900,
-            "AC567", "YVR", "SFO");
-    private Flight f2  = new Flight(230, "April 29", 1500,
-            "UN888", "SFO", "YVR");
-    private Hotel  h1 = new Hotel("The Modern Honolulu", 2800, "May 10",
-            7, "Honolulu");
-    private Hotel h2  = new Hotel("The Westin Bayshore", 1900, "December 1",
-            4, "Vancouver");
-    private Trip trip1 = new Trip("trip1", "december 1", f1, h1);
-    private Trip trip2 = new Trip("trip2", "may 10", f2, h2);
-    private Trip trip3 = new Trip("trip3", "march 1", f1, h1);
-    private Trip trip4 = new Trip("trip4", "april 10", f2, h2);
-    private Trip trip5 = new Trip("trip5", "june 1", f1, h1);
-    private Trip trip6 = new Trip("trip6", "july 10", f2, h2);
-    private Trip trip7 = new Trip("trip7", "august 1", f1, h1);
-    private Trip trip8 = new Trip("trip8", "september 10", f2, h2);
-    private Trip trip9 = new Trip("trip9", "february 1", f1, h1);
-    private Trip trip10 = new Trip("trip10", "october 10", f2, h2);
-    private Trip trip11 = new Trip("trip11", "november 1", f1, h1);
-    private Trip trip12 = new Trip("trip12", "january 10", f2, h2);
-    private Trip trip13 = new Trip("trip13", "december 10", f2, h2);
-    private Trip trip14 = new Trip("trip13", "unsure", f2, h2);
+    private Flight f1 = new Flight(300, 900,
+            "AC567");
+    private Flight f2  = new Flight(230, 1500,
+            "UN888");
+    private Hotel  h1 = new Hotel("The Modern Honolulu", 2800);
+    private Hotel h2  = new Hotel("The Westin Bayshore", 1900);
+    private Trip trip1 = new Trip("trip1", "december 1", "Hawaii", f1, h1);
+    private Trip trip2 = new Trip("trip2", "may 10", "Vancouver", f2, h2);
+    private Trip trip3 = new Trip("trip3", "march 1", "Hawaii",f1, h1);
+    private Trip trip4 = new Trip("trip4", "april 10", "Vancouver",f2, h2);
+    private Trip trip5 = new Trip("trip5", "june 1", "Hawaii",f1, h1);
+    private Trip trip6 = new Trip("trip6", "july 10", "Vancouver",f2, h2);
+    private Trip trip7 = new Trip("trip7", "august 1", "Hawaii",f1, h1);
+    private Trip trip8 = new Trip("trip8", "september 10", "Vancouver",f2, h2);
+    private Trip trip9 = new Trip("trip9", "february 1", "Hawaii",f1, h1);
+    private Trip trip10 = new Trip("trip10", "october 10","Vancouver", f2, h2);
+    private Trip trip11 = new Trip("trip11", "november 1","Hawaii", f1, h1);
+    private Trip trip12 = new Trip("trip12", "january 10", "Vancouver",f2, h2);
+    private Trip trip13 = new Trip("trip13", "december 10", "Vancouver",f2, h2);
+    private Trip trip14 = new Trip("trip13", "unsure", "Vancouver",f2, h2);
 
 
     @BeforeEach
     public void setup() {
-        lot1 = new ListOfTrips("trips 1");
-        lot2  = new ListOfTrips("trips 2");
-        lot3 = new ListOfTrips("grouped trips");
+        lot1 = new ListOfTrips();
+        lot2  = new ListOfTrips();
+        lot3 = new ListOfTrips();
         lot3.addTrip(trip1);
         lot3.addTrip(trip2);
         lot3.addTrip(trip3);
@@ -65,8 +63,6 @@ public class ListOfTripTest {
 
         assertEquals(result, lot1.getTrips());
         assertEquals(result, lot2.getTrips());
-        assertEquals("trips 1", lot1.getTripsName());
-        assertEquals("trips 2", lot2.getTripsName());
     }
 
     @Test
@@ -323,6 +319,19 @@ public class ListOfTripTest {
         assertEquals(0, lot3.getOctSize());
         assertEquals(0, lot3.getNovSize());
         assertEquals(0, lot3.getDecSize());
+    }
+
+
+    @Test
+    public void getListOfTripsInfoTest() {
+        List<String> result = new ArrayList<>();
+        result.add("Name: trip1, Date: december 1, Price: 3100, Location: Hawaii");
+        result.add("Name: trip2, Date: may 10, Price: 2130, Location: Vancouver");
+        result.add("Name: trip3, Date: march 1, Price: 3100, Location: Hawaii");
+        lot1.addTrip(trip1);
+        lot1.addTrip(trip2);
+        lot1.addTrip(trip3);
+        assertEquals(result, lot1.getListOfTripsInfo());
     }
 
 }

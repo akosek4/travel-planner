@@ -10,19 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class TripTest {
     private Trip trip1;
     private Trip trip2;
-    private Flight f1 = new Flight(300, "December 1", 900,
-            "AC567", "YVR", "SFO");
-    private Flight f2  = new Flight(230, "April 29", 1500,
-            "UN888", "SFO", "YVR");
-    private Hotel  h1 = new Hotel("The Modern Honolulu", 2800, "May 10",
-            7, "Honolulu");
-    private Hotel h2  = new Hotel("The Westin Bayshore", 1900, "December 1",
-            4, "Vancouver");
+    private Flight f1 = new Flight(300, 900,
+            "AC567");
+    private Flight f2  = new Flight(230, 1500,
+            "UN888");
+    private Hotel  h1 = new Hotel("The Modern Honolulu", 2800);
+    private Hotel h2  = new Hotel("The Westin Bayshore", 1900);
 
     @BeforeEach
     public void setup() {
-        trip1 = new Trip("trip1", "December 1", f1, h1);
-        trip2  = new Trip("trip2", "May 10", f2, h2);
+        trip1 = new Trip("trip1", "December 1", "Hawaii", f1, h1);
+        trip2  = new Trip("trip2", "May 10", "Pheonix", f2, h2);
     }
 
     @Test
@@ -33,6 +31,8 @@ class TripTest {
         assertEquals("May 10", trip2.getTripDate());
         assertEquals(3100, trip1.getTripPrice());
         assertEquals(2130, trip2.getTripPrice());
+        assertEquals("Hawaii", trip1.getTripLocation());
+        assertEquals("Pheonix", trip2.getTripLocation());
         assertEquals(f1, trip1.getFlight());
         assertEquals(f2, trip2.getFlight());
         assertEquals(h1, trip1.getHotel());
@@ -55,6 +55,14 @@ class TripTest {
         assertEquals("December 31", trip2.getTripDate());
     }
 
+    @Test
+    public void changeLocationTest() {
+        trip1.changeTripLocation("Florida");
+        trip2.changeTripLocation("Hawaii");
+        assertEquals("Florida", trip1.getTripLocation());
+        assertEquals("Hawaii", trip2.getTripLocation());
+    }
+
 
     @Test
     public void changeFlightPriceTest() {
@@ -62,14 +70,6 @@ class TripTest {
         trip2.changeFlightPrice(0);
         assertEquals(300, trip1.getFlight().getFlightPrice());
         assertEquals(0, trip2.getFlight().getFlightPrice());
-    }
-
-    @Test
-    public void changeFlightDateTest() {
-        trip1.changeFlightDate("April 21");
-        trip2.changeFlightDate("October 23");
-        assertEquals("April 21", trip1.getFlight().getFlightDate());
-        assertEquals("October 23", trip2.getFlight().getFlightDate());
     }
 
     @Test
@@ -81,27 +81,11 @@ class TripTest {
     }
 
     @Test
-    public void changeFlightIDTest() {
+    public void changeFlightNameTest() {
         trip1.changeFlightName("UN123");
         trip2.changeFlightName("AC456");
         assertEquals("UN123", trip1.getFlight().getFlightName());
         assertEquals("AC456", trip2.getFlight().getFlightName());
-    }
-
-    @Test
-    public void changeFlightDepartureTest() {
-        trip1.changeFlightDeparture("MDW");
-        trip2.changeFlightDeparture("PHX");
-        assertEquals("MDW", trip1.getFlight().getFlightDeparture());
-        assertEquals("PHX", trip2.getFlight().getFlightDeparture());
-    }
-
-    @Test
-    public void changeFlightDestinationTest() {
-        trip1.changeFlightLocation("PHX");
-        trip2.changeFlightLocation("MDW");
-        assertEquals("PHX", trip1.getFlight().getFlightLocation());
-        assertEquals("MDW", trip2.getFlight().getFlightLocation());
     }
 
 
@@ -120,30 +104,6 @@ class TripTest {
         trip2.changeHotelPrice(0);
         assertEquals(1900, trip1.getHotel().getHotelPrice());
         assertEquals(0, trip2.getHotel().getHotelPrice());
-    }
-
-    @Test
-    public void changeHotelDateTest() {
-        trip1.changeHotelDate("May 9");
-        trip2.changeHotelDate("September 13");
-        assertEquals("May 9", trip1.getHotel().getHotelDate());
-        assertEquals("September 13", trip2.getHotel().getHotelDate());
-    }
-
-    @Test
-    public void changeHotelDurationTest() {
-        trip1.changeHotelDuration(9);
-        trip2.changeHotelDuration(0);
-        assertEquals(9, trip1.getHotel().getHotelDuration());
-        assertEquals(0, trip2.getHotel().getHotelDuration());
-    }
-
-    @Test
-    public void changeHotelLocationTest() {
-        trip1.changeHotelLocation("Kona");
-        trip2.changeHotelLocation("Victoria");
-        assertEquals("Kona", trip1.getHotel().getHotelLocation());
-        assertEquals("Victoria", trip2.getHotel().getHotelLocation());
     }
 
 }

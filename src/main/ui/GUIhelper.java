@@ -109,38 +109,6 @@ public class GUIhelper {
         return trip;
     }
 
-    public String getTripName() {
-        return tripName;
-    }
-
-    public String getTripDate() {
-        return tripDate;
-    }
-
-    public String getTripLocation() {
-        return tripLocation;
-    }
-
-    public String getHotelName() {
-        return hotelName;
-    }
-
-    public int getHotelPrice() {
-        return hotelPrice;
-    }
-
-    public String getFlightName() {
-        return flightName;
-    }
-
-    public int getFlightTime() {
-        return flightTime;
-    }
-
-    public int getFlightPrice() {
-        return flightPrice;
-    }
-
     public void setTripName(String name) {
         tripName = name;
     }
