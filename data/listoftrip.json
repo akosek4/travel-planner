@@ -1,11 +1,11 @@
 {"trips": [{
-    "hotelPrice": 500,
-    "tripDate": "dec 21",
-    "flightPrice": 900,
-    "flightName": "un999",
-    "tripPrice": 1400,
-    "tripName": "joe",
-    "tripLocation": "spain",
-    "flightTime": 1700,
-    "hotelName": "best western"
+    "hotelPrice": 800,
+    "tripDate": "dec 10",
+    "flightPrice": 300,
+    "flightName": "sw666",
+    "tripPrice": 1100,
+    "tripName": "bob",
+    "tripLocation": "hawaii",
+    "flightTime": 2200,
+    "hotelName": "airbnb"
 }]}

@@ -1,15 +1,20 @@
 package ui;
 
 
+import model.Event;
+import model.EventLog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.List;
 
 // represents a list of trips graphical interface
 
-public class TripsUi extends JFrame implements ActionListener {
+public class TripsUi extends JFrame implements ActionListener, WindowListener {
     private static final int WIDTH = 600;
     private static final int HEIGHT = 900;
     private GUIhelper app;
@@ -40,6 +45,7 @@ public class TripsUi extends JFrame implements ActionListener {
 
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(this);
         setLayout(new BorderLayout());
         setVisible(true);
 
@@ -360,5 +366,47 @@ public class TripsUi extends JFrame implements ActionListener {
     private void createHotel() {
         app.setHotelName(hotelNameBox.getText());
         app.setHotelPrice(Integer.parseInt(hotelPriceBox.getText()));
+    }
+
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        //Do nothing
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        printLog();
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        //DO nothing
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        //Do nothing
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        //Do nothing
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        //Do nothing
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        //Do nothing
+    }
+
+    public void printLog() {
+        for (Event e: EventLog.getInstance()) {
+            System.out.println(e.getDescription());
+        }
     }
 }
