@@ -406,7 +406,7 @@ public class TripsUi extends JFrame implements ActionListener, WindowListener {
 
     public void printLog() {
         for (Event e: EventLog.getInstance()) {
-            System.out.println(e.getDescription());
+            System.out.println(e.toString());
         }
     }
 }
