@@ -57,3 +57,22 @@ Trip added to list of trips
 Fri Mar 31 15:18:59 PDT 2023
 
 Trip added to list of trips
+
+## Phase 4: Task 3
+If I had more time for this project, I would make some significant changes to improve 
+its cohesion and coupling. One of the main ways I would refactor my project would be to
+make the Hotel and Flight class extend a new abstract class. These two classes have a 
+lot of duplication as they both are features of a trip. Additionally, by creating this 
+abstract class, it would be easy to add new features to a trip, such as an activity. 
+This change would reduce the coupling in the project as a change to the abstract class 
+would alter the subclasses. Another way I would refactor my trips project would be to 
+split some of the larger classes into multiple smaller ones. For example, the 
+ListOfTrips class has multiple methods related to grouping and arranging trips by the 
+date. I would improve the cohesion by splitting the ListOfTrips class into ListOfTrips
+and a new class named TripsGrouping, where TripsGrouping is in charge of handling all 
+the methods related to groups. Another class that should be split is the TripsUI class.
+It contains many methods that could be grouped into their own class, such as a class 
+for the action buttons and a class for the text fields. Overall, these refactoring 
+changes that I could make would improve the project's cohesion and coupling by reducing
+dependencies and ensuring that every class is responsible for only one thing.
+
