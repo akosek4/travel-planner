@@ -23,8 +23,9 @@ public class EventTest {
         d = Calendar.getInstance().getTime();   // (2)
     }
 
+
     @Test
-    public void testEvent() { //TODO: fix issue
+    public void testEvent() {
         assertEquals("Trip added to list of trips", e.getDescription());
         assertEquals(d, e.getDate());
     }
