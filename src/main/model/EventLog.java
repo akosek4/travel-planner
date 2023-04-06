@@ -9,11 +9,12 @@ public class EventLog implements Iterable<Event> {
     private static EventLog theLog;
     private Collection<Event> events;
 
+    // EFFECTS: Creates an event log no events
     private EventLog() {
         events = new ArrayList<Event>();
     }
 
-
+    // EFFECTS: returns the singular event log instance or creates one if null
     public static EventLog getInstance() {
         if (theLog == null) {
             theLog = new EventLog();

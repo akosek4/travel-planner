@@ -298,7 +298,7 @@ public class TripsUi extends JFrame implements ActionListener, WindowListener {
     }
 
     //MODIFIES: this
-    //EFFECTS: creates a button that loads the previously saved trips
+    //EFFECTS: creates a button that loads the previous trips
     private void updateLoad() {
         load = new JButton();
         load.setBounds(0, 120, 20, 20);
@@ -332,6 +332,8 @@ public class TripsUi extends JFrame implements ActionListener, WindowListener {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets text fields' text to the original input question
     private void resetTextBoxes() {
         tripNameBox.setText("Enter Trip Name");
         tripDateBox.setText("Enter Trip Date");
@@ -404,6 +406,7 @@ public class TripsUi extends JFrame implements ActionListener, WindowListener {
         //Do nothing
     }
 
+    //EFFECTS: prints every Event logged in EventLog
     public void printLog() {
         for (Event e: EventLog.getInstance()) {
             System.out.println(e.toString());
