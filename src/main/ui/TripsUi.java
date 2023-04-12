@@ -371,36 +371,43 @@ public class TripsUi extends JFrame implements ActionListener, WindowListener {
     }
 
 
+    //EFFECTS: nothing happens when the window is opened
     @Override
     public void windowOpened(WindowEvent e) {
         //Do nothing
     }
 
+    //EFFECTS: the event log is printed when the window is closing
     @Override
     public void windowClosing(WindowEvent e) {
         printLog();
     }
 
+    //EFFECTS: nothing happens when the window is closed
     @Override
     public void windowClosed(WindowEvent e) {
         //DO nothing
     }
 
+    //EFFECTS: nothing happens when the window is iconified
     @Override
     public void windowIconified(WindowEvent e) {
         //Do nothing
     }
 
+    //EFFECTS: nothing happens when the window is deiconified
     @Override
     public void windowDeiconified(WindowEvent e) {
         //Do nothing
     }
 
+    //EFFECTS: nothing happens when the window is activated
     @Override
     public void windowActivated(WindowEvent e) {
         //Do nothing
     }
 
+    //EFFECTS: nothing happens when the window is deactivated
     @Override
     public void windowDeactivated(WindowEvent e) {
         //Do nothing

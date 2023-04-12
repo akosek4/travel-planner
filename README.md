@@ -44,19 +44,19 @@ more convenient and prevent logistical problems from occurring.
 ## Phase 4: Task 2
 Fri Mar 31 15:18:33 PDT 2023 
 
-Trip added to list of trips
+Trip named bob added to list of trips
 
 Fri Mar 31 15:18:39 PDT 2023
 
-Trip removed from list of trips
+Trip named bob removed from list of trips
 
 Fri Mar 31 15:18:47 PDT 2023
 
-Trip added to list of trips
+Trip named john added to list of trips
 
 Fri Mar 31 15:18:59 PDT 2023
 
-Trip added to list of trips
+Trip named sarah added to list of trips
 
 ## Phase 4: Task 3
 If I had more time for this project, I would make some significant changes to improve 

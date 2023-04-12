@@ -79,7 +79,6 @@ public class GUIhelper {
     private void loadTrips() {
         try {
             trips = reader.read();
-            System.out.println("Loaded list of trips from " + data);
         } catch (IOException e) {
             System.out.println("Unable to read from " + data);
         }
@@ -91,7 +90,6 @@ public class GUIhelper {
             writer.open();
             writer.write(trips);
             writer.close();
-            System.out.println("Saved trips to " + data);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + data);
         }

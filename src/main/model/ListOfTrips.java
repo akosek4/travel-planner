@@ -34,7 +34,7 @@ public class ListOfTrips implements Writable {
     //EFFECTS: adds a trip to trips
     public void addTrip(Trip trip) {
         trips.add(trip);
-        Event event = new Event("Trip added to list of trips");
+        Event event = new Event("Trip named " + trip.getTripName() + " added to list of trips");
         eventLog.logEvent(event);
     }
 
@@ -43,7 +43,7 @@ public class ListOfTrips implements Writable {
     public Boolean removeTrip(Trip trip) {
         if (trips.contains(trip)) {
             trips.remove(trip);
-            Event event = new Event("Trip removed from list of trips");
+            Event event = new Event("Trip named " + trip.getTripName() + " removed from list of trips");
             eventLog.logEvent(event);
             return true;
         } else {
